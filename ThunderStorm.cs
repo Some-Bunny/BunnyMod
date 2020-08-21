@@ -74,7 +74,6 @@ namespace BunnyMod
 		{
 			projectile.baseData.range = 4f;
 			projectile.OnDestruction += this.OhFuckSpapiSawThisMethodRUN;
-			projectile.OnPostUpdate += this.HandlePostUpdate;
 		}
 		private void OhFuckSpapiSawThisMethodRUN(Projectile obj)
 		{
@@ -140,39 +139,6 @@ namespace BunnyMod
 			doScreenShake = false,
 			playDefaultSFX = false,
 		};
-		private void HandlePostUpdate(Projectile projectile)
-		{
-			bool flag = projectile && projectile.GetElapsedDistance() > 1f;
-			if (flag)
-			{
-				projectile.baseData.speed = 0.85f;
-				projectile.RuntimeUpdateScale(1f);
-			}
-			bool flag1 = projectile && projectile.GetElapsedDistance() > 1.5f;
-			if (flag1)
-			{
-				projectile.baseData.speed = 0.7f;
-				projectile.RuntimeUpdateScale(1f);
-			}
-			bool flag2 = projectile && projectile.GetElapsedDistance() > 2f;
-			if (flag2)
-			{
-				projectile.baseData.speed = 0.55f;
-				projectile.RuntimeUpdateScale(1f);
-			}
-			bool flag3 = projectile && projectile.GetElapsedDistance() > 2.5f;
-			if (flag3)
-			{
-				projectile.baseData.speed = 0.40f;
-				projectile.RuntimeUpdateScale(1f);
-			}
-			bool flag4 = projectile && projectile.GetElapsedDistance() > 3f;
-			if (flag4)
-			{
-				projectile.baseData.speed = 0.25f;
-				projectile.RuntimeUpdateScale(1f);
-			}
-		}
 
 		public float FlashHoldtime;
 		public float FlashFadetime;
