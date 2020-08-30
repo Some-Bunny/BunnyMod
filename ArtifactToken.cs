@@ -24,7 +24,7 @@ namespace BunnyMod
         {
             this.CanBeDropped = false;
             base.Pickup(player);
-			ArtifactToken.Char = UnityEngine.Random.Range(1, 9);
+			ArtifactToken.Char = UnityEngine.Random.Range(1, 11);
 			switch (ArtifactToken.Char)
 			{
 				case 1:
@@ -53,6 +53,9 @@ namespace BunnyMod
 					break;
                 case 9:
                     LootEngine.TryGivePrefabToPlayer(ETGMod.Databases.Items["Bolster"].gameObject, player, true);
+                    break;
+                case 10:
+                    LootEngine.TryGivePrefabToPlayer(ETGMod.Databases.Items["Enigma"].gameObject, player, true);
                     break;
 
             }

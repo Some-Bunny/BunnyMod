@@ -117,7 +117,7 @@ namespace BunnyMod
 					component.baseData.speed = 30.5f;
 					component.baseData.damage = 2.1f;
 					component.AdditionalScaleMultiplier = 1.25f;
-					projectile.AdjustPlayerProjectileTint(Color.blue.WithAlpha(Color.blue.a / 50f), 50, 0f);
+					component.AdjustPlayerProjectileTint(Color.blue.WithAlpha(Color.blue.a / 50f), 50, 0f);
 					BounceProjModifier bouncy = component.gameObject.AddComponent<BounceProjModifier>();
 					bouncy.numberOfBounces = 3;
 					component.SetOwnerSafe(this.gun.CurrentOwner, "Player");

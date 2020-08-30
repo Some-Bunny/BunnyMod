@@ -41,6 +41,7 @@ namespace BunnyMod
 			gun.DefaultModule.numberOfShotsInClip = 10;
 			gun.SetBaseMaxAmmo(600);
 			gun.DefaultModule.angleVariance = 15f;
+			gun.AddToSubShop(ItemBuilder.ShopType.Trorc, 1f);
 			Projectile projectile = UnityEngine.Object.Instantiate<Projectile>(gun.DefaultModule.projectiles[0]);
 			projectile.gameObject.SetActive(false);
 			FakePrefab.MarkAsFakePrefab(projectile.gameObject);

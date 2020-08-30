@@ -227,8 +227,10 @@ namespace BunnyMod
 
 		private int lastGuns;
 
-		// Token: 0x06000355 RID: 853 RVA: 0x0001F480 File Offset: 0x0001D680
-		private void CalculateStats(PlayerController player)
+        public ItemQuality Spawnquality { get; internal set; }
+
+        // Token: 0x06000355 RID: 853 RVA: 0x0001F480 File Offset: 0x0001D680
+        private void CalculateStats(PlayerController player)
 		{
 			this.currentItems = player.passiveItems.Count;
 			this.currentGuns = player.inventory.AllGuns.Count;

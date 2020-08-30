@@ -59,6 +59,7 @@ namespace BunnyMod
 			}
 			gun.reloadTime = 1.2f;
 			gun.SetBaseMaxAmmo(70);
+			gun.AddToSubShop(ItemBuilder.ShopType.Trorc, 1f);
 			// Here we just set the quality of the gun and the "EncounterGuid", which is used by Gungeon to identify the gun.
 			gun.quality = PickupObject.ItemQuality.C;
 			gun.encounterTrackable.EncounterGuid = "Cheer up Bunny ^ᴗ^";

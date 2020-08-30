@@ -23,14 +23,14 @@ namespace BunnyMod
         public static void Init()
         {
             string name = "Gun Soul Phylactery";
-            string resourcePath = "ExampleMod/Resources/GunSoulSprites/Blue/Idle/gunsoulblue_idle_001.png";
+            string resourcePath = "ExampleMod/Resources/gunsoulphylactery.png";
             GameObject gameObject = new GameObject();
             GunSoulBox GunSoulBox = gameObject.AddComponent<GunSoulBox>();
             ItemBuilder.AddSpriteToObject(name, resourcePath, gameObject, true);
             string shortDesc = "Little whispers...";
-            string longDesc = "A box of souls.";
+            string longDesc = "A container containing various gun souls. They come out to play once it gets too packed with others.";
             GunSoulBox.SetupItem(shortDesc, longDesc, "bny");
-            GunSoulBox.quality = PickupObject.ItemQuality.SPECIAL;
+            GunSoulBox.quality = PickupObject.ItemQuality.B;
 
         }
         private float random;
@@ -44,7 +44,12 @@ namespace BunnyMod
         }
         private void OnKill(PlayerController player)
         {
-            this.CreateNewCompanion(base.Owner);
+            int num3 = UnityEngine.Random.Range(0, 6);
+            bool flag3 = num3 == 5;
+            if (flag3)
+            {
+                this.CreateNewCompanion(base.Owner);
+            }
         }
         private List<CompanionController> companionsSpawned = new List<CompanionController>();
 
@@ -55,7 +60,7 @@ namespace BunnyMod
                 this.random = UnityEngine.Random.Range(0.0f, 1.0f);
                 if (random <= 0.33f)
                 {
-                    AkSoundEngine.PostEvent("Play_OBJ_smallchest_spawn_01", base.gameObject);
+                    AkSoundEngine.PostEvent("Play_BOSS_doormimic_flame_01", base.gameObject);
                     AIActor orLoadByGuid = EnemyDatabase.GetOrLoadByGuid(GunSoulBlue.guid1);
                     Vector3 vector = player.transform.position;
                     bool flag9 = GameManager.Instance.CurrentLevelOverrideState == GameManager.LevelOverrideState.FOYER;
@@ -85,7 +90,7 @@ namespace BunnyMod
                     bool flag3 = num3 == 0;
                     if (flag3)
                     {
-                        AkSoundEngine.PostEvent("Play_OBJ_smallchest_spawn_01", base.gameObject);
+                        AkSoundEngine.PostEvent("Play_BOSS_doormimic_flame_01", base.gameObject);
                         AIActor orLoadByGuid = EnemyDatabase.GetOrLoadByGuid(GunSoulGreen.guid2);
                         Vector3 vector = player.transform.position;
                         bool flag9 = GameManager.Instance.CurrentLevelOverrideState == GameManager.LevelOverrideState.FOYER;
@@ -112,7 +117,7 @@ namespace BunnyMod
                     bool flag4 = num3 == 1;
                     if (flag4)
                     {
-                        AkSoundEngine.PostEvent("Play_OBJ_smallchest_spawn_01", base.gameObject);
+                        AkSoundEngine.PostEvent("Play_BOSS_doormimic_flame_01", base.gameObject);
                         AIActor orLoadByGuid = EnemyDatabase.GetOrLoadByGuid(GunSoulRed.guid3);
                         Vector3 vector = player.transform.position;
                         bool flag9 = GameManager.Instance.CurrentLevelOverrideState == GameManager.LevelOverrideState.FOYER;
@@ -139,7 +144,7 @@ namespace BunnyMod
                     bool flag5 = num3 == 2;
                     if (flag5)
                     {
-                        AkSoundEngine.PostEvent("Play_OBJ_smallchest_spawn_01", base.gameObject);
+                        AkSoundEngine.PostEvent("Play_BOSS_doormimic_flame_01", base.gameObject);
                         AIActor orLoadByGuid = EnemyDatabase.GetOrLoadByGuid(GunSoulYellow.guid4);
                         Vector3 vector = player.transform.position;
                         bool flag9 = GameManager.Instance.CurrentLevelOverrideState == GameManager.LevelOverrideState.FOYER;
@@ -166,7 +171,7 @@ namespace BunnyMod
                     bool flag6 = num3 == 4;
                     if (flag6)
                     {
-                        AkSoundEngine.PostEvent("Play_OBJ_smallchest_spawn_01", base.gameObject);
+                        AkSoundEngine.PostEvent("Play_BOSS_doormimic_flame_01", base.gameObject);
                         AIActor orLoadByGuid = EnemyDatabase.GetOrLoadByGuid(GunSoulPurple.guid6);
                         Vector3 vector = player.transform.position;
                         bool flag9 = GameManager.Instance.CurrentLevelOverrideState == GameManager.LevelOverrideState.FOYER;
@@ -193,7 +198,7 @@ namespace BunnyMod
                     bool flag6a = num3 == 3;
                     if (flag6a)
                     {
-                        AkSoundEngine.PostEvent("Play_OBJ_smallchest_spawn_01", base.gameObject);
+                        AkSoundEngine.PostEvent("Play_BOSS_doormimic_flame_01", base.gameObject);
                         AIActor orLoadByGuid = EnemyDatabase.GetOrLoadByGuid(GunSoulPink.guid5);
                         Vector3 vector = player.transform.position;
                         bool flag9 = GameManager.Instance.CurrentLevelOverrideState == GameManager.LevelOverrideState.FOYER;

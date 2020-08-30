@@ -14,6 +14,7 @@ using Gungeon;
 using MonoMod.RuntimeDetour;
 using System.Runtime.CompilerServices;
 
+
 namespace GungeonAPI
 {
 	// Token: 0x0200000E RID: 14
@@ -73,7 +74,7 @@ namespace GungeonAPI
 		}
 		public static void HandleLoadout(PlayerController player)
 		{
-			ArtifactMonger.Char = UnityEngine.Random.Range(1, 9);
+			ArtifactMonger.Char = UnityEngine.Random.Range(1, 11);
 			switch (ArtifactMonger.Char)
 			{
 				case 1:
@@ -102,6 +103,9 @@ namespace GungeonAPI
 					break;
 				case 9:
 					LootEngine.TryGivePrefabToPlayer(ETGMod.Databases.Items["Bolster"].gameObject, player, true);
+					break;
+				case 10:
+					LootEngine.TryGivePrefabToPlayer(ETGMod.Databases.Items["Enigma"].gameObject, player, true);
 					break;
 			}
 			ArtifactMonger.storedPlayer = player;

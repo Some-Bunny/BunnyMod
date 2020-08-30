@@ -23,8 +23,6 @@ namespace BunnyMod
             greandeParasite.quality = PickupObject.ItemQuality.EXCLUDED;
         }
 
-
-
 		protected override void Update()
 		{
 			bool flag = base.Owner;

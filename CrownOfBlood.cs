@@ -34,7 +34,7 @@ namespace BunnyMod
             crownOfBlood.AddPassiveStatModifier(PlayerStats.StatType.Coolness, 3f, StatModifier.ModifyMethod.ADDITIVE);
             crownOfBlood.AddPassiveStatModifier(PlayerStats.StatType.Curse, 1f, StatModifier.ModifyMethod.ADDITIVE);
             crownOfBlood.AddPassiveStatModifier(PlayerStats.StatType.MovementSpeed, 1.2f, StatModifier.ModifyMethod.MULTIPLICATIVE);
-            crownOfBlood.AddPassiveStatModifier(PlayerStats.StatType.Damage, .35f, StatModifier.ModifyMethod.ADDITIVE);
+            crownOfBlood.AddPassiveStatModifier(PlayerStats.StatType.Damage, .25f, StatModifier.ModifyMethod.ADDITIVE);
             crownOfBlood.quality = PickupObject.ItemQuality.A;
             crownOfBlood.AddToSubShop(ItemBuilder.ShopType.Cursula, 1f);
             crownOfBlood.AddToSubShop(ItemBuilder.ShopType.Goopton, 1f);

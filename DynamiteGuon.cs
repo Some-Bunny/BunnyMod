@@ -30,6 +30,7 @@ namespace BunnyMod
 			boomGuon.SetupItem(shortDesc, longDesc, "bny");
 			boomGuon.quality = PickupObject.ItemQuality.B;
 			DynamiteGuon.BuildPrefab();
+			boomGuon.AddToSubShop(ItemBuilder.ShopType.Trorc, 1f);
 			boomGuon.OrbitalPrefab = DynamiteGuon.orbitalPrefab;
 			boomGuon.Identifier = IounStoneOrbitalItem.IounStoneIdentifier.GENERIC;
 		}

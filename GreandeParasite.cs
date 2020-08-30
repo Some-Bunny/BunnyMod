@@ -8,6 +8,8 @@ namespace BunnyMod
     public class GreandeParasite : PassiveItem
     {
 
+        public ItemQuality Spawnquality { get; internal set; }
+
         public static void Init()
         {
             string itemName = "Pinhead Parasite";
@@ -148,10 +150,11 @@ namespace BunnyMod
         {
             base.Pickup(player);
             Tools.Print($"Player picked up {this.DisplayName}");
-            player.OnAnyEnemyReceivedDamage = (Action<float, bool, HealthHaver>)Delegate.Combine(player.OnAnyEnemyReceivedDamage, new Action<float, bool, HealthHaver>(this.OnEnemyDamaged));
+            player.OnAnyEnemyReceivedDamage += (Action<float, bool, HealthHaver>)Delegate.Combine(player.OnAnyEnemyReceivedDamage, new Action<float, bool, HealthHaver>(this.OnEnemyDamaged));
         }
         public override DebrisObject Drop(PlayerController player)
         {
+            player.OnAnyEnemyReceivedDamage -= (Action<float, bool, HealthHaver>)Delegate.Combine(player.OnAnyEnemyReceivedDamage, new Action<float, bool, HealthHaver>(this.OnEnemyDamaged));
             Tools.Print($"Player dropped {this.DisplayName}");
             return base.Drop(player);
         }

@@ -62,7 +62,7 @@ namespace BunnyMod
         {
             string header = "";
             string text = "";
-            int num3 = UnityEngine.Random.Range(0, 16);
+            int num3 = UnityEngine.Random.Range(0, 19);
             bool flag3 = num3 == 0;
             if (flag3)
             {

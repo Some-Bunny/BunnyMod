@@ -84,7 +84,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArtifactOfEnigma.cs" />
+    <Compile Include="SoulStealer.cs" />
+    <Compile Include="ModuleAmmoEater.cs" />
+    <Compile Include="ModuleStats.cs" />
+    <Compile Include="ClayCordStatue.cs" />
+    <Compile Include="ClayCord.cs" />
+    <Compile Include="ModuleItem.cs" />
+    <Compile Include="ModuleCannon.cs" />
+    <Compile Include="SynergyCheckINC.cs" />
     <Compile Include="ArtifactOfHatred.cs" />
+    <Compile Include="ChaosHand.cs" />
+    <Compile Include="CaptainsShotgun.cs" />
+    <Compile Include="LeadHand.cs" />
     <Compile Include="GuonGeon.cs" />
     <Compile Include="GunslayerShotgun.cs" />
     <Compile Include="ArtifactDeicide.cs" />
@@ -93,6 +105,7 @@
     <Compile Include="AerialBombardment.cs" />
     <Compile Include="AbsoluteZeroPotion.cs" />
     <Compile Include="GunSoulBox.cs" />
+    <Compile Include="Casemimic.cs" />
     <Compile Include="RogueLegendary.cs" />
     <Compile Include="Monolith&amp;LoopMarker.cs" />
     <Compile Include="LizardBloodTransfusion.cs" />
@@ -155,7 +168,7 @@
     <Compile Include="Blasphemimic.cs" />
     <Compile Include="AmmoRepurposer.cs" />
     <Compile Include="MalachiteCrown.cs" />
-    <Compile Include="SlayerKey.cs" />
+    <Compile Include="GunslayerKey.cs" />
     <Compile Include="SkyGrass.cs" />
     <Compile Include="ASpeckOfDust.cs" />
     <Compile Include="BigNukeGun.cs" />
@@ -199,13 +212,27 @@
     <Compile Include="SausageRevolver.cs" />
     <Compile Include="StaticCharger.cs" />
     <Compile Include="TheTrainGun.cs" />
-    <Compile Include="TheTrainGunProjectileShit.cs" />
+    <Compile Include="TheTrainGunProjectile.cs" />
     <Compile Include="Tools.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\example_item_sprite.png" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Resources\WeaponModules\t3weaponmodularinaccuratebutdps.png" />
+    <EmbeddedResource Include="Resources\WeaponModules\t3weaponmodularmassiveslowdps.png" />
+    <EmbeddedResource Include="Resources\WeaponModules\t3weaponmodularrocket.png" />
+    <EmbeddedResource Include="Resources\weaponmodularammoeaterfull.png" />
+    <EmbeddedResource Include="Resources\weaponmodularammoeater.png" />
+    <EmbeddedResource Include="Resources\WeaponModules\t2weaponmodularbounce.png" />
+    <EmbeddedResource Include="Resources\WeaponModules\t2weaponmodularpierce.png" />
+    <EmbeddedResource Include="Resources\WeaponModules\t2weaponmodularyv.png" />
+    <EmbeddedResource Include="Resources\WeaponModules\weaponmodularclipsize.png" />
+    <EmbeddedResource Include="Resources\WeaponModules\weaponmodulardamage.png" />
+    <EmbeddedResource Include="Resources\WeaponModules\weaponmodularfirerate.png" />
+    <EmbeddedResource Include="Resources\WeaponModules\weaponmodularreload.png" />
+    <EmbeddedResource Include="Resources\weaponmodular.png" />
+    <EmbeddedResource Include="Resources\theleadhand.png" />
     <EmbeddedResource Include="Resources\radiationcanister.png" />
     <EmbeddedResource Include="Resources\simpbullets.png" />
     <EmbeddedResource Include="Resources\soulinajar.png" />
@@ -265,6 +292,9 @@
     <EmbeddedResource Include="Resources\Artifacts\bolster.png" />
     <EmbeddedResource Include="Resources\Artifacts\hatred.png" />
     <EmbeddedResource Include="Resources\Artifacts\hatredfloaty.png" />
+    <Content Include="Resources\Artifacts\ArtifactNPC\reflection.png" />
+    <EmbeddedResource Include="Resources\Artifacts\reflection.png" />
+    <EmbeddedResource Include="Resources\Artifacts\enigma.png" />
     <Content Include="Resources\BlastCoreFrames\Blastcore_idle_001.png" />
     <Content Include="Resources\BlastCoreFrames\Blastcore_idle_002.png" />
     <Content Include="Resources\BlastCoreFrames\Blastcore_idle_003.png" />
@@ -468,6 +498,9 @@
     <EmbeddedResource Include="Resources\GunSoulSprites\Purple\Right\gunsoulpurple_moveright_006.png" />
     <EmbeddedResource Include="Resources\GunSoulSprites\Purple\Right\gunsoulpurple_moveright_007.png" />
     <EmbeddedResource Include="Resources\GunSoulSprites\Purple\Right\gunsoulpurple_moveright_008.png" />
+    <EmbeddedResource Include="Resources\gunsoulphylactery.png" />
+    <EmbeddedResource Include="Resources\claycord.png" />
+    <EmbeddedResource Include="Resources\claycordstatue_idle_001.png" />
     <Content Include="Resources\PZeroAnims\Idle\brokencore.png" />
     <EmbeddedResource Include="Resources\PZeroAnims\Idle\P-Zero_idle_001.png" />
     <EmbeddedResource Include="Resources\PZeroAnims\Idle\P-Zero_idle_002.png" />

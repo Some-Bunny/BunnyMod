@@ -59,7 +59,7 @@ namespace BunnyMod
 		public override void OnPostFired(PlayerController player, Gun stickgun)
 		{
 			gun.PreventNormalFireAudio = true;
-			AkSoundEngine.PostEvent("Play_ENM_iceslime_blast_01", gameObject);
+			AkSoundEngine.PostEvent("Play_WPN_nailgun_shot_01", gameObject);
 		}
 		private bool HasReloaded;
 
@@ -86,7 +86,7 @@ namespace BunnyMod
 				HasReloaded = false;
 				AkSoundEngine.PostEvent("Stop_WPN_All", base.gameObject);
 				base.OnReloadPressed(player, gun, bSOMETHING);
-				AkSoundEngine.PostEvent("Play_WPN_crossbow_reload_01", gameObject);
+				AkSoundEngine.PostEvent("Play_WPN_dartgun_reload_01", gameObject);
 			}
 		}
 	}

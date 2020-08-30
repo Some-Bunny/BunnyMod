@@ -29,6 +29,7 @@ namespace BunnyMod
 			string longDesc = "A miniature replica of the Gungeon in the form of a Guon Stone. Placing your ear onto the mouth part lets you hear gun-based rap.";
 			boomGuon.SetupItem(shortDesc, longDesc, "bny");
 			boomGuon.quality = PickupObject.ItemQuality.S;
+			boomGuon.AddToSubShop(ItemBuilder.ShopType.Trorc, 1f);
 			GuonGeon.BuildPrefab();
 			boomGuon.OrbitalPrefab = GuonGeon.orbitalPrefab;
 			boomGuon.Identifier = IounStoneOrbitalItem.IounStoneIdentifier.GENERIC;

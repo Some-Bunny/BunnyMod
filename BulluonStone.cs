@@ -29,7 +29,8 @@ namespace BunnyMod
             string longDesc = "This poor mix of a bullet and guon stone empowers its bearer at the sight of a guon stone.\n\n" +
                 "Because it is a cross-breed, it can't act as either a bullet or guon stone, so that's how it compensates.";
             ItemBuilder.SetupItem(item, shortDesc, longDesc, "bny");
-            item.quality = PickupObject.ItemQuality.C;
+			item.AddToSubShop(ItemBuilder.ShopType.Trorc, 1f);
+			item.quality = PickupObject.ItemQuality.C;
         }
 
 		protected override void Update()

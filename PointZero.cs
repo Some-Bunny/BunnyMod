@@ -31,7 +31,6 @@ namespace BunnyMod
             string longDesc = "A lost defensive core of a colossal database. A Power Eternal flows through it.\n\n It's not here to protect you, you're here to get it out.";
             pointZero.SetupItem(shortDesc, longDesc, "bny");
             pointZero.AddPassiveStatModifier(PlayerStats.StatType.Coolness, 1f, StatModifier.ModifyMethod.ADDITIVE);
-            pointZero.AddPassiveStatModifier(PlayerStats.StatType.Damage, .85f, StatModifier.ModifyMethod.MULTIPLICATIVE);
             pointZero.quality = PickupObject.ItemQuality.A;
             pointZero.CompanionGuid = PointZero.guid;
             PointZero.BuildPrefab();
@@ -387,7 +386,7 @@ namespace BunnyMod
                                 Vector2 unitCenter2 = nearestEnemy.specRigidbody.HitboxPixelCollider.UnitCenter;
                                 float z = BraveMathCollege.Atan2Degrees((unitCenter2 - unitCenter).normalized);
                                 Projectile projectile = ((Gun)ETGMod.Databases.Items[576]).DefaultModule.projectiles[0];
-                                GameObject gameObject = SpawnManager.SpawnProjectile(projectile.gameObject, this.m_aiActor.sprite.WorldCenter, Quaternion.Euler(0f, 0f, z + UnityEngine.Random.Range(-75, 75)), true);
+                                GameObject gameObject = SpawnManager.SpawnProjectile(projectile.gameObject, this.m_aiActor.sprite.WorldCenter, Quaternion.Euler(0f, 0f, z + UnityEngine.Random.Range(-60, 60)), true);
                                 Projectile component = gameObject.GetComponent<Projectile>();
                                 HomingModifier homing = component.gameObject.AddComponent<HomingModifier>();
                                 homing.HomingRadius = 300;
@@ -468,7 +467,7 @@ namespace BunnyMod
             private bool isAttacking;
 
             // Token: 0x0400007B RID: 123
-            private float attackCooldown = 4f;
+            private float attackCooldown = 3f;
 
             // Token: 0x0400007C RID: 124
             private float attackDuration = 0.5f;

@@ -24,13 +24,10 @@ namespace BunnyMod
             string resourceName = "ExampleMod/Resources/bloodytrigger";
             GameObject obj = new GameObject(itemName);
             BloodyTrigger bloodyTrigger = obj.AddComponent<BloodyTrigger>();
-
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);
-
             string shortDesc = "Bloodlust";
             string longDesc = "Shoot! Shoot! Shoot! Shoot! Shoot! Shoot! Shoot! Shoot! Shoot! Shoot! Shoot! Shoot! Shoot! Shoot! Shoot! Shoot! ";
             bloodyTrigger.SetupItem(shortDesc, longDesc, "bny");
-            bloodyTrigger.AddPassiveStatModifier(PlayerStats.StatType.AdditionalClipCapacityMultiplier, .9f, StatModifier.ModifyMethod.MULTIPLICATIVE);
             bloodyTrigger.quality = PickupObject.ItemQuality.A;
             bloodyTrigger.AddToSubShop(ItemBuilder.ShopType.Trorc, 1f);
             bloodyTrigger.AddToSubShop(ItemBuilder.ShopType.Cursula, 1f);
@@ -51,7 +48,6 @@ namespace BunnyMod
             else
             {
                 GameManager.Instance.StartCoroutine(BloodLust());
-
             }
         }
         private IEnumerator BloodLust()
@@ -78,20 +74,14 @@ namespace BunnyMod
             }
             yield break;
         }
-
-
-
         public override void Pickup(PlayerController player)
         {
             base.Pickup(player);
-            Tools.Print($"Player picked up {this.DisplayName}");
             player.OnTriedToInitiateAttack += this.HandleTriedAttack;
         }
-
         public override DebrisObject Drop(PlayerController player)
         {
             player.OnTriedToInitiateAttack -= this.HandleTriedAttack;
-            Tools.Print($"Player dropped {this.DisplayName}");
             return base.Drop(player);
         }
         private void AddStat(PlayerStats.StatType statType, float amount, StatModifier.ModifyMethod method = StatModifier.ModifyMethod.ADDITIVE)
@@ -118,6 +108,5 @@ namespace BunnyMod
                 }).ToArray<StatModifier>();
             }
         }
-
     }
 }

@@ -102,6 +102,7 @@ namespace BunnyMod
 			ArtifactOfFodder.Init();
 			ArtifactOfBolster.Init();
 			ArtifactOfHatred.Init();
+			ArtifactOfEnigma.Init();
 			ArtifactToken.Init();
 			Deicide.Init();
 			ThunderStorm.Add();
@@ -119,22 +120,39 @@ namespace BunnyMod
 			GunSoulYellow.YellowBuildPrefab();
 			GunSoulPink.PinkBuildPrefab();
 			GunSoulPurple.PurpleBuildPrefab();
+			SoulStealer.Add();
+			Casemimic.Add();
+			LeadHand.Init();
+			ChaosHand.Add();
+			CaptainsShotgun.Add();
+			Claycord.Init();
+			ClayCordStatue.ClayBuildPrefab();
+			ModuleCannon.Add();
+			ModuleChip.Init();
+			ModuleAmmoEater.Init();
+			ModuleDamage.Init();
+			ModuleClipSize.Init();
+			ModuleFireRate.Init();
+			ModuleReload.Init();
+			T2ModuleYV.Init();
+			T2ModulePierce.Init();
+			T2ModuleBounce.Init();
+			T3ModuleRocket.Init();
+			T3ModuleInaccurate.Init();
+			T3ModuleColossus.Init();
 			; Module.Log(Module.MOD_NAME + " v" + Module.VERSION + " started successfully.", Module.TEXT_COLOR);
 		}
 		public static void LateStart(Action<Foyer> orig, Foyer self)
 		{
 			orig(self);
-			GungeonAPI.Tools.Print<string>("oh shit deploy the boy", "FFFFFF", false);
+			GungeonAPI.Tools.Print<string>("deploy the boy", "FFFFFF", false);
 			bool flag = Module.hasInitialized;
 			if (!flag)
 			{
 				GungeonAPI.Tools.StartTimer("Initializing mod");
-				ArtifactMonger.Add();
 				GungeonAPI.Tools.StopTimerAndReport("Initializing mod");
-				Module.hasInitialized = true;
-				GungeonAPI.Tools.Print<string>("Custom Character Mod v" + Module.VERSION + " Initialized", "00FF00", true);
-				GungeonAPI.Tools.Print<string>("Reloaded Breach:", "00FF00", true);
 				ShrineFactory.PlaceBreachShrines();
+				Module.hasInitialized = true;
 			}
 		}
 
@@ -165,7 +183,7 @@ namespace BunnyMod
 		public static readonly string MOD_NAME = "Some Bunnys Item Mod";
 
 		// Token: 0x04000002 RID: 2
-		public static readonly string VERSION = "1.10.0 ";
+		public static readonly string VERSION = "1.11.0 ";
 
 		// Token: 0x04000003 RID: 3
 		public static readonly string TEXT_COLOR = "#316316";
