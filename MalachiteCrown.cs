@@ -28,7 +28,7 @@ namespace BunnyMod
             string shortDesc = "Aspect of Corruption";
             string longDesc = "A large pair of mineral thorns that sprouted in the most extreme conditions. They will ensure their survival no matter what.";
             crownOfBlood.SetupItem(shortDesc, longDesc, "bny");
-            crownOfBlood.AddPassiveStatModifier(PlayerStats.StatType.MovementSpeed, .7f, StatModifier.ModifyMethod.MULTIPLICATIVE);
+            crownOfBlood.AddPassiveStatModifier(PlayerStats.StatType.MovementSpeed, .8f, StatModifier.ModifyMethod.MULTIPLICATIVE);
             crownOfBlood.AddPassiveStatModifier(PlayerStats.StatType.Curse, 2f, StatModifier.ModifyMethod.ADDITIVE);
             crownOfBlood.AddPassiveStatModifier(PlayerStats.StatType.DamageToBosses, 1.3f, StatModifier.ModifyMethod.MULTIPLICATIVE);
             crownOfBlood.AddPassiveStatModifier(PlayerStats.StatType.Damage, 1.3f, StatModifier.ModifyMethod.MULTIPLICATIVE);

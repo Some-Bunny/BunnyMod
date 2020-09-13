@@ -59,6 +59,27 @@ namespace BunnyMod
 			gun.encounterTrackable.EncounterGuid = "you absolute fool, you were PRANKED!!! by the CASEY MIMIC auegh";
 			ETGMod.Databases.Items.Add(gun, null, "ANY");
 		}
+		protected void Update()
+		{
+			PlayerController player = this.gun.CurrentOwner as PlayerController;
+			bool flag4 =  !player;
+			if (flag4)
+			{
+				Vector3 vector = this.gun.sprite.WorldBottomLeft.ToVector3ZisY(0f);
+				Vector3 vector2 = this.gun.sprite.WorldTopRight.ToVector3ZisY(0f);
+				float num = (vector2.y - vector.y) * (vector2.x - vector.x);
+				float num2 = 25f * num;
+				int num3 = Mathf.CeilToInt(Mathf.Max(1f, num2 * BraveTime.DeltaTime));
+				int num4 = num3;
+				Vector3 minPosition = vector;
+				Vector3 maxPosition = vector2;
+				Vector3 direction = Vector3.up / 2f;
+				float angleVariance = 120f;
+				float magnitudeVariance = 0.2f;
+				float? startLifetime = new float?(UnityEngine.Random.Range(0.8f, 1.25f));
+				GlobalSparksDoer.DoRandomParticleBurst(num4, minPosition, maxPosition, direction, angleVariance, magnitudeVariance, null, startLifetime, null, GlobalSparksDoer.SparksType.BLACK_PHANTOM_SMOKE);
+			}
+		}
 
 		// Token: 0x06000140 RID: 320 RVA: 0x0000D693 File Offset: 0x0000B893
 		public override void OnPostFired(PlayerController player, Gun gun)

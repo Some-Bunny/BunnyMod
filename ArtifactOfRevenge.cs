@@ -17,7 +17,7 @@ namespace BunnyMod
             ArtifactOfRevenge greandeParasite = obj.AddComponent<ArtifactOfRevenge>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);
             string shortDesc = "Literally a Spite ripoff.";
-            string longDesc = "Enemies drop bombs on death.\n\n";
+            string longDesc = "Enemies drop bombs on death.";
             greandeParasite.SetupItem(shortDesc, longDesc, "bny");
             greandeParasite.quality = PickupObject.ItemQuality.EXCLUDED;
         }
@@ -88,7 +88,6 @@ namespace BunnyMod
 				}).ToArray<StatModifier>();
 			}
 		}
-
 		private void RemoveStat(PlayerStats.StatType statType)
 		{
 			List<StatModifier> list = new List<StatModifier>();
@@ -126,7 +125,8 @@ namespace BunnyMod
             boomer.explosionData.damageToPlayer = 1;
             boomer.explosionData.damage = 1;
             {
-                component2.specRigidbody.AddCollisionLayerIgnoreOverride(CollisionMask.LayerToMask(CollisionLayer.EnemyCollider));
+				component2.DefaultTintColor = new Color(50f, 0f, 0f).WithAlpha(1f);
+				component2.specRigidbody.AddCollisionLayerIgnoreOverride(CollisionMask.LayerToMask(CollisionLayer.EnemyCollider));
                 component2.specRigidbody.AddCollisionLayerIgnoreOverride(CollisionMask.LayerToMask(CollisionLayer.EnemyHitBox));
                 component2.AdjustPlayerProjectileTint(new Color((float)(40), (float)(40), 0f), 5, 0f);
                 component2.baseData.speed = UnityEngine.Random.Range(4f, 8f);
@@ -135,7 +135,6 @@ namespace BunnyMod
                 component2.AdditionalScaleMultiplier = 1.2f;
             }
         }
-
 
         public override void Pickup(PlayerController player)
         {

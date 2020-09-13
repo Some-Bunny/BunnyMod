@@ -76,71 +76,14 @@ namespace BunnyMod
 
         protected override void DoEffect(PlayerController user)
         {
-            bool flag1 = base.LastOwner.HasPickupID(167);
-            bool flag2 = base.LastOwner.HasPickupID(190);
-            bool flag3 = base.LastOwner.HasPickupID(571);
-            bool flag4 = base.LastOwner.HasPickupID(199);
-            bool flag5 = base.LastOwner.HasPickupID(178);
-            bool flag6 = base.LastOwner.HasPickupID(270);
-            if (flag1)
+            bool synergy = user.PlayerHasActiveSynergy("Cosmic Adrenaline");
+            if (synergy)
             {
                 AkSoundEngine.PostEvent("Play_BOSS_spacebaby_charge_01", base.gameObject);
                 ApplyStat(user, PlayerStats.StatType.Damage, 0.025f, StatModifier.ModifyMethod.ADDITIVE);
                 ApplyStat(user, PlayerStats.StatType.EnemyProjectileSpeedMultiplier, 0.03f, StatModifier.ModifyMethod.ADDITIVE);
                 ApplyStat(user, PlayerStats.StatType.ProjectileSpeed, 0.025f, StatModifier.ModifyMethod.ADDITIVE);
                 ApplyStat(user, PlayerStats.StatType.MovementSpeed, 0.175f, StatModifier.ModifyMethod.ADDITIVE);
-                ApplyStat(user, PlayerStats.StatType.DamageToBosses, 0.025f, StatModifier.ModifyMethod.ADDITIVE);
-
-            }
-            else
-            if (flag2)
-            {
-                AkSoundEngine.PostEvent("Play_BOSS_spacebaby_charge_01", base.gameObject);
-                ApplyStat(user, PlayerStats.StatType.Damage, 0.025f, StatModifier.ModifyMethod.ADDITIVE);
-                ApplyStat(user, PlayerStats.StatType.EnemyProjectileSpeedMultiplier, 0.025f, StatModifier.ModifyMethod.ADDITIVE);
-                ApplyStat(user, PlayerStats.StatType.ProjectileSpeed, 0.03f, StatModifier.ModifyMethod.ADDITIVE);
-                ApplyStat(user, PlayerStats.StatType.MovementSpeed, 0.025f, StatModifier.ModifyMethod.ADDITIVE);
-                ApplyStat(user, PlayerStats.StatType.DamageToBosses, 0.025f, StatModifier.ModifyMethod.ADDITIVE);
-            }
-            else
-            if (flag3)
-            {
-                AkSoundEngine.PostEvent("Play_BOSS_spacebaby_charge_01", base.gameObject);
-                ApplyStat(user, PlayerStats.StatType.Damage, 0.025f, StatModifier.ModifyMethod.ADDITIVE);
-                ApplyStat(user, PlayerStats.StatType.EnemyProjectileSpeedMultiplier, 0.025f, StatModifier.ModifyMethod.ADDITIVE);
-                ApplyStat(user, PlayerStats.StatType.ProjectileSpeed, 0.03f, StatModifier.ModifyMethod.ADDITIVE);
-                ApplyStat(user, PlayerStats.StatType.MovementSpeed, 0.025f, StatModifier.ModifyMethod.ADDITIVE);
-                ApplyStat(user, PlayerStats.StatType.DamageToBosses, 0.025f, StatModifier.ModifyMethod.ADDITIVE);
-            }
-            else
-            if (flag4)
-            {
-                AkSoundEngine.PostEvent("Play_BOSS_spacebaby_charge_01", base.gameObject);
-                ApplyStat(user, PlayerStats.StatType.Damage, 0.025f, StatModifier.ModifyMethod.ADDITIVE);
-                ApplyStat(user, PlayerStats.StatType.EnemyProjectileSpeedMultiplier, 0.03f, StatModifier.ModifyMethod.ADDITIVE);
-                ApplyStat(user, PlayerStats.StatType.ProjectileSpeed, 0.025f, StatModifier.ModifyMethod.ADDITIVE);
-                ApplyStat(user, PlayerStats.StatType.MovementSpeed, 0.175f, StatModifier.ModifyMethod.ADDITIVE);
-                ApplyStat(user, PlayerStats.StatType.DamageToBosses, 0.025f, StatModifier.ModifyMethod.ADDITIVE);
-
-            }
-            else
-            if (flag5)
-            {
-                AkSoundEngine.PostEvent("Play_BOSS_spacebaby_charge_01", base.gameObject);
-                ApplyStat(user, PlayerStats.StatType.Damage, 0.025f, StatModifier.ModifyMethod.ADDITIVE);
-                ApplyStat(user, PlayerStats.StatType.EnemyProjectileSpeedMultiplier, 0.025f, StatModifier.ModifyMethod.ADDITIVE);
-                ApplyStat(user, PlayerStats.StatType.ProjectileSpeed, 0.03f, StatModifier.ModifyMethod.ADDITIVE);
-                ApplyStat(user, PlayerStats.StatType.MovementSpeed, 0.025f, StatModifier.ModifyMethod.ADDITIVE);
-                ApplyStat(user, PlayerStats.StatType.DamageToBosses, 0.025f, StatModifier.ModifyMethod.ADDITIVE);
-            }
-            else
-            if (flag6)
-            {
-                AkSoundEngine.PostEvent("Play_BOSS_spacebaby_charge_01", base.gameObject);
-                ApplyStat(user, PlayerStats.StatType.Damage, 0.025f, StatModifier.ModifyMethod.ADDITIVE);
-                ApplyStat(user, PlayerStats.StatType.EnemyProjectileSpeedMultiplier, 0.025f, StatModifier.ModifyMethod.ADDITIVE);
-                ApplyStat(user, PlayerStats.StatType.ProjectileSpeed, 0.03f, StatModifier.ModifyMethod.ADDITIVE);
-                ApplyStat(user, PlayerStats.StatType.MovementSpeed, 0.025f, StatModifier.ModifyMethod.ADDITIVE);
                 ApplyStat(user, PlayerStats.StatType.DamageToBosses, 0.025f, StatModifier.ModifyMethod.ADDITIVE);
             }
             else

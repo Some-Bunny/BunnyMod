@@ -260,23 +260,8 @@ namespace BunnyMod
             this.m_lastUsedTime = Time.realtimeSinceStartup;
             if (UnityEngine.Random.value < this.ActivationChance)
             {
-                bool flag = usingPlayer.HasPickupID(298);
-                bool flag2 = usingPlayer.HasPickupID(410);
-                bool flag3 = usingPlayer.HasPickupID(13);
-                bool flag4 = usingPlayer.HasPickupID(153);
-                if (flag)
-                {
-                    this.DoTheZzapp(usingPlayer);
-                }
-                if (flag2)
-                {
-                    this.DoTheZzapp(usingPlayer);
-                }
-                if (flag3)
-                {
-                    this.DoTheZzapp(usingPlayer);
-                }
-                if (flag4)
+                bool synergy = base.Owner.PlayerHasActiveSynergy("Overload");
+                if (synergy)
                 {
                     this.DoTheZzapp(usingPlayer);
                 }
@@ -447,70 +432,8 @@ namespace BunnyMod
                         activeEnemies[i].ApplyEffect(freezeModifierEffect, 10f, null);
                     }
                 }
-                bool flag1 = user.HasPickupID(295);
-                bool flag2 = user.HasPickupID(343);
-                bool flag3 = user.HasPickupID(125);
-                bool flag4 = user.HasPickupID(146);
-                bool flag5 = user.HasPickupID(336);
-                if (flag1)
-                {
-                    BulletStatusEffectItem Firecomponent = PickupObjectDatabase.GetById(295).GetComponent<BulletStatusEffectItem>();
-                    GameActorFireEffect gameActorFire = Firecomponent.FireModifierEffect;
-                    int count1 = activeEnemies.Count;
-                    for (int i = 0; i < count1; i++)
-                    {
-                        if (activeEnemies[i] && activeEnemies[i].HasBeenEngaged && activeEnemies[i].healthHaver && activeEnemies[i].IsNormalEnemy && !activeEnemies[i].healthHaver.IsDead && !activeEnemies[i].healthHaver.IsBoss && !activeEnemies[i].IsTransmogrified)
-                        {
-                            activeEnemies[i].ApplyEffect(gameActorFire, 10f, null);
-                        }
-                    }
-
-                }
-                else
-                if (flag2)
-                {
-                    BulletStatusEffectItem Firecomponent = PickupObjectDatabase.GetById(295).GetComponent<BulletStatusEffectItem>();
-                    GameActorFireEffect gameActorFire = Firecomponent.FireModifierEffect;
-                    int count1 = activeEnemies.Count;
-                    for (int i = 0; i < count1; i++)
-                    {
-                        if (activeEnemies[i] && activeEnemies[i].HasBeenEngaged && activeEnemies[i].healthHaver && activeEnemies[i].IsNormalEnemy && !activeEnemies[i].healthHaver.IsDead && !activeEnemies[i].healthHaver.IsBoss && !activeEnemies[i].IsTransmogrified)
-                        {
-                            activeEnemies[i].ApplyEffect(gameActorFire, 10f, null);
-                        }
-                    }
-
-                }
-                else
-                if (flag3)
-                {
-                    BulletStatusEffectItem Firecomponent = PickupObjectDatabase.GetById(295).GetComponent<BulletStatusEffectItem>();
-                    GameActorFireEffect gameActorFire = Firecomponent.FireModifierEffect;
-                    int count1 = activeEnemies.Count;
-                    for (int i = 0; i < count1; i++)
-                    {
-                        if (activeEnemies[i] && activeEnemies[i].HasBeenEngaged && activeEnemies[i].healthHaver && activeEnemies[i].IsNormalEnemy && !activeEnemies[i].healthHaver.IsDead && !activeEnemies[i].healthHaver.IsBoss && !activeEnemies[i].IsTransmogrified)
-                        {
-                            activeEnemies[i].ApplyEffect(gameActorFire, 10f, null);
-                        }
-                    }
-                }
-                else
-                if (flag4)
-                {
-                    BulletStatusEffectItem Firecomponent = PickupObjectDatabase.GetById(295).GetComponent<BulletStatusEffectItem>();
-                    GameActorFireEffect gameActorFire = Firecomponent.FireModifierEffect;
-                    int count1 = activeEnemies.Count;
-                    for (int i = 0; i < count1; i++)
-                    {
-                        if (activeEnemies[i] && activeEnemies[i].HasBeenEngaged && activeEnemies[i].healthHaver && activeEnemies[i].IsNormalEnemy && !activeEnemies[i].healthHaver.IsDead && !activeEnemies[i].healthHaver.IsBoss && !activeEnemies[i].IsTransmogrified)
-                        {
-                            activeEnemies[i].ApplyEffect(gameActorFire, 10f, null);
-                        }
-                    }
-                }
-                else
-                if (flag5)
+                bool synergy = user.PlayerHasActiveSynergy("The Flames' Embrace");
+                if (synergy)
                 {
                     BulletStatusEffectItem Firecomponent = PickupObjectDatabase.GetById(295).GetComponent<BulletStatusEffectItem>();
                     GameActorFireEffect gameActorFire = Firecomponent.FireModifierEffect;

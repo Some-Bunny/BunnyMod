@@ -100,6 +100,7 @@ namespace BunnyMod
 
         private void SoulTear1(Projectile projectile)
 		{
+
 			PlayerController playerController1 = this.gun.CurrentOwner as PlayerController;
 			bool isInCombat = playerController1.IsInCombat;
 			if (isInCombat)

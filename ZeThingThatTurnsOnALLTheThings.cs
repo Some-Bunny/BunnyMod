@@ -16,6 +16,7 @@ namespace BunnyMod
 		public override void Start()
 		{
 			ArtifactMonger.Add();
+			WhisperShrine.Add();
 			GungeonAPI.GungeonAP.Init();
 			FakePrefabHooks.Init();
 			GungeonAPI.Tools.Init();
@@ -135,11 +136,30 @@ namespace BunnyMod
 			ModuleFireRate.Init();
 			ModuleReload.Init();
 			T2ModuleYV.Init();
+			T2ModuleCloak.Init();
 			T2ModulePierce.Init();
 			T2ModuleBounce.Init();
+			T2ModuleEjector.Init();
+			T2ModuleHoming.Init();
 			T3ModuleRocket.Init();
 			T3ModuleInaccurate.Init();
 			T3ModuleColossus.Init();
+			T3ModuleOverload.Init();
+			T3ModuleReactive.Init();
+			CorruptModuleSensor.Init();
+			CorruptModuleAccuracy.Init();
+			CorruptModuleLoose.Init();
+			CorruptModuleCoolant.Init();
+			CorruptModuleDamage.Init();
+			MithrixHammer.Add();
+			SuperFlakCannon.Add();
+			TungstenCube.Add();
+			Pickshot.Add();
+			Microscope.Init();
+			EmpoweringCore.Init();
+			RTG.Init();
+			Commiter.Add();
+			Starbounder.Add();
 			; Module.Log(Module.MOD_NAME + " v" + Module.VERSION + " started successfully.", Module.TEXT_COLOR);
 		}
 		public static void LateStart(Action<Foyer> orig, Foyer self)
@@ -180,10 +200,10 @@ namespace BunnyMod
 		}
 
 		// Token: 0x04000001 RID: 1
-		public static readonly string MOD_NAME = "Some Bunnys Item Mod";
+		public static readonly string MOD_NAME = "Some Bunnys Content Mod";
 
 		// Token: 0x04000002 RID: 2
-		public static readonly string VERSION = "1.11.0 ";
+		public static readonly string VERSION = "1.12.0 ";
 
 		// Token: 0x04000003 RID: 3
 		public static readonly string TEXT_COLOR = "#316316";

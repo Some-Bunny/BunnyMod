@@ -28,7 +28,7 @@ namespace BunnyMod
             PointZero pointZero = gameObject.AddComponent<PointZero>();
             ItemBuilder.AddSpriteToObject(name, resourcePath, gameObject, true);
             string shortDesc = "Final Frontier";
-            string longDesc = "A lost defensive core of a colossal database. A Power Eternal flows through it.\n\n It's not here to protect you, you're here to get it out.";
+            string longDesc = "A lost defensive core of a colossal database. A Power Eternal flows through it.\n\nIt's not here to protect you, you're here to get it out.";
             pointZero.SetupItem(shortDesc, longDesc, "bny");
             pointZero.AddPassiveStatModifier(PlayerStats.StatType.Coolness, 1f, StatModifier.ModifyMethod.ADDITIVE);
             pointZero.quality = PickupObject.ItemQuality.A;

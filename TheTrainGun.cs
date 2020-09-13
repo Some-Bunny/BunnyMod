@@ -14,7 +14,6 @@ using MonoMod.RuntimeDetour;
 using MonoMod;
 
 
-
 namespace BunnyMod
 {
 	public class TrainGun : GunBehaviour
@@ -48,7 +47,7 @@ namespace BunnyMod
 			FakePrefab.MarkAsFakePrefab(projectile.gameObject);
 			UnityEngine.Object.DontDestroyOnLoad(projectile);
 			railsgun.DefaultModule.projectiles[0] = projectile;
-			projectile.baseData.damage *= 1.8f;
+			projectile.baseData.damage = 10f;
 			projectile.baseData.speed *= 0.4f;
 			projectile.AdditionalScaleMultiplier = 1.1f;
 			PierceProjModifier spook = projectile.gameObject.AddComponent<PierceProjModifier>();

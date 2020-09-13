@@ -113,4 +113,3 @@ C:\Users\Maxym\source\repos\BunnyMod\obj\Debug\Mod.csproj.CoreCompileInputs.cach
 C:\Users\Maxym\source\repos\BunnyMod\obj\Debug\Mod.csproj.CopyComplete
 C:\Users\Maxym\source\repos\BunnyMod\obj\Debug\ExampleMod.dll
 C:\Users\Maxym\source\repos\BunnyMod\obj\Debug\ExampleMod.pdb
-C:\Users\Maxym\source\repos\BunnyMod\obj\Debug\Mod.csprojAssemblyReference.cache

@@ -52,10 +52,8 @@ namespace BunnyMod
         }
         private void HandleGunReloaded(PlayerController player, Gun playerGun)
         {
-            bool flag1 = Owner.HasPickupID(165);
-            bool flag3 = Owner.HasPickupID(407);
-            bool flag4 = Owner.HasPickupID(570);
-            if (flag1)
+            bool synergy = base.Owner.PlayerHasActiveSynergy("(6/2)+6 = Chamber has 9 Holes???");
+            if (synergy)
             {
                 bool flag = playerGun.ClipShotsRemaining == 0;
                 if (flag)
@@ -77,58 +75,9 @@ namespace BunnyMod
                         }
                     }
                 }
-            }
-            else
-            if (flag3)
-            {
-                bool flag = playerGun.ClipShotsRemaining == 0;
-                if (flag)
-                {
-                    for (int counter = 0; counter < 3; counter++)
-                    {
-                        Projectile projectile = ((Gun)ETGMod.Databases.Items[221]).DefaultModule.projectiles[0];
-                        Vector3 vector = player.unadjustedAimPoint - player.LockedApproximateSpriteCenter;
-                        Vector3 vector2 = player.specRigidbody.UnitCenter;
-                        GameObject gameObject = SpawnManager.SpawnProjectile(projectile.gameObject, player.sprite.WorldCenter, Quaternion.Euler(0f, 0f, ((player.CurrentGun == null) ? 1.2f : player.CurrentGun.CurrentAngle) + UnityEngine.Random.Range(-45, 45)), true);
-                        Projectile component = gameObject.GetComponent<Projectile>();
-                        HomingModifier homing = component.gameObject.AddComponent<HomingModifier>();
-                        homing.HomingRadius = 120;
-                        homing.AngularVelocity = 120;
-                        if (flag)
-                        {
-                            component.Owner = player;
-                            component.Shooter = player.specRigidbody;
-                        }
-                    }
-                }
-            }
-            else
-            if (flag4)
-            {
-                bool flag = playerGun.ClipShotsRemaining == 0;
-                if (flag)
-                {
-                    for (int counter = 0; counter < 3; counter++)
-                    {
-                        Projectile projectile = ((Gun)ETGMod.Databases.Items[221]).DefaultModule.projectiles[0];
-                        Vector3 vector = player.unadjustedAimPoint - player.LockedApproximateSpriteCenter;
-                        Vector3 vector2 = player.specRigidbody.UnitCenter;
-                        GameObject gameObject = SpawnManager.SpawnProjectile(projectile.gameObject, player.sprite.WorldCenter, Quaternion.Euler(0f, 0f, ((player.CurrentGun == null) ? 1.2f : player.CurrentGun.CurrentAngle) + UnityEngine.Random.Range(-45, 45)), true);
-                        Projectile component = gameObject.GetComponent<Projectile>();
-                        HomingModifier homing = component.gameObject.AddComponent<HomingModifier>();
-                        homing.HomingRadius = 120;
-                        homing.AngularVelocity = 120;
-                        if (flag)
-                        {
-                            component.Owner = player;
-                            component.Shooter = player.specRigidbody;
-                        }
-                    }
-                }
+
             }
         }
-
-
         public override void Pickup(PlayerController player)
         {
             base.Pickup(player);

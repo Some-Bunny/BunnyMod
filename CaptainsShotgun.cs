@@ -18,8 +18,8 @@ namespace BunnyMod
 	{
 		public static void Add()
 		{
-			Gun gun = ETGMod.Databases.Items.NewGun("Captains Left Arm", "captainsshotgun");
-			Game.Items.Rename("outdated_gun_mods:captains_left_arm", "bny:captains_left_arm");
+			Gun gun = ETGMod.Databases.Items.NewGun("Captains Left Hand", "captainsshotgun");
+			Game.Items.Rename("outdated_gun_mods:captains_left_hand", "bny:captains_left_hand");
 			gun.gameObject.AddComponent<CaptainsShotgun>();
 			gun.SetShortDescription("For Safe Travels");
 			gun.SetLongDescription("A prosthetic vulcan shotgun once attached to an old ship captain. Although its capable of charging up to pin-point accuracy, you're not able to as it's not your hand.");
@@ -66,7 +66,7 @@ namespace BunnyMod
 			ETGMod.Databases.Items.Add(gun, null, "ANY");
 			List<string> mandatoryConsoleIDs15 = new List<string>
 			{
-				"bny:captains_left_arm"
+				"bny:captains_left_hand"
 			};
 			List<string> optionalConsoleIDs = new List<string>
 			{
@@ -77,7 +77,7 @@ namespace BunnyMod
 			CustomSynergies.Add("Cybernetic Enchancements", mandatoryConsoleIDs15, optionalConsoleIDs, true);
 			List<string> mandatoryConsoleIDs1 = new List<string>
 			{
-				"bny:captains_left_arm"
+				"bny:captains_left_hand"
 			};
 			List<string> optionalConsoleID1s = new List<string>
 			{

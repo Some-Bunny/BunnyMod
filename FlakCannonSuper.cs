@@ -14,53 +14,52 @@ using MonoMod.RuntimeDetour;
 using MonoMod;
 
 
-
 namespace BunnyMod
 {
-	public class FlakCannon : GunBehaviour
+	public class SuperFlakCannon : GunBehaviour
 	{
 		// Token: 0x06000036 RID: 54 RVA: 0x000037D8 File Offset: 0x000019D8
 		public static void Add()
 		{
-			Gun flakcannon = ETGMod.Databases.Items.NewGun("Flak Cannon", "flakcannon");
-			Game.Items.Rename("outdated_gun_mods:flak_cannon", "bny:flak_cannon");
-			flakcannon.gameObject.AddComponent<FlakCannon>();
-			GunExt.SetShortDescription(flakcannon, "Bullets in bullets");
-			GunExt.SetLongDescription(flakcannon, "A cannon that was made to shoot large shells with smaller bullets. Younger gundead use these as firework guns.");
-			GunExt.SetupSprite(flakcannon, null, "flakcannon_idle_001", 11);
-			GunExt.SetAnimationFPS(flakcannon, flakcannon.shootAnimation, 15);
-			GunExt.SetAnimationFPS(flakcannon, flakcannon.reloadAnimation, 12);
-			GunExt.SetAnimationFPS(flakcannon, flakcannon.idleAnimation, 1);
-			GunExt.AddProjectileModuleFrom(flakcannon, "magnum", true, false);
-			flakcannon.DefaultModule.ammoCost = 1;
-			flakcannon.DefaultModule.shootStyle = ProjectileModule.ShootStyle.SemiAutomatic;
-			flakcannon.DefaultModule.sequenceStyle = ProjectileModule.ProjectileSequenceStyle.Random;
-			flakcannon.reloadTime = 1.8f;
-			flakcannon.DefaultModule.cooldownTime = .2f;
-			flakcannon.DefaultModule.numberOfShotsInClip = 1;
-			flakcannon.SetBaseMaxAmmo(80);
-			flakcannon.quality = PickupObject.ItemQuality.C;
-			flakcannon.DefaultModule.angleVariance = 10f;
-			flakcannon.DefaultModule.burstShotCount = 1;
-			flakcannon.AddToSubShop(ItemBuilder.ShopType.Trorc, 1f);
-			Projectile projectile = UnityEngine.Object.Instantiate<Projectile>(flakcannon.DefaultModule.projectiles[0]);
+			Gun superflakcannon = ETGMod.Databases.Items.NewGun("Super Flak Cannon", "superflakcannon");
+			Game.Items.Rename("outdated_gun_mods:super_flak_cannon", "bny:super_flak_cannon");
+			superflakcannon.gameObject.AddComponent<SuperFlakCannon>();
+			GunExt.SetShortDescription(superflakcannon, "Complete Overkill");
+			GunExt.SetLongDescription(superflakcannon, "A flak cannon that has been buffed up so badly you should probably be careful firing it.");
+			GunExt.SetupSprite(superflakcannon, null, "superflakcannon_idle_001", 11);
+			GunExt.SetAnimationFPS(superflakcannon, superflakcannon.shootAnimation, 15);
+			GunExt.SetAnimationFPS(superflakcannon, superflakcannon.reloadAnimation, 12);
+			GunExt.SetAnimationFPS(superflakcannon, superflakcannon.idleAnimation, 1);
+			GunExt.AddProjectileModuleFrom(superflakcannon, "magnum", true, false);
+			superflakcannon.DefaultModule.ammoCost = 1;
+			superflakcannon.DefaultModule.shootStyle = ProjectileModule.ShootStyle.SemiAutomatic;
+			superflakcannon.DefaultModule.sequenceStyle = ProjectileModule.ProjectileSequenceStyle.Random;
+			superflakcannon.reloadTime = 3.8f;
+			superflakcannon.DefaultModule.cooldownTime = .4f;
+			superflakcannon.DefaultModule.numberOfShotsInClip = 1;
+			superflakcannon.SetBaseMaxAmmo(30);
+			superflakcannon.quality = PickupObject.ItemQuality.A;
+			superflakcannon.DefaultModule.angleVariance = 5f;
+			superflakcannon.DefaultModule.burstShotCount = 1;
+			superflakcannon.AddToSubShop(ItemBuilder.ShopType.Trorc, 1f);
+			Projectile projectile = UnityEngine.Object.Instantiate<Projectile>(superflakcannon.DefaultModule.projectiles[0]);
 			projectile.gameObject.SetActive(false);
 			FakePrefab.MarkAsFakePrefab(projectile.gameObject);
 			UnityEngine.Object.DontDestroyOnLoad(projectile);
-			flakcannon.DefaultModule.projectiles[0] = projectile;
-			projectile.baseData.damage = 30f;
+			superflakcannon.DefaultModule.projectiles[0] = projectile;
+			projectile.baseData.damage = 50f;
 			projectile.baseData.speed *= 1.5f;
-			projectile.AdditionalScaleMultiplier = 1.75f;
+			projectile.AdditionalScaleMultiplier = 2.75f;
 			projectile.shouldRotate = true;
 			projectile.pierceMinorBreakables = true;
-			projectile.baseData.range = 5.8f;
+			projectile.baseData.range = 6.2f;
 			BounceProjModifier bouncy = projectile.gameObject.AddComponent<BounceProjModifier>();
 			bouncy.numberOfBounces = 1;
-			flakcannon.encounterTrackable.EncounterGuid = "flakcannonyeah";
-			ETGMod.Databases.Items.Add(flakcannon, null, "ANY");
+			superflakcannon.encounterTrackable.EncounterGuid = "THE BIG FLAK BIG GUN OH YEAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH";
+			ETGMod.Databases.Items.Add(superflakcannon, null, "ANY");
 		}
 
-		public override void OnPostFired(PlayerController player, Gun flakcannon)
+		public override void OnPostFired(PlayerController player, Gun superflakcannon)
 		{
 			gun.PreventNormalFireAudio = true;
 			AkSoundEngine.PostEvent("Play_WPN_golddoublebarrelshotgun_shot_01", gameObject);
@@ -83,7 +82,7 @@ namespace BunnyMod
 			}
 		}
 
-		public override void OnReloadPressed(PlayerController player, Gun flakcannon, bool bSOMETHING)
+		public override void OnReloadPressed(PlayerController player, Gun superflakcannon, bool bSOMETHING)
 		{
 			if (gun.IsReloading && this.HasReloaded)
 			{
@@ -94,11 +93,41 @@ namespace BunnyMod
 		}
 		public override void PostProcessProjectile(Projectile projectile)
 		{
-			projectile.OnDestruction += this.FlakTime;
-			projectile.OnHitEnemy = (Action<Projectile, SpeculativeRigidbody, bool>)Delegate.Combine(projectile.OnHitEnemy, new Action<Projectile, SpeculativeRigidbody, bool>(this.FLAK2KILL));
+			projectile.OnDestruction += this.FlakTime1;
+			projectile.OnHitEnemy = (Action<Projectile, SpeculativeRigidbody, bool>)Delegate.Combine(projectile.OnHitEnemy, new Action<Projectile, SpeculativeRigidbody, bool>(this.FLAK1KILL));
 			base.PostProcessProjectile(projectile);
 		}
-		private void FlakTime(Projectile projectile)
+		private void FlakTime1(Projectile projectile)
+		{
+			for (int counter = 0; counter < UnityEngine.Random.Range(3f, 5f); counter++)
+			{
+				PlayerController playerController = this.gun.CurrentOwner as PlayerController;
+				Projectile projectile1 = ((Gun)ETGMod.Databases.Items[38]).DefaultModule.projectiles[0];
+				GameObject gameObject = SpawnManager.SpawnProjectile(projectile.gameObject, projectile.sprite.WorldCenter, Quaternion.Euler(0f, 0f, UnityEngine.Random.Range(0, 359)));
+				Projectile bigboy = gameObject.GetComponent<Projectile>();
+				bool flag = bigboy != null;
+				bool flag2 = flag;
+				if (flag2)
+				{
+					bigboy.SpawnedFromOtherPlayerProjectile = true;
+					bigboy.Shooter = this.gun.CurrentOwner.specRigidbody;
+					bigboy.Owner = playerController;
+					bigboy.Shooter = playerController.specRigidbody;
+					bigboy.baseData.speed = 11.5f;
+					bigboy.baseData.damage = 13f;
+					bigboy.AdditionalScaleMultiplier = 1.5f;
+					bigboy.baseData.range = 5f;
+					BounceProjModifier bouncy = bigboy.gameObject.AddComponent<BounceProjModifier>();
+					bouncy.numberOfBounces = 2;
+					bigboy.SetOwnerSafe(this.gun.CurrentOwner, "Player");
+					bigboy.ignoreDamageCaps = true;
+					bigboy.OnDestruction += this.FlakTime2;
+					bigboy.OnHitEnemy = (Action<Projectile, SpeculativeRigidbody, bool>)Delegate.Combine(projectile.OnHitEnemy, new Action<Projectile, SpeculativeRigidbody, bool>(this.FLAK2KILL));
+				}
+			}
+		}
+
+		private void FlakTime2(Projectile projectile)
 		{
 			PlayerController playerController1 = this.gun.CurrentOwner as PlayerController;
 			for (int counter = 0; counter < UnityEngine.Random.Range(2f, 12f); counter++)
@@ -120,6 +149,7 @@ namespace BunnyMod
 					component.AdditionalScaleMultiplier = 0.8f;
 					BounceProjModifier bouncy = component.gameObject.AddComponent<BounceProjModifier>();
 					bouncy.numberOfBounces = 2;
+					component.baseData.range = 8f;
 					component.SetOwnerSafe(this.gun.CurrentOwner, "Player");
 					component.ignoreDamageCaps = true;
 				}
@@ -145,6 +175,7 @@ namespace BunnyMod
 					bouncy.numberOfBounces = 2;
 					PierceProjModifier spook = projectile.gameObject.AddComponent<PierceProjModifier>();
 					spook.penetration = 1;
+					component.baseData.range = 8f;
 					component.SetOwnerSafe(this.gun.CurrentOwner, "Player");
 					component.ignoreDamageCaps = true;
 				}
@@ -170,8 +201,41 @@ namespace BunnyMod
 					bouncy.numberOfBounces = 2;
 					PierceProjModifier spook = projectile.gameObject.AddComponent<PierceProjModifier>();
 					spook.penetration = 1;
+					component.baseData.range = 8f;
 					component.SetOwnerSafe(this.gun.CurrentOwner, "Player");
 					component.ignoreDamageCaps = true;
+				}
+			}
+		}
+		private void FLAK1KILL(Projectile sourceProjectile, SpeculativeRigidbody hitRigidbody, bool fatal)
+		{
+			bool flag1 = fatal;
+			if (flag1)
+            {
+				for (int counter = 0; counter < UnityEngine.Random.Range(3f, 5f); counter++)
+				{
+					PlayerController playerController = this.gun.CurrentOwner as PlayerController;
+					Projectile projectile1 = ((Gun)ETGMod.Databases.Items[38]).DefaultModule.projectiles[0];
+					GameObject gameObject = SpawnManager.SpawnProjectile(sourceProjectile.gameObject, sourceProjectile.sprite.WorldCenter, Quaternion.Euler(0f, 0f, UnityEngine.Random.Range(0, 359)));
+					Projectile bigboy = gameObject.GetComponent<Projectile>();
+					bool flag = bigboy != null;
+					bool flag2 = flag;
+					if (flag2)
+					{
+						bigboy.SpawnedFromOtherPlayerProjectile = true;
+						bigboy.Shooter = this.gun.CurrentOwner.specRigidbody;
+						bigboy.Owner = playerController;
+						bigboy.Shooter = playerController.specRigidbody;
+						bigboy.baseData.speed = 11.5f;
+						bigboy.baseData.damage = 13f;
+						bigboy.AdditionalScaleMultiplier = 1.5f;
+						BounceProjModifier bouncy = bigboy.gameObject.AddComponent<BounceProjModifier>();
+						bouncy.numberOfBounces = 2;
+						bigboy.SetOwnerSafe(this.gun.CurrentOwner, "Player");
+						bigboy.ignoreDamageCaps = true;
+						bigboy.OnDestruction += this.FlakTime2;
+
+					}
 				}
 			}
 		}
@@ -179,12 +243,12 @@ namespace BunnyMod
 		{
 			bool flag1 = fatal;
 			if (flag1)
-            {
+			{
 				PlayerController playerController1 = this.gun.CurrentOwner as PlayerController;
-				for (int counter = 0; counter < UnityEngine.Random.Range(4f, 10f); counter++)
+				for (int counter = 0; counter < UnityEngine.Random.Range(2f, 12f); counter++)
 				{
 					PlayerController playerController = this.gun.CurrentOwner as PlayerController;
-					Projectile projectile1 = ((Gun)ETGMod.Databases.Items[35]).DefaultModule.projectiles[0];
+					Projectile projectile1 = ((Gun)ETGMod.Databases.Items[38]).DefaultModule.projectiles[0];
 					GameObject gameObject = SpawnManager.SpawnProjectile(sourceProjectile.gameObject, sourceProjectile.sprite.WorldCenter, Quaternion.Euler(0f, 0f, UnityEngine.Random.Range(0, 359)));
 					Projectile component = gameObject.GetComponent<Projectile>();
 					bool flag = component != null;
@@ -196,12 +260,11 @@ namespace BunnyMod
 						component.Owner = playerController;
 						component.Shooter = playerController.specRigidbody;
 						component.baseData.speed = 11.5f;
-						component.baseData.damage = .7f;
+						component.baseData.damage = 8f;
 						component.AdditionalScaleMultiplier = 0.8f;
-						PierceProjModifier spook = sourceProjectile.gameObject.AddComponent<PierceProjModifier>();
-						spook.penetration = 1;
 						BounceProjModifier bouncy = component.gameObject.AddComponent<BounceProjModifier>();
 						bouncy.numberOfBounces = 2;
+						component.baseData.range = 8f;
 						component.SetOwnerSafe(this.gun.CurrentOwner, "Player");
 						component.ignoreDamageCaps = true;
 					}
@@ -221,17 +284,18 @@ namespace BunnyMod
 						component.Owner = playerController;
 						component.Shooter = playerController.specRigidbody;
 						component.baseData.speed = 14.5f;
-						component.baseData.damage = 1.1f;
+						component.baseData.damage = 11f;
 						component.AdditionalScaleMultiplier = 1.1f;
 						BounceProjModifier bouncy = component.gameObject.AddComponent<BounceProjModifier>();
 						bouncy.numberOfBounces = 2;
 						PierceProjModifier spook = sourceProjectile.gameObject.AddComponent<PierceProjModifier>();
 						spook.penetration = 1;
+						component.baseData.range = 8f;
 						component.SetOwnerSafe(this.gun.CurrentOwner, "Player");
 						component.ignoreDamageCaps = true;
 					}
 				}
-				for (int counter = 0; counter < UnityEngine.Random.Range(4f, 10f); counter++)
+				for (int counter = 0; counter < UnityEngine.Random.Range(6f, 8f); counter++)
 				{
 					PlayerController playerController = this.gun.CurrentOwner as PlayerController;
 					Projectile projectile1 = ((Gun)ETGMod.Databases.Items[38]).DefaultModule.projectiles[0];
@@ -246,19 +310,18 @@ namespace BunnyMod
 						component.Owner = playerController;
 						component.Shooter = playerController.specRigidbody;
 						component.baseData.speed = 17.0f;
-						component.baseData.damage = 1.3f;
+						component.baseData.damage = 16f;
 						component.AdditionalScaleMultiplier = 1.65f;
 						BounceProjModifier bouncy = component.gameObject.AddComponent<BounceProjModifier>();
 						bouncy.numberOfBounces = 2;
 						PierceProjModifier spook = sourceProjectile.gameObject.AddComponent<PierceProjModifier>();
 						spook.penetration = 1;
+						component.baseData.range = 8f;
 						component.SetOwnerSafe(this.gun.CurrentOwner, "Player");
 						component.ignoreDamageCaps = true;
 					}
 				}
-
 			}
 		}
-
 	}
 }

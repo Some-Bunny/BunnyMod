@@ -47,6 +47,7 @@ namespace BunnyMod
                         bool flagh = currentGun.quality == PickupObject.ItemQuality.D;
                         if (flagh)
                         {
+                            base.Owner.healthHaver.Armor = base.Owner.healthHaver.Armor + 2f;
                             this.StripGun();
                             this.AddModule();
                         }
@@ -55,8 +56,9 @@ namespace BunnyMod
                             bool flage = currentGun.quality == PickupObject.ItemQuality.C;
                             if (flage)
                             {
+                                base.Owner.healthHaver.Armor = base.Owner.healthHaver.Armor + 1f;
                                 this.StripGun();
-                                this.AddModule();
+                                this.AddT2Module();
                             }
                             else
                             {
@@ -73,7 +75,7 @@ namespace BunnyMod
                                     if (flagi)
                                     {
                                         this.StripGun();
-                                        this.AddModule();
+                                        this.T3Module();
                                         this.AddT2Module();
                                     }
                                     else
@@ -83,7 +85,7 @@ namespace BunnyMod
                                         {
                                             this.StripGun();
                                             this.AddModule();
-                                            this.AddModule();
+                                            this.T3Module();
                                             this.AddT2Module();
                                         }
                                         else
@@ -95,8 +97,44 @@ namespace BunnyMod
                                 }
                             }
                         }
+                        bool flagsandwich = base.Owner.HasPickupID(Game.Items["lichs_eye_bullets"].PickupObjectId);
+                        if (flagsandwich)
+                        {
+                            AkSoundEngine.PostEvent("Play_OBJ_metronome_jingle_01", base.gameObject);
+                            this.AddModule();
+                        }
                     }    
                 }
+            }
+        }
+        private void T3Module()
+        {
+            PlayerController user = base.Owner;
+            int num3 = UnityEngine.Random.Range(0, 5);
+            bool flag3 = num3 == 0;
+            if (flag3)
+            {
+                LootEngine.TryGivePrefabToPlayer(ETGMod.Databases.Items["Colossus Module"].gameObject, user, true);
+            }
+            bool flag4 = num3 == 1;
+            if (flag4)
+            {
+                LootEngine.TryGivePrefabToPlayer(ETGMod.Databases.Items["Rocket Module"].gameObject, user, true);
+            }
+            bool flag5 = num3 == 2;
+            if (flag5)
+            {
+                LootEngine.TryGivePrefabToPlayer(ETGMod.Databases.Items["Inaccurate Module"].gameObject, user, true);
+            }
+            bool flag6 = num3 == 3;
+            if (flag6)
+            {
+                LootEngine.TryGivePrefabToPlayer(ETGMod.Databases.Items["Overloader Module"].gameObject, user, true);
+            }
+            bool bomb = num3 == 4;
+            if (bomb)
+            {
+                LootEngine.TryGivePrefabToPlayer(ETGMod.Databases.Items["Reactive Module"].gameObject, user, true);
             }
         }
 
@@ -107,7 +145,7 @@ namespace BunnyMod
         }
         public void AddModule()
         {
-            int num3 = UnityEngine.Random.Range(0, 4);
+            int num3 = UnityEngine.Random.Range(0, 5);
             bool flag3 = num3 == 0;
             if (flag3)
             {
@@ -128,10 +166,15 @@ namespace BunnyMod
             {
                 LootEngine.TryGivePrefabToPlayer(ETGMod.Databases.Items["Fire Rate Module"].gameObject, base.Owner, true);
             }
+            bool flag7 = num3 == 4;
+            if (flag7)
+            {
+                LootEngine.TryGivePrefabToPlayer(ETGMod.Databases.Items["Splitter Module"].gameObject, base.Owner, true);
+            }
         }
         public void AddT2Module()
         {
-            int num3 = UnityEngine.Random.Range(0, 3);
+            int num3 = UnityEngine.Random.Range(0, 5);
             bool flag3 = num3 == 0;
             if (flag3)
             {
@@ -145,7 +188,17 @@ namespace BunnyMod
             bool flag5 = num3 == 2;
             if (flag5)
             {
-                LootEngine.TryGivePrefabToPlayer(ETGMod.Databases.Items["Splitter Module"].gameObject, base.Owner, true);
+                LootEngine.TryGivePrefabToPlayer(ETGMod.Databases.Items["Ejector Module"].gameObject, base.Owner, true);
+            }
+            bool flag6 = num3 == 3;
+            if (flag6)
+            {
+                LootEngine.TryGivePrefabToPlayer(ETGMod.Databases.Items["Cloak Module"].gameObject, base.Owner, true);
+            }
+            bool flag7 = num3 == 4;
+            if (flag7)
+            {
+                LootEngine.TryGivePrefabToPlayer(ETGMod.Databases.Items["Homing Module"].gameObject, base.Owner, true);
             }
         }
         public static void StripPlayer(PlayerController player)
@@ -172,5 +225,5 @@ namespace BunnyMod
         public Gun currentHeldGun;
         public int CurrentGuns;
         public int LastGuns;
-	}
+    }
 }

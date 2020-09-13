@@ -85,6 +85,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArtifactOfEnigma.cs" />
+    <Compile Include="Starbounder.cs" />
+    <Compile Include="RTG.cs" />
+    <Compile Include="EmpoweringCore.cs" />
+    <Compile Include="Microscope.cs" />
+    <Compile Include="PickShot.cs" />
+    <Compile Include="FlakCannonSuper.cs" />
+    <Compile Include="GungeonAPI\ShrineOfWhisperInteractable.cs" />
+    <Compile Include="GungeonAPI\ShrineOfWhisper.cs" />
+    <Compile Include="Commiter.cs" />
+    <Compile Include="TungstenCube.cs" />
+    <Compile Include="MithrixHammerAoE.cs" />
+    <Compile Include="MithrixHammer.cs" />
     <Compile Include="SoulStealer.cs" />
     <Compile Include="ModuleAmmoEater.cs" />
     <Compile Include="ModuleStats.cs" />
@@ -219,6 +231,22 @@
     <EmbeddedResource Include="Resources\example_item_sprite.png" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Resources\rtg.png" />
+    <EmbeddedResource Include="Resources\ShrineOfWhisper\ancientwhispershadow_001.png" />
+    <EmbeddedResource Include="Resources\ShrineOfWhisper\ancientwhisper_do_effect_001.png" />
+    <EmbeddedResource Include="Resources\ShrineOfWhisper\ancientwhisper_talk_001.png" />
+    <EmbeddedResource Include="Resources\ShrineOfWhisper\ancientwhisper_talk_start_001.png" />
+    <EmbeddedResource Include="Resources\ShrineOfWhisper\ancientwhisper_idle_001.png" />
+    <EmbeddedResource Include="Resources\WeaponModules\t3weaponmodularBOOM.png" />
+    <EmbeddedResource Include="Resources\WeaponModules\corruptmoduledamage.png" />
+    <EmbeddedResource Include="Resources\WeaponModules\t2weaponmodularhoming.png" />
+    <EmbeddedResource Include="Resources\WeaponModules\t2weaponmodularcloak.png" />
+    <EmbeddedResource Include="Resources\WeaponModules\corruptmoduleaccuracyfailure.png" />
+    <EmbeddedResource Include="Resources\WeaponModules\corruptmodulecoolingfailure.png" />
+    <EmbeddedResource Include="Resources\WeaponModules\corruptmoduleloosefit.png" />
+    <EmbeddedResource Include="Resources\WeaponModules\corruptmodulesensorfailure.png" />
+    <EmbeddedResource Include="Resources\WeaponModules\t2weaponmodularejector.png" />
+    <EmbeddedResource Include="Resources\WeaponModules\t3weaponmodularoverloader.png" />
     <EmbeddedResource Include="Resources\WeaponModules\t3weaponmodularinaccuratebutdps.png" />
     <EmbeddedResource Include="Resources\WeaponModules\t3weaponmodularmassiveslowdps.png" />
     <EmbeddedResource Include="Resources\WeaponModules\t3weaponmodularrocket.png" />
@@ -501,6 +529,8 @@
     <EmbeddedResource Include="Resources\gunsoulphylactery.png" />
     <EmbeddedResource Include="Resources\claycord.png" />
     <EmbeddedResource Include="Resources\claycordstatue_idle_001.png" />
+    <EmbeddedResource Include="Resources\microscope.png" />
+    <EmbeddedResource Include="Resources\empoweringcore.png" />
     <Content Include="Resources\PZeroAnims\Idle\brokencore.png" />
     <EmbeddedResource Include="Resources\PZeroAnims\Idle\P-Zero_idle_001.png" />
     <EmbeddedResource Include="Resources\PZeroAnims\Idle\P-Zero_idle_002.png" />

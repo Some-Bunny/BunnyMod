@@ -56,91 +56,23 @@ namespace BunnyMod
         }
         private void OnEnemyDamaged(float damage, bool fatal, HealthHaver enemyHealth)
         {
-            bool flag = enemyHealth.aiActor && fatal && UnityEngine.Random.value <= 0.1f;
-            if (flag)
+            if (enemyHealth.specRigidbody != null)
             {
-                bool flag1 = Owner.HasPickupID(379);
-                bool flag2 = Owner.HasPickupID(52);
-                bool flag3 = Owner.HasPickupID(474);
-                bool flag4 = Owner.HasPickupID(502);
-                bool flag5 = Owner.HasPickupID(595);
-                bool flag6 = Owner.HasPickupID(110);
-                bool flag7 = Owner.HasPickupID(159);
-                bool flag8 = Owner.HasPickupID(167);
-                bool flag9 = Owner.HasPickupID(190);
-                bool flag10 = Owner.HasPickupID(425);
-                bool flag11 = Owner.HasPickupID(491);
-                bool flag12 = Owner.HasPickupID(527);
-                bool flag13 = Owner.HasPickupID(533);
-                if (flag1)
+                bool flag = enemyHealth.aiActor && fatal && UnityEngine.Random.value <= 0.1f;
+                if (flag)
                 {
-                    this.Boom2(enemyHealth.sprite.WorldCenter);
-                }
-                else
-                if (flag2)
-                {
-                    this.Boom2(enemyHealth.sprite.WorldCenter);
-                }
-                else
-                if (flag3)
-                {
-                    this.Boom2(enemyHealth.sprite.WorldCenter);
-                }
-                else
-                if (flag4)
-                {
-                    this.Boom2(enemyHealth.sprite.WorldCenter);
-                }
-                else
-                if (flag5)
-                {
-                    this.Boom2(enemyHealth.sprite.WorldCenter);
-                }
-                else
-                if (flag6)
-                {
-                    this.Boom2(enemyHealth.sprite.WorldCenter);
-                }
-                else
-                if (flag7)
-                {
-                    this.Boom2(enemyHealth.sprite.WorldCenter);
-                }
-                else
-                if (flag8)
-                {
-                    this.Boom2(enemyHealth.sprite.WorldCenter);
-                }
-                else
-                if (flag9)
-                {
-                    this.Boom2(enemyHealth.sprite.WorldCenter);
-                }
-                else
-                if (flag10)
-                {
-                    this.Boom2(enemyHealth.sprite.WorldCenter);
-                }
-                else
-                if (flag11)
-                {
-                    this.Boom2(enemyHealth.sprite.WorldCenter);
-                }
-                else
-                if (flag12)
-                {
-                    this.Boom2(enemyHealth.sprite.WorldCenter);
-                }
-                else
-                if (flag13)
-                {
-                    this.Boom2(enemyHealth.sprite.WorldCenter);
-                }
-                else
-                {
-                    this.Boom(enemyHealth.sprite.WorldCenter);
+                    bool flag2 = base.Owner.PlayerHasActiveSynergy("Purple Rain");
+                    if (flag2)
+                    {
+                        this.Boom2(enemyHealth.sprite.WorldCenter);
+                    }
+                    else
+                    {
+                        this.Boom(enemyHealth.sprite.WorldCenter);
+                    }
                 }
             }
+
         }
         public void Boom(Vector3 position)
         {

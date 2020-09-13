@@ -30,8 +30,6 @@ namespace BunnyMod
 				companionController.aiActor.MovementSpeed = 0f;
 				ClayCordStatue.prefab.AddAnimation("idle_right", "ExampleMod/Resources/claycordstatue_idle_001.png", 1, CompanionBuilder.AnimationType.Idle, DirectionalAnimation.DirectionType.TwoWayHorizontal, DirectionalAnimation.FlipType.None);
 				ClayCordStatue.prefab.AddAnimation("idle_left", "ExampleMod/Resources/claycordstatue_idle_001.png", 1, CompanionBuilder.AnimationType.Idle, DirectionalAnimation.DirectionType.TwoWayHorizontal, DirectionalAnimation.FlipType.None);
-				BehaviorSpeculator component = ClayCordStatue.prefab.GetComponent<BehaviorSpeculator>();
-
 				companionController.CanInterceptBullets = true;
 				companionController.aiActor.healthHaver.PreventAllDamage = false;
 				companionController.aiActor.specRigidbody.CollideWithOthers = true;
