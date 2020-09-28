@@ -38,72 +38,154 @@ namespace BunnyMod
             this.LastGuns = 2;
             base.Owner.inventory.AllGuns.Count();
             {
-                bool flag2 = CurrentGuns != this.LastGuns;
-                bool flag3 = flag2;
-                if (flag3)
+                bool characterUsesRandomGuns = base.Owner.CharacterUsesRandomGuns;
+                if (characterUsesRandomGuns)
                 {
-                    if (this.m_owner.CurrentGun.PickupObjectId != ModuleGunID)
+                    bool autoscrap = Commands.ModularDoesntAutoScrapGunsInBlessed;
+                    if (autoscrap)
                     {
-                        bool flagh = currentGun.quality == PickupObject.ItemQuality.D;
-                        if (flagh)
+
+                    }
+                    else
+                    {
+                        bool flag2 = CurrentGuns != this.LastGuns;
+                        bool flag3 = flag2;
+                        if (flag3)
                         {
-                            base.Owner.healthHaver.Armor = base.Owner.healthHaver.Armor + 2f;
-                            this.StripGun();
-                            this.AddModule();
-                        }
-                        else
-                        {
-                            bool flage = currentGun.quality == PickupObject.ItemQuality.C;
-                            if (flage)
+                            if (this.m_owner.CurrentGun.PickupObjectId != ModuleGunID)
                             {
-                                base.Owner.healthHaver.Armor = base.Owner.healthHaver.Armor + 1f;
-                                this.StripGun();
-                                this.AddT2Module();
-                            }
-                            else
-                            {
-                                bool flagt = currentGun.quality == PickupObject.ItemQuality.B;
-                                if (flagt)
+                                bool flagh = currentGun.quality == PickupObject.ItemQuality.D;
+                                if (flagh)
                                 {
+                                    base.Owner.healthHaver.Armor = base.Owner.healthHaver.Armor + 1f;
                                     this.StripGun();
                                     this.AddModule();
-                                    this.AddT2Module();
                                 }
                                 else
                                 {
-                                    bool flagi = currentGun.quality == PickupObject.ItemQuality.A;
-                                    if (flagi)
+                                    bool flage = currentGun.quality == PickupObject.ItemQuality.C;
+                                    if (flage)
                                     {
+                                        base.Owner.healthHaver.Armor = base.Owner.healthHaver.Armor + 1f;
                                         this.StripGun();
-                                        this.T3Module();
                                         this.AddT2Module();
                                     }
                                     else
                                     {
-                                        bool flag6 = currentGun.quality == PickupObject.ItemQuality.S;
-                                        if (flag6)
+                                        bool flagt = currentGun.quality == PickupObject.ItemQuality.B;
+                                        if (flagt)
                                         {
                                             this.StripGun();
                                             this.AddModule();
+                                            this.AddT2Module();
+                                        }
+                                        else
+                                        {
+                                            bool flagi = currentGun.quality == PickupObject.ItemQuality.A;
+                                            if (flagi)
+                                            {
+                                                this.StripGun();
+                                                this.T3Module();
+                                                this.AddT2Module();
+                                            }
+                                            else
+                                            {
+                                                bool flag6 = currentGun.quality == PickupObject.ItemQuality.S;
+                                                if (flag6)
+                                                {
+                                                    this.StripGun();
+                                                    this.AddModule();
+                                                    this.T3Module();
+                                                    this.AddT2Module();
+                                                }
+                                                else
+                                                {
+                                                    this.StripGun();
+                                                    this.AddModule();
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                                bool flagsandwich = base.Owner.HasPickupID(Game.Items["lichs_eye_bullets"].PickupObjectId);
+                                if (flagsandwich)
+                                {
+                                    AkSoundEngine.PostEvent("Play_OBJ_metronome_jingle_01", base.gameObject);
+                                    this.AddModule();
+                                }
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    bool flag2 = CurrentGuns != this.LastGuns;
+                    bool flag3 = flag2;
+                    if (flag3)
+                    {
+                        if (this.m_owner.CurrentGun.PickupObjectId != ModuleGunID)
+                        {
+                            bool flagh = currentGun.quality == PickupObject.ItemQuality.D;
+                            if (flagh)
+                            {
+                                base.Owner.healthHaver.Armor = base.Owner.healthHaver.Armor + 2f;
+                                this.StripGun();
+                                this.AddModule();
+                            }
+                            else
+                            {
+                                bool flage = currentGun.quality == PickupObject.ItemQuality.C;
+                                if (flage)
+                                {
+                                    base.Owner.healthHaver.Armor = base.Owner.healthHaver.Armor + 1f;
+                                    this.StripGun();
+                                    this.AddT2Module();
+                                }
+                                else
+                                {
+                                    bool flagt = currentGun.quality == PickupObject.ItemQuality.B;
+                                    if (flagt)
+                                    {
+                                        this.StripGun();
+                                        this.AddModule();
+                                        this.AddT2Module();
+                                    }
+                                    else
+                                    {
+                                        bool flagi = currentGun.quality == PickupObject.ItemQuality.A;
+                                        if (flagi)
+                                        {
+                                            this.StripGun();
                                             this.T3Module();
                                             this.AddT2Module();
                                         }
                                         else
                                         {
-                                            this.StripGun();
-                                            this.AddModule();
+                                            bool flag6 = currentGun.quality == PickupObject.ItemQuality.S;
+                                            if (flag6)
+                                            {
+                                                this.StripGun();
+                                                this.AddModule();
+                                                this.T3Module();
+                                                this.AddT2Module();
+                                            }
+                                            else
+                                            {
+                                                this.StripGun();
+                                                this.AddModule();
+                                            }
                                         }
                                     }
                                 }
                             }
+                            bool flagsandwich = base.Owner.HasPickupID(Game.Items["lichs_eye_bullets"].PickupObjectId);
+                            if (flagsandwich)
+                            {
+                                AkSoundEngine.PostEvent("Play_OBJ_metronome_jingle_01", base.gameObject);
+                                this.AddModule();
+                            }
                         }
-                        bool flagsandwich = base.Owner.HasPickupID(Game.Items["lichs_eye_bullets"].PickupObjectId);
-                        if (flagsandwich)
-                        {
-                            AkSoundEngine.PostEvent("Play_OBJ_metronome_jingle_01", base.gameObject);
-                            this.AddModule();
-                        }
-                    }    
+                    }
                 }
             }
         }

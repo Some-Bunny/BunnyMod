@@ -341,14 +341,14 @@ namespace GungeonAPI
 		}
 
 		// Token: 0x06000049 RID: 73 RVA: 0x00004CD0 File Offset: 0x00002ED0
-		public static int GetStyleValue(string dungeonName, string shrineID)
+		public static int GetStyleValue(string dungeonName, string shrineIDFUCK)
 		{
-			bool flag = ShrineFactory.registeredShrines != null && ShrineFactory.registeredShrines.ContainsKey(shrineID);
+			bool flag = ShrineFactoryBny.registeredShrines != null && ShrineFactoryBny.registeredShrines.ContainsKey(shrineIDFUCK);
 			bool flag2 = flag;
 			if (flag2)
 			{
-				GameObject gameObject = ShrineFactory.registeredShrines[shrineID];
-				ShrineFactory.CustomShrineController customShrineController = (gameObject != null) ? gameObject.GetComponent<ShrineFactory.CustomShrineController>() : null;
+				GameObject gameObject = ShrineFactoryBny.registeredShrines[shrineIDFUCK];
+				ShrineFactoryBny.CustomShrineController customShrineController = (gameObject != null) ? gameObject.GetComponent<ShrineFactoryBny.CustomShrineController>() : null;
 				bool flag3 = customShrineController != null && customShrineController.roomStyles != null && customShrineController.roomStyles.ContainsKey(dungeonName);
 				bool flag4 = flag3;
 				if (flag4)

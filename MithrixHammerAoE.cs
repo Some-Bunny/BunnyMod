@@ -66,12 +66,12 @@ public class MithRixOnReloadModifier : MonoBehaviour
 			this.m_radialIndicator = ((GameObject)UnityEngine.Object.Instantiate(ResourceCache.Acquire("Global VFX/HeatIndicator"), this.m_gun.CurrentOwner.CenterPosition.ToVector3ZisY(0f), Quaternion.identity, this.m_gun.CurrentOwner.transform)).GetComponent<HeatIndicatorController>();
 			if (!this.IgnitesEnemies)
 			{
-				this.m_radialIndicator.CurrentColor = Color.cyan;
+				this.m_radialIndicator.CurrentColor = Color.cyan.WithAlpha(30f);
 				this.m_radialIndicator.IsFire = false;
 			}
             else
             {
-				this.m_radialIndicator.CurrentColor = Color.cyan;
+				this.m_radialIndicator.CurrentColor = Color.cyan.WithAlpha(30f);
 			}
 		}
 	}

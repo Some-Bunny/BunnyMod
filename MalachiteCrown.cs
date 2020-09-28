@@ -37,6 +37,20 @@ namespace BunnyMod
             crownOfBlood.quality = PickupObject.ItemQuality.S;
             crownOfBlood.AddToSubShop(ItemBuilder.ShopType.Cursula, 1f);
             crownOfBlood.AddToSubShop(ItemBuilder.ShopType.Goopton, 1f);
+            List<string> mandatoryConsoleIDs15 = new List<string>
+            {
+                "bny:malachite_thorns"
+            };
+            List<string> optionalConsoleIDs = new List<string>
+            {
+                "monster_blood",
+                "plunger",
+                "poxcannon",
+                "irradiated_lead",
+                "poison_vial",
+                "uranium_ammolet"
+            };
+            CustomSynergies.Add("Champion Type", mandatoryConsoleIDs15, optionalConsoleIDs, true);
         }
         private void OnDealtDamage(PlayerController usingPlayer, float amount, bool fatal, HealthHaver targetr)
         {
@@ -44,15 +58,32 @@ namespace BunnyMod
             bool flag2 = flag;
             if (flag2)
             {
-                MalachiteCrown.onCooldown = true;
-                GameManager.Instance.StartCoroutine(MalachiteCrown.StartCooldown());
-                float value = UnityEngine.Random.value;
-                bool flag3 = value < 0.33f;
-                bool flag4 = flag3;
-                if (flag4)
+                bool flagA = usingPlayer.PlayerHasActiveSynergy("Champion Type");
+                if (flagA)
                 {
-                    AkSoundEngine.PostEvent("Play_BOSS_mineflayer_bong_01", gameObject);
-                    this.CorruptionBombs(usingPlayer);
+                    MalachiteCrown.onCooldown = true;
+                    GameManager.Instance.StartCoroutine(MalachiteCrown.StartCooldown());
+                    float value = UnityEngine.Random.value;
+                    bool flag3 = value < 0.25f;
+                    bool flag4 = flag3;
+                    if (flag4)
+                    {
+                        AkSoundEngine.PostEvent("Play_BOSS_mineflayer_bong_01", gameObject);
+                        this.CorruptionBombs2(usingPlayer);
+                    }
+                }
+                else
+                {
+                    MalachiteCrown.onCooldown = true;
+                    GameManager.Instance.StartCoroutine(MalachiteCrown.StartCooldown());
+                    float value = UnityEngine.Random.value;
+                    bool flag3 = value < 0.33f;
+                    bool flag4 = flag3;
+                    if (flag4)
+                    {
+                        AkSoundEngine.PostEvent("Play_BOSS_mineflayer_bong_01", gameObject);
+                        this.CorruptionBombs(usingPlayer);
+                    }
                 }
             }
         }
@@ -63,6 +94,80 @@ namespace BunnyMod
             yield break;
         }
         
+        private void CorruptionBombs2(PlayerController player)
+        {
+            Projectile projectile = ((Gun)ETGMod.Databases.Items[19]).DefaultModule.projectiles[0];
+            GameObject gameObject = SpawnManager.SpawnProjectile(projectile.gameObject, base.Owner.sprite.WorldCenter, Quaternion.Euler(0f, 0f, (base.Owner.CurrentGun == null) ? 0f : 270f), true);
+            GameObject gameObject2 = SpawnManager.SpawnProjectile(projectile.gameObject, base.Owner.sprite.WorldCenter, Quaternion.Euler(0f, 0f, (base.Owner.CurrentGun == null) ? 0f : 342f), true);
+            GameObject gameObject3 = SpawnManager.SpawnProjectile(projectile.gameObject, base.Owner.sprite.WorldCenter, Quaternion.Euler(0f, 0f, (base.Owner.CurrentGun == null) ? 0f : 54f), true);
+            GameObject gameObject4 = SpawnManager.SpawnProjectile(projectile.gameObject, base.Owner.sprite.WorldCenter, Quaternion.Euler(0f, 0f, (base.Owner.CurrentGun == null) ? 0f : 126f), true);
+            GameObject gameObject5 = SpawnManager.SpawnProjectile(projectile.gameObject, base.Owner.sprite.WorldCenter, Quaternion.Euler(0f, 0f, (base.Owner.CurrentGun == null) ? 0f : 198f), true);
+            Projectile component = gameObject.GetComponent<Projectile>();
+            Projectile component2 = gameObject2.GetComponent<Projectile>();
+            Projectile component3 = gameObject3.GetComponent<Projectile>();
+            Projectile component4 = gameObject4.GetComponent<Projectile>();
+            Projectile component5 = gameObject5.GetComponent<Projectile>();
+            bool flag = component != null;
+            bool flag2 = flag;
+            if (flag2)
+            {
+                component.Owner = base.Owner;
+                PierceProjModifier pierceProjModifier = component.gameObject.AddComponent<PierceProjModifier>();
+                pierceProjModifier.penetration = 10;
+                component.Shooter = base.Owner.specRigidbody;
+                component.baseData.speed = 1.7f;
+                component.baseData.range = 7f;
+                component.OnDestruction += this.HellaPosion;
+            }
+            bool flag3 = component2 != null;
+            bool flag4 = flag3;
+            if (flag4)
+            {
+                component2.Owner = base.Owner;
+                PierceProjModifier pierceProjModifier = component2.gameObject.AddComponent<PierceProjModifier>();
+                pierceProjModifier.penetration = 10;
+                component2.Shooter = base.Owner.specRigidbody;
+                component.baseData.speed = 1.7f;
+                component2.baseData.range = 7f;
+                component2.OnDestruction += this.HellaPosion;
+            }
+            bool flag5 = component3 != null;
+            bool flag6 = flag5;
+            if (flag6)
+            {
+                component3.Owner = base.Owner;
+                PierceProjModifier pierceProjModifier = component3.gameObject.AddComponent<PierceProjModifier>();
+                pierceProjModifier.penetration = 10;
+                component3.Shooter = base.Owner.specRigidbody;
+                component.baseData.speed = 1.7f;
+                component3.baseData.range = 7f;
+                component3.OnDestruction += this.HellaPosion;
+            }
+            bool aaa = component4 != null;
+            bool aa = aaa;
+            if (aa)
+            {
+                component4.Owner = base.Owner;
+                PierceProjModifier pierceProjModifier = component4.gameObject.AddComponent<PierceProjModifier>();
+                pierceProjModifier.penetration = 10;
+                component4.Shooter = base.Owner.specRigidbody;
+                component.baseData.speed = 1.7f;
+                component4.baseData.range = 7f;
+                component4.OnDestruction += this.HellaPosion;
+            }
+            bool youre = component4 != null;
+            bool moom = youre;
+            if (moom)
+            {
+                component5.Owner = base.Owner;
+                PierceProjModifier pierceProjModifier = component5.gameObject.AddComponent<PierceProjModifier>();
+                pierceProjModifier.penetration = 10;
+                component5.Shooter = base.Owner.specRigidbody;
+                component.baseData.speed = 1.7f;
+                component5.baseData.range = 7f;
+                component5.OnDestruction += this.HellaPosion;
+            }
+        }
         private void CorruptionBombs(PlayerController player)
         {
             Projectile projectile = ((Gun)ETGMod.Databases.Items[19]).DefaultModule.projectiles[0];
@@ -109,7 +214,6 @@ namespace BunnyMod
                 component3.OnDestruction += this.HellaPosion;
             }
         }
-
         private void HellaPosion(Projectile arg1)
         {
             AssetBundle assetBundle = ResourceManager.LoadAssetBundle("shared_auto_001");

@@ -1,18 +1,8 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
+using Gungeon;
 using GungeonAPI;
 using UnityEngine;
-using System.Linq;
-using System.Text;
-using ItemAPI;
-using Dungeonator;
-using System.Reflection;
-using Random = System.Random;
-using FullSerializer;
-using Gungeon;
-using MonoMod.RuntimeDetour;
-using System.Runtime.CompilerServices;
 
 
 namespace GungeonAPI
@@ -23,7 +13,7 @@ namespace GungeonAPI
 		// Token: 0x06000059 RID: 89 RVA: 0x0000480C File Offset: 0x00002A0C
 		public static void Add()
 		{
-			ShrineFactory shrineFactory = new ShrineFactory
+			ShrineFactoryBny ShrineFactoryBny = new ShrineFactoryBny
 			{
 				name = "Shrine Of The Whisper",
 				modID = "BunnyMod",
@@ -40,7 +30,7 @@ namespace GungeonAPI
 				isBreachShrine = true,
 				interactableComponent = typeof(WhisperShrineInteractible)
 			};
-			GameObject gameObject = shrineFactory.Build();
+			GameObject gameObject = ShrineFactoryBny.Build();
 			gameObject.AddAnimation("idle", "ExampleMod/Resources/ShrineOfWhisper/", 2, NPCBuilder.AnimationType.Idle, DirectionalAnimation.DirectionType.None, DirectionalAnimation.FlipType.None);
 			gameObject.AddAnimation("talk", "ExampleMod/Resources/ShrineOfWhisper/", 6, NPCBuilder.AnimationType.Talk, DirectionalAnimation.DirectionType.None, DirectionalAnimation.FlipType.None);
 			gameObject.AddAnimation("talk_start", "ExampleMod/Resources/ShrineOfWhisper/", 6, NPCBuilder.AnimationType.Other, DirectionalAnimation.DirectionType.None, DirectionalAnimation.FlipType.None);

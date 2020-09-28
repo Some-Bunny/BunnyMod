@@ -26,10 +26,10 @@ namespace BunnyMod
             ModuleDamage Module = obj.AddComponent<ModuleDamage>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);
             string shortDesc = "Damage Up.";
-            string longDesc = "Increases damage by 50%";
+            string longDesc = "Increases damage by 25%";
             Module.SetupItem(shortDesc, longDesc, "bny");
             Module.quality = PickupObject.ItemQuality.EXCLUDED;
-            ItemBuilder.AddPassiveStatModifier(Module, PlayerStats.StatType.Damage, .50f, StatModifier.ModifyMethod.ADDITIVE);
+            ItemBuilder.AddPassiveStatModifier(Module, PlayerStats.StatType.Damage, .25f, StatModifier.ModifyMethod.ADDITIVE);
         }
         public override void Pickup(PlayerController player)
         {
@@ -659,6 +659,7 @@ namespace BunnyMod
             this.random = UnityEngine.Random.Range(0.0f, 1.0f);
             if (random <= 0.13f)
             {
+                AkSoundEngine.PostEvent("Play_BOSS_agunim_deflect_01", gameObject);
                 this.DecorruptModule();
             }
         }
@@ -703,6 +704,7 @@ namespace BunnyMod
 
         public override void Pickup(PlayerController player)
         {
+            AkSoundEngine.PostEvent("Play_BOSS_agunim_ribbons_01", gameObject);
             player.OnRoomClearEvent += this.HandleRoomCleared;
             this.CanBeDropped = false;
             base.Pickup(player);
@@ -741,6 +743,7 @@ namespace BunnyMod
             this.random = UnityEngine.Random.Range(0.0f, 1.0f);
             if (random <= 0.13f)
             {
+                AkSoundEngine.PostEvent("Play_BOSS_agunim_deflect_01", gameObject);
                 this.DecorruptModule();
             }
         }
@@ -783,6 +786,7 @@ namespace BunnyMod
         }
         public override void Pickup(PlayerController player)
         {
+            AkSoundEngine.PostEvent("Play_BOSS_agunim_ribbons_01", gameObject);
             player.OnRoomClearEvent += this.HandleRoomCleared;
             this.CanBeDropped = false;
             base.Pickup(player);
@@ -819,6 +823,7 @@ namespace BunnyMod
             this.random = UnityEngine.Random.Range(0.0f, 1.0f);
             if (random <= 0.13f)
             {
+                AkSoundEngine.PostEvent("Play_BOSS_agunim_deflect_01", gameObject);
                 this.DecorruptModule();
             }
         }
@@ -862,6 +867,7 @@ namespace BunnyMod
 
         public override void Pickup(PlayerController player)
         {
+            AkSoundEngine.PostEvent("Play_BOSS_agunim_ribbons_01", gameObject);
             player.OnRoomClearEvent += this.HandleRoomCleared;
             this.CanBeDropped = false;
             base.Pickup(player);
@@ -900,6 +906,7 @@ namespace BunnyMod
             this.random = UnityEngine.Random.Range(0.0f, 1.0f);
             if (random <= 0.13f)
             {
+                AkSoundEngine.PostEvent("Play_BOSS_agunim_deflect_01", gameObject);
                 this.DecorruptModule();
             }
         }
@@ -943,6 +950,7 @@ namespace BunnyMod
 
         public override void Pickup(PlayerController player)
         {
+            AkSoundEngine.PostEvent("Play_BOSS_agunim_ribbons_01", gameObject);
             player.OnRoomClearEvent += this.HandleRoomCleared;
             this.CanBeDropped = false;
             base.Pickup(player);
@@ -981,6 +989,7 @@ namespace BunnyMod
             this.random = UnityEngine.Random.Range(0.0f, 1.0f);
             if (random <= 0.13f)
             {
+                AkSoundEngine.PostEvent("Play_BOSS_agunim_deflect_01", gameObject);
                 this.DecorruptModule();
             }
         }
@@ -1024,6 +1033,7 @@ namespace BunnyMod
 
         public override void Pickup(PlayerController player)
         {
+            AkSoundEngine.PostEvent("Play_BOSS_agunim_ribbons_01", gameObject);
             player.OnRoomClearEvent += this.HandleRoomCleared;
             this.CanBeDropped = false;
             base.Pickup(player);

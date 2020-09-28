@@ -281,8 +281,6 @@ namespace ItemAPI
 		// Token: 0x04000050 RID: 80
 		protected string overrideNormalReloadAudio;
 
-		public string OverrideShootAnimation;
-
 		// Token: 0x04000051 RID: 81
 		private static FieldInfo heroSwordCooldown = typeof(Gun).GetField("HeroSwordCooldown", BindingFlags.Instance | BindingFlags.NonPublic);
 	}

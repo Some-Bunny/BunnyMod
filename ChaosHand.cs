@@ -32,6 +32,7 @@ namespace BunnyMod
 			GunExt.SetAnimationFPS(chaoshand, chaoshand.reloadAnimation, 12);
 			GunExt.SetAnimationFPS(chaoshand, chaoshand.idleAnimation, 4);
 			GunExt.AddProjectileModuleFrom(chaoshand, PickupObjectDatabase.GetById(223) as Gun, true, false);
+			chaoshand.gunHandedness = GunHandedness.HiddenOneHanded;
 			chaoshand.DefaultModule.ammoCost = 1;
 			chaoshand.DefaultModule.shootStyle = ProjectileModule.ShootStyle.SemiAutomatic;
 			chaoshand.DefaultModule.sequenceStyle = ProjectileModule.ProjectileSequenceStyle.Random;
@@ -110,26 +111,28 @@ namespace BunnyMod
 					bool flag = aiactor != null;
 					if (flag)
 					{
-						Vector3 position = aiactor.sprite.WorldCenter;
-						GameObject gameObject = SpawnManager.SpawnProjectile((PickupObjectDatabase.GetById(670) as Gun).DefaultModule.projectiles[0].gameObject, position, Quaternion.Euler(0f, 0f, BraveMathCollege.Atan2Degrees(playerController1.sprite.WorldCenter - aiactor.sprite.WorldCenter)), true);
-						Projectile component = gameObject.GetComponent<Projectile>();
-						bool flag12 = component != null;
-                        bool flag2 = flag12;
-						if (flag2)
-						{
-							PierceProjModifier spook = component.gameObject.AddComponent<PierceProjModifier>();
-							spook.penetration = 10;
-							component.AdjustPlayerProjectileTint(Color.blue.WithAlpha(Color.blue.a / 50f), 50, 0f);
-							component.SpawnedFromOtherPlayerProjectile = true;
-							component.Shooter = this.gun.CurrentOwner.specRigidbody;
-							component.Owner = playerController1;
-							component.Shooter = playerController1.specRigidbody;
-							component.baseData.speed = 4f;
-							component.baseData.damage = 10f;
-							component.AdditionalScaleMultiplier = 0.7f;
-							component.SetOwnerSafe(this.gun.CurrentOwner, "Player");
-							component.ignoreDamageCaps = true;
-							base.StartCoroutine(this.Speed(component));
+                        {
+							Vector3 position = aiactor.sprite.WorldCenter;
+							GameObject gameObject = SpawnManager.SpawnProjectile((PickupObjectDatabase.GetById(670) as Gun).DefaultModule.projectiles[0].gameObject, position, Quaternion.Euler(0f, 0f, BraveMathCollege.Atan2Degrees(playerController1.sprite.WorldCenter - aiactor.sprite.WorldCenter)), true);
+							Projectile component = gameObject.GetComponent<Projectile>();
+							bool flag12 = component != null;
+							bool flag2 = flag12;
+							if (flag2)
+							{
+								PierceProjModifier spook = component.gameObject.AddComponent<PierceProjModifier>();
+								spook.penetration = 10;
+								component.AdjustPlayerProjectileTint(Color.blue.WithAlpha(Color.blue.a / 50f), 50, 0f);
+								component.SpawnedFromOtherPlayerProjectile = true;
+								component.Shooter = this.gun.CurrentOwner.specRigidbody;
+								component.Owner = playerController1;
+								component.Shooter = playerController1.specRigidbody;
+								component.baseData.speed = 4f;
+								component.baseData.damage = 10f;
+								component.AdditionalScaleMultiplier = 0.7f;
+								component.SetOwnerSafe(this.gun.CurrentOwner, "Player");
+								component.ignoreDamageCaps = true;
+								base.StartCoroutine(this.Speed(component));
+							}
 						}
 					}
 				}

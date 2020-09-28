@@ -46,17 +46,19 @@ namespace BunnyMod
         }
         private void ChaosHole(float resultValue, float maxValue, CoreDamageTypes damageTypes, DamageCategory damageCategory, Vector2 damageDirection)
         {
-            Projectile projectile = ((Gun)ETGMod.Databases.Items["black_hole_gun"]).DefaultModule.projectiles[0];
-            GameObject gameObject = SpawnManager.SpawnProjectile(projectile.gameObject, base.Owner.sprite.WorldCenter, Quaternion.Euler(0f, 0f, (base.Owner.CurrentGun == null) ? 0f : base.Owner.CurrentGun.CurrentAngle), true);
-            Projectile component = gameObject.GetComponent<Projectile>();
-            bool flag = component != null;
-            bool flag2 = flag;
-            if (flag2)
             {
-                component.Owner = base.Owner;
-                component.Shooter = base.Owner.specRigidbody;
-                component.baseData.speed = 4f;
-                component.baseData.damage = 0.1f;
+                Projectile projectile = ((Gun)ETGMod.Databases.Items["black_hole_gun"]).DefaultModule.projectiles[0];
+                GameObject gameObject = SpawnManager.SpawnProjectile(projectile.gameObject, base.Owner.sprite.WorldCenter, Quaternion.Euler(0f, 0f, (base.Owner.CurrentGun == null) ? 0f : base.Owner.CurrentGun.CurrentAngle), true);
+                Projectile component = gameObject.GetComponent<Projectile>();
+                bool flag = component != null;
+                bool flag2 = flag;
+                if (flag2)
+                {
+                    component.Owner = base.Owner;
+                    component.Shooter = base.Owner.specRigidbody;
+                    component.baseData.speed = 4f;
+                    component.baseData.damage = 0.1f;
+                }
             }
         }
         private void OnEnemyDamaged(float damage, bool fatal, HealthHaver enemyHealth)
@@ -97,6 +99,7 @@ namespace BunnyMod
             ChaosGodsWrath.onCooldown = false;
             yield break;
         }
+        public PlayerController player;
         private static bool onCooldown;
     }
 }

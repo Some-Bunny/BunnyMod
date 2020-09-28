@@ -29,7 +29,7 @@ namespace BunnyMod
 			GunExt.SetShortDescription(gun, "What the hell..?");
 			GunExt.SetLongDescription(gun, "The 'shotgun' of a long-time out of business gun manufacturer, who never actually knew how to make a shotgun, so they grabbed an assault weapon, made it look like a shotgun, and made it horrifically inaccurate.");
 			GunExt.SetupSprite(gun, null, "fakeshotgun_idle_001", 8);
-			GunExt.SetAnimationFPS(gun, gun.shootAnimation, 15);
+			GunExt.SetAnimationFPS(gun, gun.shootAnimation, 45);
 			GunExt.SetAnimationFPS(gun, gun.reloadAnimation, 21);
 			GunExt.AddProjectileModuleFrom(gun, PickupObjectDatabase.GetById(231) as Gun, true, false);
 			gun.DefaultModule.ammoCost = 1;
@@ -48,7 +48,7 @@ namespace BunnyMod
 			UnityEngine.Object.DontDestroyOnLoad(projectile);
 			gun.DefaultModule.projectiles[0] = projectile;
 			gun.muzzleFlashEffects = (PickupObjectDatabase.GetById(93) as Gun).muzzleFlashEffects;
-			projectile.baseData.damage *= .4f;
+			projectile.baseData.damage *= .1f;
 			projectile.baseData.speed *= 1.1f;
 			projectile.baseData.range = 5.4f;
 			projectile.pierceMinorBreakables = true;
@@ -56,6 +56,9 @@ namespace BunnyMod
 			orAddComponent.penetratesBreakables = true;
 			projectile.transform.parent = gun.barrelOffset;
 			projectile.shouldRotate = true;
+			//projectile.FreezeApplyChance = 1f;
+			//projectile.AppliesFreeze = true;
+			//projectile.freezeEffect = FakeShotgun.ShatteredEffect;
 			gun.quality = PickupObject.ItemQuality.C;
 			gun.encounterTrackable.EncounterGuid = "stupid fucking shotgun";
 			ETGMod.Databases.Items.Add(gun, null, "ANY");
@@ -94,5 +97,23 @@ namespace BunnyMod
 				AkSoundEngine.PostEvent("Play_WPN_shotgun_reload", gameObject);
 			}
 		}
+		private static GameActorFreezeEffect ShatteredEffect = new GameActorFreezeEffect
+		{
+			TintColor = new Color(0f, 0.1f, 0.3f).WithAlpha(0.7f),
+			DeathTintColor = new Color(0f, 0.1f, 0.3f).WithAlpha(0.7f),
+		    AppliesTint = true,
+			AppliesDeathTint = true,
+			effectIdentifier = "Shatter",
+			FreezeAmount = 125f,
+			UnfreezeDamagePercent = 0f,
+			crystalNum = 0,
+			crystalRot = 0,
+			crystalVariation = new Vector2(0.05f, 0.05f),
+			debrisMinForce = 5,
+			debrisMaxForce = 5,
+			debrisAngleVariance = 15f,
+			OverheadVFX = ShatterEffect.ShatterVFXObject,
+		};
+		public static GameObject ShatterVFXObject;
 	}
 }

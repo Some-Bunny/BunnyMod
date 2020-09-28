@@ -4,28 +4,34 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+
 using UnityEngine;
+using MonoMod.RuntimeDetour;
+using System.Reflection;
+using MonoMod.Utils;
 
 
 namespace BunnyMod
 {
 	// Token: 0x02000008 RID: 8
-	public class Module : ETGModule
+	public class BunnyModule : ETGModule
 	{
+
 		// Token: 0x0600001B RID: 27 RVA: 0x000028E8 File Offset: 0x00000AE8
 		public override void Start()
 		{
-			ArtifactMonger.Add();
-			WhisperShrine.Add();
+			FakePrefabHooks.Init();
+			HookYeah.Init();
+			ShatterEffect.Initialise();
 			GungeonAPI.GungeonAP.Init();
 			FakePrefabHooks.Init();
 			GungeonAPI.Tools.Init();
 			ItemAPI.FakePrefabHooks.Init();
 			GungeonAP.Init();
 			FakePrefabHooks.Init();
-			ShrineFactory.Init();
+			ShrineFactoryBny.Init();
 			ItemBuilder.Init();
-			ShrineFactory.PlaceBreachShrines();
+			ShrineFactoryBny.PlaceBnyBreachShrines();
 			CounterChamber.Register();
 			GuillotineRounds.Register();
 			ChaosGodsWrath.Register();
@@ -61,7 +67,6 @@ namespace BunnyMod
 			OnPlayerItemUsedItem.Init();
 			TestActiveItem.Init();
 			BoxGun.Add();
-			ChaosRevolver.Add();
 			SausageRevolver.Add();
 			TrainGun.Add();
 			BigNukeGun.Add();
@@ -104,8 +109,6 @@ namespace BunnyMod
 			ArtifactOfBolster.Init();
 			ArtifactOfHatred.Init();
 			ArtifactOfEnigma.Init();
-			ArtifactToken.Init();
-			Deicide.Init();
 			ThunderStorm.Add();
 			AerialBombardment.Add();
 			StickGun.Add();
@@ -160,20 +163,43 @@ namespace BunnyMod
 			RTG.Init();
 			Commiter.Add();
 			Starbounder.Add();
-			; Module.Log(Module.MOD_NAME + " v" + Module.VERSION + " started successfully.", Module.TEXT_COLOR);
+			Vengeance.Init();
+			ChaosRevolver.Add();
+			ChaosRevolverSynergyForme.Add();
+			ReaverClaw.Add();
+			EnforcersLaw.Add();
+			GunslayerGauntlets.Add();
+			PrismaticShot.Add();
+			GungeonInvestment.Init();
+			JammedGuillotine.Init();
+			TimeZoner.Add();
+			SuperShield.Init();
+			LastStand.Add();
+			ArtemissileRocket.Add();
+			BunnysFoot.Init();
+			Infusion.Init();
+			Gunthemimic.Add();
+			REXNeedler.Add();
+			SynergyFormInitialiser.AddSynergyForms();
+			InitialiseSynergies.DoInitialisation();
+			; BunnyModule.Log(BunnyModule.MOD_NAME + " v" + BunnyModule.VERSION + " started successfully.", BunnyModule.TEXT_COLOR);
 		}
-		public static void LateStart(Action<Foyer> orig, Foyer self)
+		public static void LateStart1(Action<Foyer> orig, Foyer self1)
 		{
-			orig(self);
-			GungeonAPI.Tools.Print<string>("deploy the boy", "FFFFFF", false);
-			bool flag = Module.hasInitialized;
+			orig(self1);
+			bool flag = BunnyModule.hasInitialized;
 			if (!flag)
-			{
-				GungeonAPI.Tools.StartTimer("Initializing mod");
-				GungeonAPI.Tools.StopTimerAndReport("Initializing mod");
-				ShrineFactory.PlaceBreachShrines();
-				Module.hasInitialized = true;
+            {
+				ArtifactMonger.Add();
+                WhisperShrine.Add();
+				DeicideShrine.Add();
+
+				{
+				  ShrineFactoryBny.PlaceBnyBreachShrines();
+				}
+				BunnyModule.hasInitialized = true;
 			}
+			ShrineFactoryBny.PlaceBnyBreachShrines();
 		}
 
 		// Token: 0x0600001C RID: 28 RVA: 0x00002944 File Offset: 0x00000B44
@@ -203,10 +229,11 @@ namespace BunnyMod
 		public static readonly string MOD_NAME = "Some Bunnys Content Mod";
 
 		// Token: 0x04000002 RID: 2
-		public static readonly string VERSION = "1.12.0 ";
+		public static readonly string VERSION = "1.13.0";
 
 		// Token: 0x04000003 RID: 3
 		public static readonly string TEXT_COLOR = "#316316";
-        private static bool hasInitialized;
-    }
+		private static bool hasInitialized;
+
+	}
 }

@@ -16,7 +16,7 @@ namespace BunnyMod
 			Game.Items.Rename("outdated_gun_mods:thunder_storm", "bny:thunder_storm");
 			gun.gameObject.AddComponent<ThunderStorm>();
 			GunExt.SetShortDescription(gun, "Electric Music");
-			GunExt.SetLongDescription(gun, "A master-craft weapon near-paradoxically made by a musician with no prior knowledge of guncraft. The letters'C.C' are engraved on its side.");
+			GunExt.SetLongDescription(gun, "A master-craft weapon near-paradoxically made by a musician with no prior knowledge of guncraft. The letters 'C.C' are engraved on its side.");
 			GunExt.SetupSprite(gun, null, "thunderstorm_idle_001", 2);
 			GunExt.SetAnimationFPS(gun, gun.shootAnimation, 16);
 			GunExt.SetAnimationFPS(gun, gun.idleAnimation, 2);
@@ -60,7 +60,7 @@ namespace BunnyMod
 			gun.SetBaseMaxAmmo(90);
 			gun.quality = PickupObject.ItemQuality.S;
 			gun.GetComponent<tk2dSpriteAnimator>().GetClipByName(gun.chargeAnimation).wrapMode = tk2dSpriteAnimationClip.WrapMode.LoopSection;
-			gun.GetComponent<tk2dSpriteAnimator>().GetClipByName(gun.chargeAnimation).loopStart = 1;
+			gun.GetComponent<tk2dSpriteAnimator>().GetClipByName(gun.chargeAnimation).loopStart = 3;
 			gun.encounterTrackable.EncounterGuid = "jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj";
 			ETGMod.Databases.Items.Add(gun, null, "ANY");
 			gun.barrelOffset.transform.localPosition = new Vector3(1.37f, 0.37f, 0f);

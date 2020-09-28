@@ -11,7 +11,7 @@ namespace GungeonAPI
 			Tools.Init();
 			StaticReferences.Init();
 			ShrineFakePrefabHooks.Init();
-			ShrineFactory.Init();
+			ShrineFactoryBny.Init();
 		}
 	}
 }

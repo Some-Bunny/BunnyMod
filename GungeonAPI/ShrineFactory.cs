@@ -7,26 +7,26 @@ using UnityEngine;
 namespace GungeonAPI
 {
 	// Token: 0x0200000C RID: 12
-	public class ShrineFactory
+	public class ShrineFactoryBny
 	{
 		// Token: 0x0600005B RID: 91 RVA: 0x00005A60 File Offset: 0x00003C60
 		public static void Init()
 		{
-			bool initialized = ShrineFactory.m_initialized;
+			bool initialized = ShrineFactoryBny.m_initialized;
 			bool flag = !initialized;
 			if (flag)
 			{
-				DungeonHooks.OnFoyerAwake += ShrineFactory.PlaceBreachShrines;
+				DungeonHooks.OnFoyerAwake += ShrineFactoryBny.PlaceBnyBreachShrines;
 				DungeonHooks.OnPreDungeonGeneration += delegate (LoopDungeonGenerator generator, Dungeon dungeon, DungeonFlow flow, int dungeonSeed)
 				{
 					bool flag2 = flow.name != "Foyer Flow" && !GameManager.IsReturningToFoyerWithPlayer;
 					bool flag3 = flag2;
 					if (flag3)
 					{
-						ShrineFactory.CleanupBreachShrines();
+						ShrineFactoryBny.CleanupBreachShrines();
 					}
 				};
-				ShrineFactory.m_initialized = true;
+				ShrineFactoryBny.m_initialized = true;
 			}
 		}
 
@@ -55,7 +55,7 @@ namespace GungeonAPI
 					this.colliderSize = new IntVector2(intVector.x, intVector.y / 2);
 				}
 				SpeculativeRigidbody speculativeRigidbody = component.SetUpSpeculativeRigidbody(this.colliderOffset, this.colliderSize);
-				ShrineFactory.CustomShrineController customShrineController = gameObject.AddComponent<ShrineFactory.CustomShrineController>();
+				ShrineFactoryBny.CustomShrineController customShrineController = gameObject.AddComponent<ShrineFactoryBny.CustomShrineController>();
 				customShrineController.ID = text;
 				customShrineController.roomStyles = this.roomStyles;
 				customShrineController.isBreachShrine = true;
@@ -97,9 +97,9 @@ namespace GungeonAPI
 					{
 						this.room = RoomFactory.CreateEmptyRoom(12, 12);
 					}
-					ShrineFactory.RegisterShrineRoom(gameObject, this.room, text, this.offset);
+					ShrineFactoryBny.RegisterShrineRoom(gameObject, this.room, text, this.offset);
 				}
-				ShrineFactory.registeredShrines.Add(text, gameObject);
+				ShrineFactoryBny.registeredShrines.Add(text, gameObject);
 				FakePrefab.MarkAsFakePrefab(gameObject);
 				Tools.Print<string>("Added shrine: " + text, "FFFFFF", false);
 				result = gameObject;
@@ -154,21 +154,21 @@ namespace GungeonAPI
 		}
 
 		// Token: 0x0600005E RID: 94 RVA: 0x00005F10 File Offset: 0x00004110
-		public static void PlaceBreachShrines()
+		public static void PlaceBnyBreachShrines()
 		{
-			ShrineFactory.CleanupBreachShrines();
+			ShrineFactoryBny.CleanupBreachShrines();
 			Tools.Print<string>("Placing breach shrines: ", "FFFFFF", false);
-			foreach (GameObject gameObject in ShrineFactory.registeredShrines.Values)
+			foreach (GameObject gameObject in ShrineFactoryBny.registeredShrines.Values)
 			{
 				try
 				{
-					ShrineFactory.CustomShrineController component = gameObject.GetComponent<ShrineFactory.CustomShrineController>();
+					ShrineFactoryBny.CustomShrineController component = gameObject.GetComponent<ShrineFactoryBny.CustomShrineController>();
 					bool flag = !component.isBreachShrine;
 					bool flag2 = !flag;
 					if (flag2)
 					{
 						Tools.Print<string>("    " + gameObject.name, "FFFFFF", false);
-						ShrineFactory.CustomShrineController component2 = UnityEngine.Object.Instantiate<GameObject>(gameObject).GetComponent<ShrineFactory.CustomShrineController>();
+						ShrineFactoryBny.CustomShrineController component2 = UnityEngine.Object.Instantiate<GameObject>(gameObject).GetComponent<ShrineFactoryBny.CustomShrineController>();
 						component2.Copy(component);
 						component2.gameObject.SetActive(true);
 						component2.sprite.PlaceAtPositionByAnchor(component2.offset, tk2dBaseSprite.Anchor.LowerCenter);
@@ -200,7 +200,7 @@ namespace GungeonAPI
 		// Token: 0x0600005F RID: 95 RVA: 0x000060C4 File Offset: 0x000042C4
 		private static void CleanupBreachShrines()
 		{
-			foreach (ShrineFactory.CustomShrineController customShrineController in UnityEngine.Object.FindObjectsOfType<ShrineFactory.CustomShrineController>())
+			foreach (ShrineFactoryBny.CustomShrineController customShrineController in UnityEngine.Object.FindObjectsOfType<ShrineFactoryBny.CustomShrineController>())
 			{
 				bool flag = !FakePrefab.IsFakePrefab(customShrineController);
 				bool flag2 = flag;
@@ -288,11 +288,11 @@ namespace GungeonAPI
 			private void Start()
 			{
 				string text = base.name.Replace("(Clone)", "");
-				bool flag = ShrineFactory.registeredShrines.ContainsKey(text);
+				bool flag = ShrineFactoryBny.registeredShrines.ContainsKey(text);
 				bool flag2 = flag;
 				if (flag2)
 				{
-					this.Copy(ShrineFactory.registeredShrines[text].GetComponent<ShrineFactory.CustomShrineController>());
+					this.Copy(ShrineFactoryBny.registeredShrines[text].GetComponent<ShrineFactoryBny.CustomShrineController>());
 				}
 				else
 				{
@@ -314,7 +314,7 @@ namespace GungeonAPI
 			}
 
 			// Token: 0x06000746 RID: 1862 RVA: 0x0003E784 File Offset: 0x0003C984
-			public void Copy(ShrineFactory.CustomShrineController other)
+			public void Copy(ShrineFactoryBny.CustomShrineController other)
 			{
 				this.ID = other.ID;
 				this.roomStyles = other.roomStyles;
@@ -371,7 +371,7 @@ namespace GungeonAPI
 			public Dictionary<string, int> roomStyles;
 
 			// Token: 0x04000263 RID: 611
-			public ShrineFactory factory;
+			public ShrineFactoryBny factory;
 
 			// Token: 0x04000264 RID: 612
 			public Action<PlayerController, GameObject> OnAccept;

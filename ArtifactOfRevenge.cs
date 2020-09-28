@@ -125,7 +125,8 @@ namespace BunnyMod
             boomer.explosionData.damageToPlayer = 1;
             boomer.explosionData.damage = 1;
             {
-				component2.DefaultTintColor = new Color(50f, 0f, 0f).WithAlpha(1f);
+				component2.HasDefaultTint = true;
+				component2.DefaultTintColor = new Color(10f, 0f, 0f).WithAlpha(0.5f);
 				component2.specRigidbody.AddCollisionLayerIgnoreOverride(CollisionMask.LayerToMask(CollisionLayer.EnemyCollider));
                 component2.specRigidbody.AddCollisionLayerIgnoreOverride(CollisionMask.LayerToMask(CollisionLayer.EnemyHitBox));
                 component2.AdjustPlayerProjectileTint(new Color((float)(40), (float)(40), 0f), 5, 0f);

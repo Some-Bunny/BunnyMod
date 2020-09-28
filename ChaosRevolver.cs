@@ -50,22 +50,35 @@ namespace BunnyMod
 			FakePrefab.MarkAsFakePrefab(projectile.gameObject);
 			UnityEngine.Object.DontDestroyOnLoad(projectile);
 			chaosgun.DefaultModule.projectiles[0] = projectile;
-			projectile.baseData.damage *= 1.8f;
+			projectile.baseData.damage = 11f;
 			projectile.baseData.speed *= 1.1f;
 			projectile.transform.parent = chaosgun.barrelOffset;
-			HomingModifier homing = projectile.gameObject.AddComponent<HomingModifier>();
-			homing.HomingRadius = 2.5f; 
-			homing.AngularVelocity = 5000;
 			PierceProjModifier spook = projectile.gameObject.AddComponent<PierceProjModifier>();
 			spook.penetration = 4;
 			projectile.SetProjectileSpriteRight("chaosrevolver_projectile_001", 10, 10, true, tk2dBaseSprite.Anchor.MiddleCenter, new int?(7), new int?(7), null, null, null);
 			ETGMod.Databases.Items.Add(chaosgun, null, "ANY");
-			List<string> mandatoryConsoleIDs2 = new List<string>
+
+		}
+		public override void PostProcessProjectile(Projectile projectile)
+		{
+			PlayerController player = this.gun.CurrentOwner as PlayerController;
+			bool flagA = player.PlayerHasActiveSynergy("Reunion");
+			if (flagA)
 			{
-				"bny:chaos_chamber",
-				"bny:chaos_revolver"
-			};
-			CustomSynergies.Add("Reunion.", mandatoryConsoleIDs2, null, true);
+				projectile.baseData.speed /= 2;
+				ChaosbowHandler chaosHandler = projectile.gameObject.AddComponent<ChaosbowHandler>();
+				chaosHandler.projectileToSpawn = (PickupObjectDatabase.GetById(670) as Gun).DefaultModule.projectiles[0];
+				HomingModifier homing = projectile.gameObject.AddComponent<HomingModifier>();
+				homing.HomingRadius = 250f;
+				homing.AngularVelocity = 5;
+			}
+			else
+            {
+				HomingModifier homing = projectile.gameObject.AddComponent<HomingModifier>();
+				homing.HomingRadius = 2.5f;
+				homing.AngularVelocity = 5000;
+			}
+
 		}
 
 		public override void OnPostFired(PlayerController player, Gun chaosgun)
@@ -102,5 +115,86 @@ namespace BunnyMod
 			}
 		}
 		public static int ChaosRevolverID;
+	}
+}
+
+namespace BunnyMod
+{
+	// Token: 0x02000075 RID: 117
+	public class ChaosbowHandler : MonoBehaviour
+	{
+		// Token: 0x06000297 RID: 663 RVA: 0x000184B9 File Offset: 0x000166B9
+		public ChaosbowHandler()
+		{
+			this.projectileToSpawn = null;
+		}
+
+		// Token: 0x06000298 RID: 664 RVA: 0x000184D5 File Offset: 0x000166D5
+		private void Awake()
+		{
+			this.m_projectile = base.GetComponent<Projectile>();
+			this.speculativeRigidBoy = base.GetComponent<SpeculativeRigidbody>();
+		}
+
+		// Token: 0x06000299 RID: 665 RVA: 0x000184F0 File Offset: 0x000166F0
+		private void Update()
+		{
+			bool flag = this.m_projectile == null;
+			if (flag)
+			{
+				this.m_projectile = base.GetComponent<Projectile>();
+			}
+			bool flag2 = this.speculativeRigidBoy == null;
+			if (flag2)
+			{
+				this.speculativeRigidBoy = base.GetComponent<SpeculativeRigidbody>();
+			}
+			this.elapsed += BraveTime.DeltaTime;
+			bool flag3 = this.elapsed > 0.05f;
+			if (flag3)
+			{
+				this.spawnAngle = UnityEngine.Random.Range(-180f, 180f);
+				this.SpawnProjectile(this.projectileToSpawn, this.m_projectile.sprite.WorldCenter, this.m_projectile.transform.eulerAngles.z + this.spawnAngle, null);
+				this.elapsed = 0f;
+			}
+		}
+
+		// Token: 0x0600029A RID: 666 RVA: 0x000185BC File Offset: 0x000167BC
+		private void SpawnProjectile(Projectile proj, Vector3 spawnPosition, float zRotation, SpeculativeRigidbody collidedRigidbody = null)
+		{
+			GameObject gameObject = SpawnManager.SpawnProjectile(proj.gameObject, spawnPosition, Quaternion.Euler(0f, 0f, zRotation), true);
+			Projectile component = gameObject.GetComponent<Projectile>();
+			bool flag = component;
+			if (flag)
+			{
+				component.SpawnedFromOtherPlayerProjectile = true;
+				PlayerController playerController = this.m_projectile.Owner as PlayerController;
+				component.baseData.damage *= playerController.stats.GetStatValue(PlayerStats.StatType.Damage);
+				component.baseData.speed *= .250f;
+				playerController.DoPostProcessProjectile(component);
+				PierceProjModifier spook = component.gameObject.AddComponent<PierceProjModifier>();
+				spook.penetration = 2;
+				component.AdditionalScaleMultiplier = 0.8f;
+				component.baseData.range = 5f;
+				HomingModifier homing = component.gameObject.AddComponent<HomingModifier>();
+				homing.HomingRadius = 50f;
+				homing.AngularVelocity = 10;
+			}
+		}
+
+		// Token: 0x040000EA RID: 234
+		private float spawnAngle = 90f;
+
+		// Token: 0x040000EB RID: 235
+		private Projectile m_projectile;
+
+		// Token: 0x040000EC RID: 236
+		private SpeculativeRigidbody speculativeRigidBoy;
+
+		// Token: 0x040000ED RID: 237
+		public Projectile projectileToSpawn;
+
+		// Token: 0x040000EE RID: 238
+		private float elapsed;
 	}
 }

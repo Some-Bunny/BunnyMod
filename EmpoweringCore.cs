@@ -34,11 +34,9 @@ namespace BunnyMod
         public override void Pickup(PlayerController player)
         {
             base.Pickup(player);
-            Tools.Print($"Player picked up {this.DisplayName}");
         }
         public override DebrisObject Drop(PlayerController player)
         {
-            Tools.Print($"Player dropped {this.DisplayName}");
             return base.Drop(player);
         }
     }

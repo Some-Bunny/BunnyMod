@@ -3,7 +3,7 @@ using UnityEngine;
 using System.Collections.Generic;
 
 
-namespace BunnyMod
+namespace ItemAPI
 {
 	// Token: 0x02000015 RID: 21
 	public static class GunTools
@@ -228,3 +228,4 @@ namespace BunnyMod
 		}
 	}
 }
+

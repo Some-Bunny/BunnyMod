@@ -40,7 +40,7 @@ namespace BunnyMod
 			gun.reloadTime = 0f;
 			gun.DefaultModule.cooldownTime = 0.1f;
 			gun.muzzleFlashEffects.type = VFXPoolType.None;
-			gun.DefaultModule.numberOfShotsInClip = 1;
+			gun.DefaultModule.numberOfShotsInClip = 6;
 			gun.SetBaseMaxAmmo(300);
 			gun.DefaultModule.angleVariance = 10f;
 			Projectile projectile = UnityEngine.Object.Instantiate<Projectile>(gun.DefaultModule.projectiles[0]);

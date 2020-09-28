@@ -28,7 +28,7 @@ namespace BunnyMod
 			GunExt.SetLongDescription(gun, "You're Gonna Need A Bigger Hammer.");
 			GunExt.SetupSprite(gun, null, "lunarhammer_idle_001", 8);
 			GunExt.SetAnimationFPS(gun, gun.shootAnimation, 20);
-			GunExt.SetAnimationFPS(gun, gun.reloadAnimation, 3);
+			GunExt.SetAnimationFPS(gun, gun.reloadAnimation, 8);
 			GunExt.SetAnimationFPS(gun, gun.chargeAnimation, 7);
 			GunExt.AddProjectileModuleFrom(gun, PickupObjectDatabase.GetById(481) as Gun, true, false);
 			gun.DefaultModule.ammoCost = 1;
@@ -36,7 +36,7 @@ namespace BunnyMod
 			gun.DefaultModule.sequenceStyle = ProjectileModule.ProjectileSequenceStyle.Random;
 			gun.reloadTime = 3.5f;
 			gun.DefaultModule.cooldownTime = 1f;
-			gun.carryPixelOffset += new IntVector2((int)-2f, (int)0f);
+			gun.carryPixelOffset = new IntVector2((int)-2f, (int)-1f);
 			gun.DefaultModule.numberOfShotsInClip = 1;
 			gun.DefaultModule.preventFiringDuringCharge = true;
 			gun.SetBaseMaxAmmo(40);
@@ -74,7 +74,6 @@ namespace BunnyMod
 		{
 			if (gun.CurrentOwner)
 			{
-
 				if (!gun.PreventNormalFireAudio)
 				{
 					this.gun.PreventNormalFireAudio = true;
@@ -87,14 +86,53 @@ namespace BunnyMod
 		}
 		private bool HasReloaded;
 
-		public override void OnPostFired(PlayerController player, Gun gun)
+		public override void OnPostFired(PlayerController owner, Gun gun)
 		{
 			gun.PreventNormalFireAudio = true;
 		}
 		public override void PostProcessProjectile(Projectile projectile)
 		{
+			gun.carryPixelOffset = new IntVector2((int)-2f, (int)-1f);
 			projectile.baseData.range = 0f;
 			this.Blam(projectile.sprite.WorldCenter);
+			projectile.OnDestruction += Shatter;
+		}
+		public void Shatter(Projectile projectile)
+		{
+			PlayerController playerController1 = this.gun.CurrentOwner as PlayerController;
+			bool isInCombat = playerController1.IsInCombat;
+			if (isInCombat)
+			{
+				foreach (AIActor aiactor in playerController1.CurrentRoom.GetActiveEnemies(RoomHandler.ActiveEnemyType.All))
+				{
+					bool flag = aiactor != null;
+					if (flag)
+					{
+						Vector3 position = aiactor.sprite.WorldCenter;
+						GameObject gameObject = SpawnManager.SpawnProjectile((PickupObjectDatabase.GetById(670) as Gun).DefaultModule.projectiles[0].gameObject, position, Quaternion.Euler(0f, 0f, BraveMathCollege.Atan2Degrees(playerController1.sprite.WorldCenter - aiactor.sprite.WorldCenter)), true);
+						Projectile component = gameObject.GetComponent<Projectile>();
+						bool flag12 = component != null;
+						bool flag2 = flag12;
+						if (flag2)
+						{
+							component.AdjustPlayerProjectileTint(Color.blue.WithAlpha(Color.blue.a / 50f), 50, 0f);
+							component.SpawnedFromOtherPlayerProjectile = true;
+							component.Shooter = this.gun.CurrentOwner.specRigidbody;
+							component.Owner = playerController1;
+							component.Shooter = playerController1.specRigidbody;
+							component.sprite.renderer.enabled = false;
+							component.baseData.speed = 4f;
+							component.baseData.damage = 1f;
+							component.AdditionalScaleMultiplier = 0.7f;
+							component.SetOwnerSafe(this.gun.CurrentOwner, "Player");
+							component.ignoreDamageCaps = true;
+							component.FreezeApplyChance = 1f;
+							component.AppliesFreeze = true;
+							component.freezeEffect = MithrixHammer.ShatteredEffect;
+						}
+					}
+				}
+			}
 		}
 
 		public void Blam(Vector3 position)
@@ -111,7 +149,7 @@ namespace BunnyMod
 			damageRadius = 10f,
 			damageToPlayer = 0f,
 			doDamage = true,
-			damage = 40f,
+			damage = 60f,
 			doExplosionRing = false,
 			doDestroyProjectiles = false,
 			doForce = true,
@@ -124,12 +162,83 @@ namespace BunnyMod
 		};
 		public override void OnReloadPressed(PlayerController player, Gun gun, bool bSOMETHING)
 		{
-			if (gun.IsReloading && this.HasReloaded)
+			base.OnReloadPressed(player, gun, bSOMETHING);
+			bool flag = gun.ClipCapacity == gun.ClipShotsRemaining || gun.CurrentAmmo == gun.ClipShotsRemaining;
+			bool needler = this.HasReloaded && gun.ClipShotsRemaining == 0;
+			if (needler)
+			{
+				base.StartCoroutine(this.StartNeedling(player));
+				AkSoundEngine.PostEvent("Stop_WPN_All", base.gameObject);
+			}
+
 			{
 				HasReloaded = false;
 				AkSoundEngine.PostEvent("Stop_WPN_All", base.gameObject);
 				base.OnReloadPressed(player, gun, bSOMETHING);
 			}
 		}
+        public override void OnFinishAttack(PlayerController player, Gun gun)
+		{
+			base.OnFinishAttack(player, gun);
+        }
+
+        private IEnumerator StartNeedling(PlayerController player)
+		{
+			{
+				gun.carryPixelOffset = new IntVector2((int)-30f, (int)-1f);
+				AIActor aIActor = new AIActor();
+				for (int counter = 0; counter < 12; counter++)
+				{
+					yield return new WaitForSeconds(.1f);
+					{
+						gun.carryPixelOffset -= new IntVector2((int)-1.25f, (int)-0.3f);
+						Projectile projectile = ((Gun)ETGMod.Databases.Items[357]).DefaultModule.projectiles[0];
+						Vector3 vector = player.unadjustedAimPoint - player.LockedApproximateSpriteCenter;
+						Vector3 vector2 = player.specRigidbody.UnitCenter;
+						GameObject gameObject = SpawnManager.SpawnProjectile(projectile.gameObject, player.sprite.WorldCenter, Quaternion.Euler(0f, 0f, ((player.CurrentGun == null) ? 1.2f : player.CurrentGun.CurrentAngle) + UnityEngine.Random.Range(-2.5f, 2.5f)), true);
+						Projectile component = gameObject.GetComponent<Projectile>();
+						HomingModifier homing = component.gameObject.AddComponent<HomingModifier>();
+						homing.HomingRadius = 300;
+						homing.AngularVelocity = 10;
+						component.baseData.damage = 3.75f;
+						component.Owner = player;
+						component.Shooter = player.specRigidbody;
+						component.shouldRotate = true;
+					}
+				}
+				for (int counter = 0; counter < 8; counter++)
+				{
+					yield return new WaitForSeconds(.1f);
+					gun.carryPixelOffset -= new IntVector2((int)-2.5f, (int)-.66f);
+				}
+				yield return new WaitForSeconds(.1f);
+				this.Reposition();
+			}
+			yield break;
+		}
+		private void Reposition()
+        {
+			gun.carryPixelOffset = new IntVector2((int)-2f, (int)-1f);
+		}
+
+		private static GameActorFreezeEffect ShatteredEffect = new GameActorFreezeEffect
+		{
+			TintColor = new Color(0f, 0.1f, 0.3f).WithAlpha(1f),
+			DeathTintColor = new Color(0f, 0.1f, 0.3f).WithAlpha(1f),
+			AppliesTint = true,
+			AppliesDeathTint = true,
+			effectIdentifier = "Shatter",
+			FreezeAmount = 150f,
+			UnfreezeDamagePercent = 0f,
+			crystalNum = 0,
+			crystalRot = 0,
+			crystalVariation = new Vector2(0.05f, 0.05f),
+			debrisMinForce = 5,
+			debrisMaxForce = 5,
+			debrisAngleVariance = 15f,
+			OverheadVFX = MithrixHammer.ShatterVFXObject,
+		};
+
+		public static GameObject ShatterVFXObject = SpriteBuilder.SpriteFromResource("ExampleMod/Resources/EffectIcons/shattered_debuff_icon.png", new GameObject("Shatter"), true);
 	}
 }
