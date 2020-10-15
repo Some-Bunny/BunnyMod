@@ -14,7 +14,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "Bolster";
-            string resourceName = "ExampleMod/Resources/Artifacts/bolster";
+            string resourceName = "BunnyMod/Resources/Artifacts/bolster";
             GameObject obj = new GameObject(itemName);
 			ArtifactOfBolster greandeParasite = obj.AddComponent<ArtifactOfBolster>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);

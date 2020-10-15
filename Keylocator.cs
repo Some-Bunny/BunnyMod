@@ -22,7 +22,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "Kelocator";
-            string resourceName = "ExampleMod/Resources/keylocator";
+            string resourceName = "BunnyMod/Resources/keylocator";
             GameObject obj = new GameObject(itemName);
             Keylocator whisper = obj.AddComponent<Keylocator>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);
@@ -56,7 +56,7 @@ namespace BunnyMod
         private void Notify(string header, string text)
         {
             tk2dSpriteCollectionData encounterIconCollection = AmmonomiconController.Instance.EncounterIconCollection;
-            int spriteIdByName = encounterIconCollection.GetSpriteIdByName("ExampleMod/Resources/keylocator");
+            int spriteIdByName = encounterIconCollection.GetSpriteIdByName("BunnyMod/Resources/keylocator");
             GameUIRoot.Instance.notificationController.DoCustomNotification(header, text, null, spriteIdByName, UINotificationController.NotificationColor.GOLD, false, true);
         }
     }
@@ -71,7 +71,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "Key Receipt";
-            string resourceName = "ExampleMod/Resources/keyceipt";
+            string resourceName = "BunnyMod/Resources/keyceipt";
             GameObject obj = new GameObject(itemName);
             var item = obj.AddComponent<Keyceipt>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);
@@ -149,7 +149,7 @@ namespace BunnyMod
         private void Notify(string header, string text)
         {
             tk2dSpriteCollectionData encounterIconCollection = AmmonomiconController.Instance.EncounterIconCollection;
-            int spriteIdByName = encounterIconCollection.GetSpriteIdByName("ExampleMod/Resources/keyceipt");
+            int spriteIdByName = encounterIconCollection.GetSpriteIdByName("BunnyMod/Resources/keyceipt");
             GameUIRoot.Instance.notificationController.DoCustomNotification(header, text, null, spriteIdByName, UINotificationController.NotificationColor.GOLD, false, true);
         }
     }

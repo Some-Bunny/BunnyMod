@@ -21,7 +21,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "Over-Shield";
-            string resourceName = "ExampleMod/Resources/supershield.png";
+            string resourceName = "BunnyMod/Resources/supershield.png";
             GameObject obj = new GameObject(itemName);
 			SuperShield counterChamber = obj.AddComponent<SuperShield>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);

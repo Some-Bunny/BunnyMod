@@ -21,7 +21,7 @@ namespace BunnyMod
         public static void Init()
         {
             string name = "Chaos Guon Stone";
-            string resourcePath = "ExampleMod/Resources/MagnetGuonStone/magneticguonstone";
+            string resourcePath = "BunnyMod/Resources/MagnetGuonStone/magneticguonstone";
             GameObject gameObject = new GameObject();
             ChaosGuonStone chaosGuon = gameObject.AddComponent<ChaosGuonStone>();
             ItemBuilder.AddSpriteToObject(name, resourcePath, gameObject);
@@ -39,7 +39,7 @@ namespace BunnyMod
             bool flag = ChaosGuonStone.orbitalPrefab != null;
             if (!flag)
             {
-                GameObject gameObject = SpriteBuilder.SpriteFromResource("ExampleMod/Resources/MagnetGuonStone/magnetguonstonefloaty", null, true);
+                GameObject gameObject = SpriteBuilder.SpriteFromResource("BunnyMod/Resources/MagnetGuonStone/magnetguonstonefloaty", null, true);
                 gameObject.name = "Chaos Guon Orbital";
                 SpeculativeRigidbody speculativeRigidbody = gameObject.GetComponent<tk2dSprite>().SetUpSpeculativeRigidbody(IntVector2.Zero, new IntVector2(10, 10));
                 speculativeRigidbody.CollideWithTileMap = false;

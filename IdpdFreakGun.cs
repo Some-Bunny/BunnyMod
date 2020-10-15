@@ -36,6 +36,7 @@ namespace BunnyMod
 			gun.DefaultModule.shootStyle = ProjectileModule.ShootStyle.Automatic;
 			gun.DefaultModule.sequenceStyle = ProjectileModule.ProjectileSequenceStyle.Random;
 			gun.reloadTime = 0.6f;
+			gun.barrelOffset.transform.localPosition = new Vector3(1f, 0.3125f, 0f);
 			gun.DefaultModule.cooldownTime = 0.01f;
 			gun.muzzleFlashEffects.type = VFXPoolType.None;
 			gun.DefaultModule.numberOfShotsInClip = 60;

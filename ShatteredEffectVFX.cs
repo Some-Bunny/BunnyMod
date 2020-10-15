@@ -21,7 +21,7 @@ namespace BunnyMod
 		// Token: 0x060002E1 RID: 737 RVA: 0x0001BB3C File Offset: 0x00019D3C
 		public static void Initialise()
 		{
-			ShatterEffect.ShatterVFXObject = SpriteBuilder.SpriteFromResource("ExampleMod/Resources/EffectIcons/shattered_debuff_icon.png", new GameObject("ShatterIcon"), true);
+			ShatterEffect.ShatterVFXObject = SpriteBuilder.SpriteFromResource("BunnyMod/Resources/EffectIcons/shattered_debuff_icon.png", new GameObject("ShatterIcon"), true);
 			ShatterEffect.ShatterVFXObject.SetActive(false);
 			FakePrefab.MarkAsFakePrefab(ShatterEffect.ShatterVFXObject);
 			UnityEngine.Object.DontDestroyOnLoad(ShatterEffect.ShatterVFXObject);
@@ -30,7 +30,7 @@ namespace BunnyMod
 			tk2dSpriteAnimator.Library.clips = new tk2dSpriteAnimationClip[0];
 			tk2dSpriteAnimationClip tk2dSpriteAnimationClip = new tk2dSpriteAnimationClip
 			{
-				name = "ShatterIconYes",
+				name = "ShatterIcon",
 				fps = 1f,
 				frames = new tk2dSpriteAnimationFrame[0]
 			};
@@ -52,13 +52,13 @@ namespace BunnyMod
 				tk2dSpriteAnimationClip
 			}).ToArray<tk2dSpriteAnimationClip>();
 			tk2dSpriteAnimator.playAutomatically = true;
-			tk2dSpriteAnimator.DefaultClipId = tk2dSpriteAnimator.GetClipIdByName("ShatterIconYes");
+			tk2dSpriteAnimator.DefaultClipId = tk2dSpriteAnimator.GetClipIdByName("ShatterIcon");
 		}
 
 		// Token: 0x040000FE RID: 254
 		public static List<string> LockdownPaths = new List<string>
 		{
-			"ExampleMod/Resources/EffectIcons/shattered_debuff_icon.png"
+			"BunnyMod/Resources/EffectIcons/shattered_debuff_icon.png"
 		};
 
 		// Token: 0x040000FF RID: 255

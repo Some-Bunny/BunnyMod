@@ -22,7 +22,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "D-Grenade";
-            string resourceName = "ExampleMod/Resources/DGrenade";
+            string resourceName = "BunnyMod/Resources/DGrenade";
             GameObject obj = new GameObject(itemName);
             DGrenade lockpicker = obj.AddComponent<DGrenade>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);
@@ -250,7 +250,7 @@ namespace BunnyMod
         private void Notify(string header, string text)
         {
             tk2dSpriteCollectionData encounterIconCollection = AmmonomiconController.Instance.EncounterIconCollection;
-            int spriteIdByName = encounterIconCollection.GetSpriteIdByName("ExampleMod/Resources/DGrenade");
+            int spriteIdByName = encounterIconCollection.GetSpriteIdByName("BunnyMod/Resources/DGrenade");
             GameUIRoot.Instance.notificationController.DoCustomNotification(header, text, null, spriteIdByName, UINotificationController.NotificationColor.SILVER, false, true);
         }
         public void Boom(Vector3 position)

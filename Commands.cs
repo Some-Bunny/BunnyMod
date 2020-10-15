@@ -41,6 +41,7 @@ namespace BunnyMod
 			{
 				ETGModConsole.Log("<size=100><color=#ff0000ff>List of Commands</color></size>", false);
 				ETGModConsole.Log("<color=#ff0000ff>modular_scraps_while_blessed</color> -Turned Off By Default, Toggles whether the Modular can-auto scrap weapons in Blessed Mode.", false);
+				//ETGModConsole.Log("<color=#ff0000ff>sacrifice_mode</color> -Turned Off By Default, Toggles whether the Artifact of Sacrifice is enabled even without Sacrifice.", false);
 			});
 
 			ETGModConsole.Commands.GetGroup("bny").AddUnit("modular_scraps_while_blessed", delegate (string[] args)
@@ -57,7 +58,9 @@ namespace BunnyMod
 					ETGModConsole.Log("Modular Will Now Not Auto-Scrap Guns in Blessed Mode.", false);
 				}
 			});
+			
 		}
 		public static bool ModularDoesntAutoScrapGunsInBlessed = true;
-    }
+		//public static bool NoSacrifice = true;
+	}
 }

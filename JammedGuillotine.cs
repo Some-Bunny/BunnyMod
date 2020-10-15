@@ -20,7 +20,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "Jammed Guillotine";
-            string resourceName = "ExampleMod/Resources/jammedguillotine.png";
+            string resourceName = "BunnyMod/Resources/jammedguillotine.png";
             GameObject obj = new GameObject(itemName);
             JammedGuillotine glassSyringe = obj.AddComponent<JammedGuillotine>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);

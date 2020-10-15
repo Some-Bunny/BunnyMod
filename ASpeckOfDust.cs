@@ -23,7 +23,7 @@ namespace BunnyMod
         {
             string itemName = "A Speck Of Dust";
 
-            string resourceName = "ExampleMod/Resources/speckofdust";
+            string resourceName = "BunnyMod/Resources/speckofdust";
 
             GameObject obj = new GameObject(itemName);
 

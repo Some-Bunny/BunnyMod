@@ -21,7 +21,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "Sky Grass";
-            string resourceName = "ExampleMod/Resources/skygrass";
+            string resourceName = "BunnyMod/Resources/skygrass";
             GameObject obj = new GameObject(itemName);
             SkyGrass skyGrass = obj.AddComponent<SkyGrass>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);

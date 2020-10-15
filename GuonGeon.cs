@@ -21,7 +21,7 @@ namespace BunnyMod
 		public static void Init()
 		{
 			string name = "Guon-Geon";
-			string resourcePath = "ExampleMod/Resources/GuonGeon/guongeon.png";
+			string resourcePath = "BunnyMod/Resources/GuonGeon/guongeon.png";
 			GameObject gameObject = new GameObject();
 			GuonGeon boomGuon = gameObject.AddComponent<GuonGeon>();
 			ItemBuilder.AddSpriteToObject(name, resourcePath, gameObject);
@@ -77,7 +77,7 @@ namespace BunnyMod
 			bool flag = GuonGeon.orbitalPrefab != null;
 			if (!flag)
 			{
-				GameObject gameObject = SpriteBuilder.SpriteFromResource("ExampleMod/Resources/GuonGeon/guongeonfloaty.png", null, true);
+				GameObject gameObject = SpriteBuilder.SpriteFromResource("BunnyMod/Resources/GuonGeon/guongeonfloaty.png", null, true);
 				gameObject.name = "GuonGeon";
 				SpeculativeRigidbody speculativeRigidbody = gameObject.GetComponent<tk2dSprite>().SetUpSpeculativeRigidbody(IntVector2.Zero, new IntVector2(10, 10));
 				speculativeRigidbody.CollideWithTileMap = false;

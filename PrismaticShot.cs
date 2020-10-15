@@ -62,6 +62,7 @@ namespace BunnyMod
 			gun.quality = PickupObject.ItemQuality.C;
 			gun.encounterTrackable.EncounterGuid = "No Blazey, this gun isn't an ad for your mod. Unless you pay.";
 			ETGMod.Databases.Items.Add(gun, null, "ANY");
+
 		}
 		public override void PostProcessProjectile(Projectile projectile)
 		{

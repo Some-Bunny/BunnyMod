@@ -14,7 +14,6 @@ using MonoMod.RuntimeDetour;
 
 
 
-
 namespace BunnyMod
 {
     public class BookOfEconomics : PassiveItem
@@ -22,7 +21,7 @@ namespace BunnyMod
         public static void Register()
         {
             string itemName = "Book Of Monetary Gain";
-            string resourceName = "ExampleMod/Resources/bookofmonetarygain";
+            string resourceName = "BunnyMod/Resources/bookofmonetarygain";
             GameObject obj = new GameObject(itemName);
             var item = obj.AddComponent<BookOfEconomics>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);
@@ -55,7 +54,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "The Last Resort";
-            string resourceName = "ExampleMod/Resources/lastresort";
+            string resourceName = "BunnyMod/Resources/lastresort";
             GameObject obj = new GameObject(itemName);
             var item = obj.AddComponent<LastResort>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);
@@ -103,7 +102,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "Cool Robes";
-            string resourceName = "ExampleMod/Resources/coolrobes";
+            string resourceName = "BunnyMod/Resources/coolrobes";
             GameObject obj = new GameObject(itemName);
             var item = obj.AddComponent<Coolrobes>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);
@@ -151,7 +150,7 @@ namespace BunnyMod
         {
             string itemName = "Bullet Relic";
 
-            string resourceName = "ExampleMod/Resources/bulletrelic";
+            string resourceName = "BunnyMod/Resources/bulletrelic";
             GameObject obj = new GameObject(itemName);
             BulletRelic bulletRelic = obj.AddComponent<BulletRelic>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);
@@ -209,7 +208,7 @@ namespace BunnyMod
         {
             string itemName = "Broken Core";
 
-            string resourceName = "ExampleMod/Resources/brokencore";
+            string resourceName = "BunnyMod/Resources/brokencore";
             GameObject obj = new GameObject(itemName);
             OnPlayerItemUsedItem brokenCore = obj.AddComponent<OnPlayerItemUsedItem>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);
@@ -356,7 +355,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "Test Active Item";
-            string resourceName = "ExampleMod/Resources/speckofdust";
+            string resourceName = "BunnyMod/Resources/speckofdust";
             GameObject obj = new GameObject(itemName);
             TestActiveItem testActive = obj.AddComponent<TestActiveItem>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);
@@ -392,7 +391,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "Ibzans Lighter";
-            string resourceName = "ExampleMod/Resources/ibzanslighter";
+            string resourceName = "BunnyMod/Resources/ibzanslighter";
             GameObject obj = new GameObject(itemName);
             var item = obj.AddComponent<FreezeLighter>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);
@@ -465,7 +464,7 @@ namespace BunnyMod
         public static void Init()
         {
             string name = "Potion of Projectile Slowness";
-            string resourcePath = "ExampleMod/Resources/potionofmatrixstyle";
+            string resourcePath = "BunnyMod/Resources/potionofmatrixstyle";
             GameObject gameObject = new GameObject(name);
             MatrixPotion matrixPotion = gameObject.AddComponent<MatrixPotion>();
             ItemBuilder.AddSpriteToObject(name, resourcePath, gameObject);
@@ -530,5 +529,242 @@ namespace BunnyMod
 
 
 
+namespace BunnyMod
+{
+    public class TestItemBNY : PassiveItem
+    {
+        public static void Init()
+        {
+            //If you can see this, don't ruin the fun for anyone else!
+            string itemName = "Sacrificial Blade";
+            string resourceName = "BunnyMod/Resources/WeakOrbitGuonStone/dragoncutter.png";
+            GameObject obj = new GameObject(itemName);
+            var item = obj.AddComponent<TestItemBNY>();
+            ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);
+            string shortDesc = "Final Sacrifice";
+            string longDesc = "If Agunim where to fail on his endeavor to slay a powerful gungeoneer, he would have used this cursed dagger to perform a sacrifice of a Greater Beast.";
+            ItemBuilder.SetupItem(item, shortDesc, longDesc, "bny");
+            ItemBuilder.AddPassiveStatModifier(item, PlayerStats.StatType.Curse, 3.5f, StatModifier.ModifyMethod.ADDITIVE);
+            ItemBuilder.AddPassiveStatModifier(item, PlayerStats.StatType.Damage, .25f, StatModifier.ModifyMethod.ADDITIVE);
+            item.quality = PickupObject.ItemQuality.EXCLUDED;
+            TestItemBNY.TestItem1ID = item.PickupObjectId;
+        }
+        private void OnEnemyDamaged(float damage, bool fatal, HealthHaver enemyHealth)
+        {
+            if (enemyHealth.specRigidbody != null)
+            {
+                if (enemyHealth.aiActor.EnemyGuid == "05b8afe0b6cc4fffa9dc6036fa24c8ec")
+                {
+                    bool flag2 = enemyHealth.aiActor && fatal;
+                    if (flag2)
+                    {
+                        this.SliceHeart(enemyHealth.sprite.WorldCenter, enemyHealth);
+                    }
+                }
+            }
+        }
+        protected override void OnDestroy()
+        {
+            AkSoundEngine.PostEvent("Play_OBJ_boulder_break_01", gameObject);
+            for (int i = 0; i < 5; i++)
+            {
+                SpawnManager.SpawnVFX((PickupObjectDatabase.GetById(565) as PlayerOrbitalItem).BreakVFX, base.sprite.WorldCenter.ToVector3ZisY(0f), Quaternion.identity);
+            }
+            SpawnManager.SpawnVFX((PickupObjectDatabase.GetById(538) as SilverBulletsPassiveItem).SynergyPowerVFX, base.sprite.WorldCenter.ToVector3ZisY(0f), Quaternion.identity).GetComponent<tk2dBaseSprite>().PlaceAtPositionByAnchor(base.sprite.WorldCenter.ToVector3ZisY(0f), tk2dBaseSprite.Anchor.MiddleCenter);
+            base.OnDestroy();
+        }
+        public void SliceHeart(Vector3 position, HealthHaver enemyHealth)
+        {
+            {
+                LootEngine.SpawnItem(ETGMod.Databases.Items["Great Dragun Heart"].gameObject, base.Owner.specRigidbody.UnitCenter, Vector2.down, 1f, false, true, false);
+            }
+            base.Owner.DropPassiveItem(this);
+        }
+        public void Break()
+        {
+            this.m_pickedUp = true;
+            UnityEngine.Object.Destroy(base.gameObject, 1f);
+        }
+        public override void Pickup(PlayerController player)
+        {
+            player.OnAnyEnemyReceivedDamage += (Action<float, bool, HealthHaver>)Delegate.Combine(player.OnAnyEnemyReceivedDamage, new Action<float, bool, HealthHaver>(this.OnEnemyDamaged));
+            base.Pickup(player);
+        }
+        public override DebrisObject Drop(PlayerController player)
+        {
+            DebrisObject debrisObject = base.Drop(base.Owner);
+            TestItemBNY component = debrisObject.GetComponent<TestItemBNY>();
+            component.m_pickedUpThisRun = true;
+            component.Break();
+            player.OnAnyEnemyReceivedDamage -= (Action<float, bool, HealthHaver>)Delegate.Combine(player.OnAnyEnemyReceivedDamage, new Action<float, bool, HealthHaver>(this.OnEnemyDamaged));
+            return base.Drop(player);
+        }
+        public static int TestItem1ID;
+        public PickupObject.ItemQuality Spawnquality;
+        public PassiveItem target;
+    }
+}
 
 
+namespace BunnyMod
+{
+    public class aa : PassiveItem
+    {
+        public static void Init()
+        {
+            string itemName = "Great Heart";
+            string resourceName = "BunnyMod/Resources/WeakOrbitGuonStone/opdragunheart.png";
+            GameObject obj = new GameObject(itemName);
+            var item = obj.AddComponent<DragunHeartThing>();
+            ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);
+            string shortDesc = "Still Beating...";
+            string longDesc = "The Heart of the Advanced Dragun. Powerful energy is expelled when it beats.";
+            ItemBuilder.SetupItem(item, shortDesc, longDesc, "bny");
+            ItemBuilder.AddPassiveStatModifier(item, PlayerStats.StatType.  Health, 1f, StatModifier.ModifyMethod.ADDITIVE);
+            item.quality = PickupObject.ItemQuality.EXCLUDED;
+            DragunHeartThing.poggersheart = item.PickupObjectId;
+
+        }
+        protected override void Update()
+        {
+            bool flag = base.Owner;
+            if (flag)
+            {
+
+            }
+        }
+        public override void Pickup(PlayerController player)
+        {
+            base.Pickup(player);
+            Tools.Print($"Player picked up {this.DisplayName}");
+        }
+        public override DebrisObject Drop(PlayerController player)
+        {
+            Tools.Print($"Player dropped {this.DisplayName}");
+            return base.Drop(player);
+        }
+        public static int poggersheart;
+
+    }
+}
+namespace BunnyMod
+{
+    public class DragunHeartThing : PlayerItem
+    {
+        public static void Init()
+        {            //If you can see this, don't ruin the fun for anyone else!
+            string itemName = "Great Dragun Heart";
+            string resourceName = "BunnyMod/Resources/WeakOrbitGuonStone/opdragunheart.png";
+            GameObject obj = new GameObject(itemName);
+            DragunHeartThing dioheart = obj.AddComponent<DragunHeartThing>();
+            ItemBuilder.AddPassiveStatModifier(dioheart, PlayerStats.StatType.Health, 1f, StatModifier.ModifyMethod.ADDITIVE);
+            ItemBuilder.AddPassiveStatModifier(dioheart, PlayerStats.StatType.AdditionalItemCapacity, 1f, StatModifier.ModifyMethod.ADDITIVE);
+            ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);
+            string shortDesc = "Still Beating...";
+            string longDesc = "The Heart of the Advanced Dragun. Powerful energy is expelled when it beats.";
+            dioheart.SetupItem(shortDesc, longDesc, "bny");
+            dioheart.SetCooldownType(ItemBuilder.CooldownType.Timed, 0f);
+            dioheart.consumable = false;
+            dioheart.quality = PickupObject.ItemQuality.EXCLUDED;
+            DragunHeartThing.poggersheart = dioheart.PickupObjectId;
+            DragunHeartThing.spriteIDs = new int[DragunHeartThing.spritePaths.Length];
+            DragunHeartThing.spriteIDs[0] = SpriteBuilder.AddSpriteToCollection(DragunHeartThing.spritePaths[0], dioheart.sprite.Collection);
+            DragunHeartThing.spriteIDs[1] = SpriteBuilder.AddSpriteToCollection(DragunHeartThing.spritePaths[1], dioheart.sprite.Collection);
+
+        }
+
+        public override void Pickup(PlayerController player)
+        {
+            base.Pickup(player);
+        }
+        public override void Update()
+        {
+            PlayerController lastOwner = this.LastOwner;
+            bool flag = lastOwner;
+            bool flag2 = flag;
+            bool flag3 = flag2;
+            if (flag3)
+            {
+                bool flag4 = this.EatenBullet == 0;
+                if (flag4)
+                {
+                    lastOwner.healthHaver.OnPreDeath -= this.HandlePreDeath;
+                    this.id = DragunHeartThing.spriteIDs[0];
+                }
+                else
+                {
+                    lastOwner.healthHaver.OnPreDeath += this.HandlePreDeath;
+                    this.id = DragunHeartThing.spriteIDs[1];
+                }
+                base.sprite.SetSprite(this.id);
+            }
+        }
+        private void HandlePreDeath(Vector2 damageDirection)
+        {
+            PlayerController player = base.LastOwner as PlayerController;
+            if (base.LastOwner)
+            {
+                player.healthHaver.FullHeal();
+                player.IsOnFire = false;
+                if (player.characterIdentity == PlayableCharacters.Robot)
+                {
+                    player.healthHaver.Armor = 8f;
+                }
+                base.StartCoroutine(this.Weeee());
+
+            }
+        }
+
+        private IEnumerator Weeee()
+        {
+            yield return new WaitForSeconds(0.5f);
+            {
+                PlayerController player = base.LastOwner as PlayerController;
+                player.IsOnFire = false;
+                int targetLevelIndex = 1;
+                GameManager.Instance.SetNextLevelIndex(targetLevelIndex);
+                GameManager.Instance.DelayedLoadNextLevel(0.1f); 
+                yield return new WaitForSeconds(0.25f);
+                {
+                    player.RemoveActiveItem(DragunHeartThing.poggersheart);
+                }
+            }
+        }
+        protected override void DoEffect(PlayerController user)
+        {
+            AkSoundEngine.PostEvent("Play_BOSS_doormimic_vanish_01", base.gameObject);
+            IPlayerInteractable nearestInteractable = user.CurrentRoom.GetNearestInteractable(user.CenterPosition, 1f, user);
+            this.EatenBullet += 1;
+            bool flag = nearestInteractable is PassiveItem;
+            if (flag)
+            {
+                LootEngine.DoDefaultSynergyPoof((nearestInteractable as PassiveItem).sprite.WorldCenter, false);
+                UnityEngine.Object.Destroy((nearestInteractable as PassiveItem).gameObject);
+            }
+        }
+
+
+        public override bool CanBeUsed(PlayerController user)
+        {
+            bool nom = EatenBullet == 0;
+            {
+                IPlayerInteractable nearestInteractable = user.CurrentRoom.GetNearestInteractable(user.CenterPosition, 0.75f, user);
+                return nearestInteractable is BulletThatCanKillThePast;
+            }
+        }
+        private static int[] spriteIDs;
+
+        // Token: 0x04000087 RID: 135
+        private static readonly string[] spritePaths = new string[]
+        {
+            "BunnyMod/Resources/WeakOrbitGuonStone/opdragunheart.png",
+            "BunnyMod/Resources/WeakOrbitGuonStone/paradoxdragunheart.png",
+        };
+        public ExtraLifeItem.ExtraLifeMode extraLifeMode;
+        public static int poggersheart;
+        public float EatenBullet;
+        private int id;
+        public bool m_cloneWaitingForCoopDeath;
+
+    }
+}

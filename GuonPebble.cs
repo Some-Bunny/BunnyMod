@@ -21,7 +21,7 @@ namespace BunnyMod
         public static void Init()
         {
             string name = "Guon Pebble";
-            string resourcePath = "ExampleMod/Resources/GuonPebble/guonpebble";
+            string resourcePath = "BunnyMod/Resources/GuonPebble/guonpebble";
             GameObject gameObject = new GameObject();
             GuonPebble pebbleGuon = gameObject.AddComponent<GuonPebble>();
             ItemBuilder.AddSpriteToObject(name, resourcePath, gameObject);
@@ -39,7 +39,7 @@ namespace BunnyMod
             bool flag = GuonPebble.orbitalPrefab != null;
             if (!flag)
             {
-                GameObject gameObject = SpriteBuilder.SpriteFromResource("ExampleMod/Resources/GuonPebble/guonpebblefloaty", null, true);
+                GameObject gameObject = SpriteBuilder.SpriteFromResource("BunnyMod/Resources/GuonPebble/guonpebblefloaty", null, true);
                 gameObject.name = "its a rock! yeah";
                 SpeculativeRigidbody speculativeRigidbody = gameObject.GetComponent<tk2dSprite>().SetUpSpeculativeRigidbody(IntVector2.Zero, new IntVector2(10, 10));
                 speculativeRigidbody.CollideWithTileMap = false;

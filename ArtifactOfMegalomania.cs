@@ -13,7 +13,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "Megalomania";
-            string resourceName = "ExampleMod/Resources/Artifacts/megalomania";
+            string resourceName = "BunnyMod/Resources/Artifacts/megalomania";
             GameObject obj = new GameObject(itemName);
             ArtifactOfMegalomania greandeParasite = obj.AddComponent<ArtifactOfMegalomania>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);

@@ -21,7 +21,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "Bloody Trigger";
-            string resourceName = "ExampleMod/Resources/bloodytrigger";
+            string resourceName = "BunnyMod/Resources/bloodytrigger";
             GameObject obj = new GameObject(itemName);
             BloodyTrigger bloodyTrigger = obj.AddComponent<BloodyTrigger>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);

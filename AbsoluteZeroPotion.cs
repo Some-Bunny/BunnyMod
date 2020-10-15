@@ -24,7 +24,7 @@ namespace BunnyMod
         public static void Init()
         {
             string name = "Absolute-Zero Drink";
-            string resourcePath = "ExampleMod/Resources/absolutezeropotion";
+            string resourcePath = "BunnyMod/Resources/absolutezeropotion";
             GameObject gameObject = new GameObject(name);
             AbsoluteZeroPotion absoluteZeroPotion = gameObject.AddComponent<AbsoluteZeroPotion>();
             ItemBuilder.AddSpriteToObject(name, resourcePath, gameObject);

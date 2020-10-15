@@ -23,7 +23,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "Death Mark";
-            string resourceName = "ExampleMod/Resources/death_mark";
+            string resourceName = "BunnyMod/Resources/death_mark";
             GameObject obj = new GameObject(itemName);
             var item = obj.AddComponent<DeathMark>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);
@@ -54,7 +54,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "Damoclean Clip";
-            string resourceName = "ExampleMod/Resources/damoclean_clip";
+            string resourceName = "BunnyMod/Resources/damoclean_clip";
             GameObject obj = new GameObject(itemName);
             DamocleanClip damocleanClip = obj.AddComponent<DamocleanClip>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);
@@ -117,7 +117,7 @@ namespace BunnyMod
         private void Notify(string header, string text)
         {
             tk2dSpriteCollectionData encounterIconCollection = AmmonomiconController.Instance.EncounterIconCollection;
-            int spriteIdByName = encounterIconCollection.GetSpriteIdByName("ExampleMod/Resources/death_mark");
+            int spriteIdByName = encounterIconCollection.GetSpriteIdByName("BunnyMod/Resources/death_mark");
             GameUIRoot.Instance.notificationController.DoCustomNotification(header, text, null, spriteIdByName, UINotificationController.NotificationColor.SILVER, false, true);
         }
         private float Countdown;

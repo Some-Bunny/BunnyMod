@@ -22,7 +22,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "Spirit Of Stagnation";
-            string resourceName = "ExampleMod/Resources/spiritofstagnation";
+            string resourceName = "BunnyMod/Resources/spiritofstagnation";
             GameObject obj = new GameObject(itemName);
             SpiritOfStagnation whisper = obj.AddComponent<SpiritOfStagnation>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);

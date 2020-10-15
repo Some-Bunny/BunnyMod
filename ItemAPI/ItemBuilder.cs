@@ -290,5 +290,9 @@ namespace ItemAPI
 			// Token: 0x04000067 RID: 103
 			OldRed
 		}
+		public static void PlaceItemInAmmonomiconAfterItemById(this PickupObject item, int id)
+		{
+			item.ForcedPositionInAmmonomicon = PickupObjectDatabase.GetById(id).ForcedPositionInAmmonomicon;
+		}
 	}
 }

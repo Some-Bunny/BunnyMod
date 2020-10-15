@@ -22,7 +22,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "Reptile Blood Transfusion";
-            string resourceName = "ExampleMod/Resources/liazrdbloodtransfusion";
+            string resourceName = "BunnyMod/Resources/liazrdbloodtransfusion";
             GameObject obj = new GameObject(itemName);
             LizardBloodTransfusion lizardBlood = obj.AddComponent<LizardBloodTransfusion>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);

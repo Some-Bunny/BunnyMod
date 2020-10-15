@@ -28,6 +28,13 @@ namespace GungeonAPI
 				bool flag4 = flag3;
 				if (flag4)
 				{
+					bool flagYEE = this.counterfoirfuckssakeWORK1 == 1f;
+					if (flagYEE)
+					{
+						TextBoxManager.ShowTextBox(this.talkPoint.position, this.talkPoint, 2f, "...", interactor.characterAudioSpeechTag, false, TextBoxManager.BoxSlideOrientation.NO_ADJUSTMENT, false, false);
+						base.spriteAnimator.PlayForDuration("talk", 2f, "idle", false);
+					}
+					else
 					{
 						base.StartCoroutine(this.HandleConversation(interactor));
 					}
@@ -70,8 +77,8 @@ namespace GungeonAPI
 			if (flag2)
 			{
 				TextBoxManager.ClearTextBox(this.talkPoint);
-				base.spriteAnimator.PlayForDuration("do_effect", 1f, "talk", false);
-				while (base.spriteAnimator.CurrentFrame < 1)
+				base.spriteAnimator.PlayForDuration("do_effect", 2f, "talk", false);
+				while (base.spriteAnimator.CurrentFrame < 9)
 				{
 					yield return null;
 				}
@@ -80,9 +87,10 @@ namespace GungeonAPI
 				if (flag3)
 				{
 					onAccept(interactor, base.gameObject);
+					this.counterfoirfuckssakeWORK1 += 1f;
 				}
 				base.spriteAnimator.Play("talk");
-				TextBoxManager.ShowTextBox(this.talkPoint.position, this.talkPoint, 1f, "Deicide enabled.", interactor.characterAudioSpeechTag, false, TextBoxManager.BoxSlideOrientation.NO_ADJUSTMENT, false, false);
+				TextBoxManager.ShowTextBox(this.talkPoint.position, this.talkPoint, 1f, "May the odds be in your favour.", interactor.characterAudioSpeechTag, false, TextBoxManager.BoxSlideOrientation.NO_ADJUSTMENT, false, false);
 				yield return new WaitForSeconds(1f);
 				onAccept = null;
 			}
@@ -149,5 +157,6 @@ namespace GungeonAPI
 
 		// Token: 0x0400000F RID: 15
 		private bool m_allowMeToIntroduceMyself = true;
+		private float counterfoirfuckssakeWORK1 = 0;
 	}
 }

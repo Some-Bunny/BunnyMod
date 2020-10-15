@@ -19,7 +19,7 @@ namespace BunnyMod
         public static void Init()
         {
             string name = "Blast Core";
-            string resourcePath = "ExampleMod/Resources/BlastCoreFrames/blastcore";
+            string resourcePath = "BunnyMod/Resources/BlastCoreFrames/blastcore";
             GameObject gameObject = new GameObject();
             Blastcore blastcore = gameObject.AddComponent<Blastcore>();
             ItemBuilder.AddSpriteToObject(name, resourcePath, gameObject, true);
@@ -127,6 +127,7 @@ namespace BunnyMod
                 blastcoreBehavior.specRigidbody.Reinitialize();
                 blastcoreBehavior.specRigidbody.CollideWithTileMap = false;
                 blastcoreBehavior.aiActor.CanTargetEnemies = true;
+                blastcoreBehavior.aiActor.SetIsFlying(true, "Flying Enemy", true, true);
                 BehaviorSpeculator behaviorSpeculator = blastcoreBehavior.behaviorSpeculator;
                 behaviorSpeculator.AttackBehaviors.Add(new Blastcore.BlastCoreAttackBehavior());
                 behaviorSpeculator.MovementBehaviors.Add(new Blastcore.ApproachEnemiesBehavior());
@@ -155,30 +156,30 @@ namespace BunnyMod
         // Token: 0x04000018 RID: 24
         private static string[] spritePaths = new string[]
         {
-            "ExampleMod/Resources/BlastCoreFrames/Idle/Blastcore_idle_001",
-            "ExampleMod/Resources/BlastCoreFrames/Idle/Blastcore_idle_002",
-            "ExampleMod/Resources/BlastCoreFrames/Idle/Blastcore_idle_003",
-            "ExampleMod/Resources/BlastCoreFrames/Idle/Blastcore_idle_004",
-            "ExampleMod/Resources/BlastCoreFrames/Idle/Blastcore_idle_005",
-            "ExampleMod/Resources/BlastCoreFrames/Idle/Blastcore_idle_006",
-            "ExampleMod/Resources/BlastCoreFrames/Idle/Blastcore_idle_007",
-            "ExampleMod/Resources/BlastCoreFrames/Idle/Blastcore_idle_008",
-            "ExampleMod/Resources/BlastCoreFrames/MoveLeft/Blastcore_move_left_001",
-            "ExampleMod/Resources/BlastCoreFrames/MoveLeft/Blastcore_move_left_002",
-            "ExampleMod/Resources/BlastCoreFrames/MoveLeft/Blastcore_move_left_003",
-            "ExampleMod/Resources/BlastCoreFrames/MoveLeft/Blastcore_move_left_004",
-            "ExampleMod/Resources/BlastCoreFrames/MoveLeft/Blastcore_move_left_005",
-            "ExampleMod/Resources/BlastCoreFrames/MoveLeft/Blastcore_move_left_006",
-            "ExampleMod/Resources/BlastCoreFrames/MoveLeft/Blastcore_move_left_007",
-            "ExampleMod/Resources/BlastCoreFrames/MoveLeft/Blastcore_move_left_008",
-            "ExampleMod/Resources/BlastCoreFrames/MoveRight/Blastcore_move_right_001",
-            "ExampleMod/Resources/BlastCoreFrames/MoveRight/Blastcore_move_right_002",
-            "ExampleMod/Resources/BlastCoreFrames/MoveRight/Blastcore_move_right_003",
-            "ExampleMod/Resources/BlastCoreFrames/MoveRight/Blastcore_move_right_004",
-            "ExampleMod/Resources/BlastCoreFrames/MoveRight/Blastcore_move_right_005",
-            "ExampleMod/Resources/BlastCoreFrames/MoveRight/Blastcore_move_right_006",
-            "ExampleMod/Resources/BlastCoreFrames/MoveRight/Blastcore_move_right_007",
-            "ExampleMod/Resources/BlastCoreFrames/MoveRight/Blastcore_move_right_008",
+            "BunnyMod/Resources/BlastCoreFrames/Idle/Blastcore_idle_001",
+            "BunnyMod/Resources/BlastCoreFrames/Idle/Blastcore_idle_002",
+            "BunnyMod/Resources/BlastCoreFrames/Idle/Blastcore_idle_003",
+            "BunnyMod/Resources/BlastCoreFrames/Idle/Blastcore_idle_004",
+            "BunnyMod/Resources/BlastCoreFrames/Idle/Blastcore_idle_005",
+            "BunnyMod/Resources/BlastCoreFrames/Idle/Blastcore_idle_006",
+            "BunnyMod/Resources/BlastCoreFrames/Idle/Blastcore_idle_007",
+            "BunnyMod/Resources/BlastCoreFrames/Idle/Blastcore_idle_008",
+            "BunnyMod/Resources/BlastCoreFrames/MoveLeft/Blastcore_move_left_001",
+            "BunnyMod/Resources/BlastCoreFrames/MoveLeft/Blastcore_move_left_002",
+            "BunnyMod/Resources/BlastCoreFrames/MoveLeft/Blastcore_move_left_003",
+            "BunnyMod/Resources/BlastCoreFrames/MoveLeft/Blastcore_move_left_004",
+            "BunnyMod/Resources/BlastCoreFrames/MoveLeft/Blastcore_move_left_005",
+            "BunnyMod/Resources/BlastCoreFrames/MoveLeft/Blastcore_move_left_006",
+            "BunnyMod/Resources/BlastCoreFrames/MoveLeft/Blastcore_move_left_007",
+            "BunnyMod/Resources/BlastCoreFrames/MoveLeft/Blastcore_move_left_008",
+            "BunnyMod/Resources/BlastCoreFrames/MoveRight/Blastcore_move_right_001",
+            "BunnyMod/Resources/BlastCoreFrames/MoveRight/Blastcore_move_right_002",
+            "BunnyMod/Resources/BlastCoreFrames/MoveRight/Blastcore_move_right_003",
+            "BunnyMod/Resources/BlastCoreFrames/MoveRight/Blastcore_move_right_004",
+            "BunnyMod/Resources/BlastCoreFrames/MoveRight/Blastcore_move_right_005",
+            "BunnyMod/Resources/BlastCoreFrames/MoveRight/Blastcore_move_right_006",
+            "BunnyMod/Resources/BlastCoreFrames/MoveRight/Blastcore_move_right_007",
+            "BunnyMod/Resources/BlastCoreFrames/MoveRight/Blastcore_move_right_008",
         };
 
         // Token: 0x04000019 RID: 25

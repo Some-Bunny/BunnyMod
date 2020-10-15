@@ -22,7 +22,7 @@ namespace BunnyMod
         {
             string itemName = "The Flames' Gift";
 
-            string resourceName = "ExampleMod/Resources/godoflifesgift";
+            string resourceName = "BunnyMod/Resources/godoflifesgift";
 
             GameObject obj = new GameObject(itemName);
 
@@ -46,7 +46,6 @@ namespace BunnyMod
         {
             base.Pickup(player);
             player.healthHaver.OnDamaged += new HealthHaver.OnDamagedEvent(this.FailContract);
-            base.Pickup(player);
             Tools.Print($"Player picked up {this.DisplayName}");
         }
 

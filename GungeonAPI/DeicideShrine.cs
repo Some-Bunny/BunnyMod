@@ -13,28 +13,28 @@ namespace GungeonAPI
 		// Token: 0x06000059 RID: 89 RVA: 0x0000480C File Offset: 0x00002A0C
 		public static void Add()
 		{
-			ShrineFactoryBny ShrineFactoryBny = new ShrineFactoryBny
+			ShrineFactory ShrineFactory = new ShrineFactory
 			{
 				name = "Deicide Shrine",
 				modID = "BunnyMod",
-				spritePath = "ExampleMod/Resources/DeicideShrine/dcdshrine_idle_001.png",
-				shadowSpritePath = "ExampleMod/Resources/DeicideShrine/dcdshrine_shadow.png",
+				spritePath = "BunnyMod/Resources/DeicideShrine/dcdshrine_idle_001.png",
+				shadowSpritePath = "BunnyMod/Resources/DeicideShrine/dcdshrine_shadow.png",
 				acceptText = "I challenge fate. (Gives all artifacts)",
 				declineText = "I don't challenge fate.",
 				OnAccept = new Action<PlayerController, GameObject>(DeicideShrine.Accept),
 				OnDecline = null,
 				CanUse = new Func<PlayerController, GameObject, bool>(DeicideShrine.CanUse),
-				offset = new Vector3(12.5f, 22.1875f, 22.6875f),
+				offset = new Vector3(12.6875f, 21.9375f, 22.4375f),
 				talkPointOffset = new Vector3(3f, 3f, 0f),
 				isToggle = false,
 				isBreachShrine = true,
 				interactableComponent = typeof(DeicideShrineInteractible)
 			};
-			GameObject gameObject = ShrineFactoryBny.Build();
-			gameObject.AddAnimation("idle", "ExampleMod/Resources/DeicideShrine/", 1, NPCBuilder.AnimationType.Idle, DirectionalAnimation.DirectionType.None, DirectionalAnimation.FlipType.None);
-			gameObject.AddAnimation("talk", "ExampleMod/Resources/DeicideShrine/", 1, NPCBuilder.AnimationType.Talk, DirectionalAnimation.DirectionType.None, DirectionalAnimation.FlipType.None);
-			gameObject.AddAnimation("talk_start", "ExampleMod/Resources/DeicideShrine/", 1, NPCBuilder.AnimationType.Other, DirectionalAnimation.DirectionType.None, DirectionalAnimation.FlipType.None);
-			gameObject.AddAnimation("do_effect", "ExampleMod/Resources/DeicideShrine/", 1, NPCBuilder.AnimationType.Other, DirectionalAnimation.DirectionType.None, DirectionalAnimation.FlipType.None);
+			GameObject gameObject = ShrineFactory.Build();
+			gameObject.AddAnimation("idle", "BunnyMod/Resources/DeicideShrine/", 2, NPCBuilder.AnimationType.Idle, DirectionalAnimation.DirectionType.None, DirectionalAnimation.FlipType.None);
+			gameObject.AddAnimation("talk", "BunnyMod/Resources/DeicideShrine/", 3, NPCBuilder.AnimationType.Talk, DirectionalAnimation.DirectionType.None, DirectionalAnimation.FlipType.None);
+			gameObject.AddAnimation("talk_start", "BunnyMod/Resources/DeicideShrine/", 4, NPCBuilder.AnimationType.Other, DirectionalAnimation.DirectionType.None, DirectionalAnimation.FlipType.None);
+			gameObject.AddAnimation("do_effect", "BunnyMod/Resources/DeicideShrine/", 5, NPCBuilder.AnimationType.Other, DirectionalAnimation.DirectionType.None, DirectionalAnimation.FlipType.None);
 			DeicideShrineInteractible component = gameObject.GetComponent<DeicideShrineInteractible>();
 			component.conversation = new List<string>
 			{
@@ -64,6 +64,8 @@ namespace GungeonAPI
 			LootEngine.TryGivePrefabToPlayer(ETGMod.Databases.Items["Fodder"].gameObject, player, true);
 			LootEngine.TryGivePrefabToPlayer(ETGMod.Databases.Items["Bolster"].gameObject, player, true);
 			LootEngine.TryGivePrefabToPlayer(ETGMod.Databases.Items["Enigma"].gameObject, player, true);
+			LootEngine.TryGivePrefabToPlayer(ETGMod.Databases.Items["Sacrifice"].gameObject, player, true);
+
 		}
 	}
 }

@@ -24,7 +24,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "Chaos Chamber";
-            string resourceName = "ExampleMod/Resources/chaoschamber";
+            string resourceName = "BunnyMod/Resources/chaoschamber";
             GameObject obj = new GameObject(itemName);
             ChaosChamber chaosChamber = obj.AddComponent<ChaosChamber>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);

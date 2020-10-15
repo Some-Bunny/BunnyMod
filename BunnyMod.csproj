@@ -7,8 +7,8 @@
     <ProjectGuid>{D6D7A494-722E-4763-959B-C2D6B6A42B01}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ExampleMod</RootNamespace>
-    <AssemblyName>ExampleMod</AssemblyName>
+    <RootNamespace>BunnyMod</RootNamespace>
+    <AssemblyName>BunnyMod</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -84,11 +84,25 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArtifactOfSacrifice.cs" />
+    <Compile Include="BabyGoodModular.cs" />
     <Compile Include="BunnysFoot.cs" />
+    <Compile Include="GungeonAPI\LeadLordShrine.cs" />
+    <Compile Include="Mimikey47.cs" />
+    <Compile Include="HarvestersShotgun.cs" />
+    <Compile Include="ReaverAmmolet.cs" />
+    <Compile Include="TableTechBomb.cs" />
+    <Compile Include="TableTechReload.cs" />
+    <Compile Include="TableTechKnife.cs" />
+    <Compile Include="TableTechSoul.cs" />
+    <Compile Include="RustyGun.cs" />
+    <Compile Include="LunarGlassAmmolet.cs" />
     <Compile Include="GungeonAPI\DeicideShrine.cs" />
     <Compile Include="GungeonAPI\DeicideShrineInteractable.cs" />
     <Compile Include="Gunthemimic.cs" />
     <Compile Include="Infusion.cs" />
+    <Compile Include="ReaverRounds.cs" />
+    <Compile Include="LunarGlassRounds.cs" />
     <Compile Include="REXNeedler.cs" />
     <Compile Include="PoisonEffectForDummies.cs" />
     <Compile Include="SuperShield.cs" />
@@ -96,6 +110,7 @@
     <Compile Include="GungeonAPI\Hooks.cs" />
     <Compile Include="GungeonAPI\Gilbert.cs" />
     <Compile Include="LastStand.cs" />
+    <Compile Include="PocketPistol.cs" />
     <Compile Include="TimeZoner.cs" />
     <Compile Include="GungeonInvestment.cs" />
     <Compile Include="Commands.cs" />
@@ -260,6 +275,19 @@
     <EmbeddedResource Include="Resources\example_item_sprite.png" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Resources\shrines\shrineoftheleadlord.png" />
+    <EmbeddedResource Include="Resources\tabletechknife.png" />
+    <EmbeddedResource Include="Resources\tabletechbomb.png" />
+    <EmbeddedResource Include="Resources\reaverammolet.png" />
+    <EmbeddedResource Include="Resources\tabletechsoul.png" />
+    <EmbeddedResource Include="Resources\VengeanceClone\Idle\vengclone_idle_001.png" />
+    <EmbeddedResource Include="Resources\VengeanceClone\Idle\vengclone_idle_002.png" />
+    <EmbeddedResource Include="Resources\VengeanceClone\Idle\vengclone_idle_003.png" />
+    <EmbeddedResource Include="Resources\VengeanceClone\Idle\vengclone_idle_004.png" />
+    <EmbeddedResource Include="Resources\reaverrounds.png" />
+    <EmbeddedResource Include="Resources\WeakOrbitGuonStone\paradoxdragunheart.png" />
+    <EmbeddedResource Include="Resources\WeakOrbitGuonStone\opdragunheart.png" />
+    <EmbeddedResource Include="Resources\WeakOrbitGuonStone\dragoncutter.png" />
     <EmbeddedResource Include="Resources\supershield.png" />
     <EmbeddedResource Include="Resources\WeakOrbitGuonStone\weakorbitguon.png" />
     <EmbeddedResource Include="Resources\WeakOrbitGuonStone\WeakOrbitGuonStonefloaty.png" />
@@ -355,6 +383,25 @@
     <Content Include="Resources\Artifacts\ArtifactNPC\reflection.png" />
     <EmbeddedResource Include="Resources\Artifacts\reflection.png" />
     <EmbeddedResource Include="Resources\Artifacts\enigma.png" />
+    <EmbeddedResource Include="Resources\BabyGoodModular\babygoodmodular_idle_left_001.png" />
+    <EmbeddedResource Include="Resources\BabyGoodModular\babygoodmodular_idle_left_002.png" />
+    <EmbeddedResource Include="Resources\BabyGoodModular\babygoodmodular_idle_left_003.png" />
+    <EmbeddedResource Include="Resources\BabyGoodModular\babygoodmodular_idle_left_004.png" />
+    <EmbeddedResource Include="Resources\BabyGoodModular\babygoodmodular_idle_right_001.png" />
+    <EmbeddedResource Include="Resources\BabyGoodModular\babygoodmodular_idle_right_003.png" />
+    <EmbeddedResource Include="Resources\BabyGoodModular\babygoodmodular_idle_right_004.png" />
+    <EmbeddedResource Include="Resources\BabyGoodModular\babygoodmodular_run_left_001.png" />
+    <EmbeddedResource Include="Resources\BabyGoodModular\babygoodmodular_run_left_002.png" />
+    <EmbeddedResource Include="Resources\BabyGoodModular\babygoodmodular_run_left_003.png" />
+    <EmbeddedResource Include="Resources\BabyGoodModular\babygoodmodular_run_left_005.png" />
+    <EmbeddedResource Include="Resources\BabyGoodModular\babygoodmodular_run_left_006.png" />
+    <EmbeddedResource Include="Resources\BabyGoodModular\babygoodmodular_run_right_001.png" />
+    <EmbeddedResource Include="Resources\BabyGoodModular\babygoodmodular_run_right_002.png" />
+    <EmbeddedResource Include="Resources\BabyGoodModular\babygoodmodular_run_right_003.png" />
+    <EmbeddedResource Include="Resources\BabyGoodModular\babygoodmodular_run_right_005.png" />
+    <EmbeddedResource Include="Resources\BabyGoodModular\babygoodmodular_run_right_006.png" />
+    <EmbeddedResource Include="Resources\BabyGoodModular\babygoodmodular.png" />
+    <EmbeddedResource Include="Resources\Artifacts\sacrifice.png" />
     <Content Include="Resources\BlastCoreFrames\Blastcore_idle_001.png" />
     <Content Include="Resources\BlastCoreFrames\Blastcore_idle_002.png" />
     <Content Include="Resources\BlastCoreFrames\Blastcore_idle_003.png" />
@@ -569,23 +616,37 @@
     <EmbeddedResource Include="Resources\curseBgone.png" />
     <EmbeddedResource Include="Resources\bunnysfoot.png" />
     <EmbeddedResource Include="Resources\infusion.png" />
-    <EmbeddedResource Include="Resources\DeicideShrine\dcdshrine_idle_001.png" />
-    <EmbeddedResource Include="Resources\DeicideShrine\dcdshrine_idle_002.png" />
-    <EmbeddedResource Include="Resources\DeicideShrine\dcdshrine_idle_003.png" />
-    <EmbeddedResource Include="Resources\DeicideShrine\dcdshrine_idle_004.png" />
-    <EmbeddedResource Include="Resources\DeicideShrine\dcdshrine_shadow.png" />
     <EmbeddedResource Include="Resources\DeicideShrine\dcdshrine_do_effect_001.png" />
     <EmbeddedResource Include="Resources\DeicideShrine\dcdshrine_do_effect_002.png" />
     <EmbeddedResource Include="Resources\DeicideShrine\dcdshrine_do_effect_003.png" />
     <EmbeddedResource Include="Resources\DeicideShrine\dcdshrine_do_effect_004.png" />
+    <EmbeddedResource Include="Resources\DeicideShrine\dcdshrine_do_effect_005.png" />
+    <EmbeddedResource Include="Resources\DeicideShrine\dcdshrine_do_effect_006.png" />
+    <EmbeddedResource Include="Resources\DeicideShrine\dcdshrine_do_effect_007.png" />
+    <EmbeddedResource Include="Resources\DeicideShrine\dcdshrine_do_effect_008.png" />
+    <EmbeddedResource Include="Resources\DeicideShrine\dcdshrine_do_effect_009.png" />
+    <EmbeddedResource Include="Resources\DeicideShrine\dcdshrine_idle_001.png" />
+    <EmbeddedResource Include="Resources\DeicideShrine\dcdshrine_idle_002.png" />
+    <EmbeddedResource Include="Resources\DeicideShrine\dcdshrine_idle_003.png" />
+    <EmbeddedResource Include="Resources\DeicideShrine\dcdshrine_idle_004.png" />
+    <EmbeddedResource Include="Resources\DeicideShrine\dcdshrine_idle_005.png" />
+    <EmbeddedResource Include="Resources\DeicideShrine\dcdshrine_idle_006.png" />
+    <EmbeddedResource Include="Resources\DeicideShrine\dcdshrine_idle_007.png" />
+    <EmbeddedResource Include="Resources\DeicideShrine\dcdshrine_idle_008.png" />
+    <EmbeddedResource Include="Resources\DeicideShrine\dcdshrine_idle_009.png" />
+    <EmbeddedResource Include="Resources\DeicideShrine\dcdshrine_idle_010.png" />
+    <EmbeddedResource Include="Resources\DeicideShrine\dcdshrine_shadow.png" />
     <EmbeddedResource Include="Resources\DeicideShrine\dcdshrine_talk_001.png" />
     <EmbeddedResource Include="Resources\DeicideShrine\dcdshrine_talk_002.png" />
     <EmbeddedResource Include="Resources\DeicideShrine\dcdshrine_talk_003.png" />
     <EmbeddedResource Include="Resources\DeicideShrine\dcdshrine_talk_004.png" />
+    <EmbeddedResource Include="Resources\DeicideShrine\dcdshrine_talk_005.png" />
     <EmbeddedResource Include="Resources\DeicideShrine\dcdshrine_talk_start_001.png" />
     <EmbeddedResource Include="Resources\DeicideShrine\dcdshrine_talk_start_002.png" />
     <EmbeddedResource Include="Resources\DeicideShrine\dcdshrine_talk_start_003.png" />
     <EmbeddedResource Include="Resources\DeicideShrine\dcdshrine_talk_start_004.png" />
+    <EmbeddedResource Include="Resources\DeicideShrine\dcdshrine_talk_start_005.png" />
+    <EmbeddedResource Include="Resources\lunarglassrounds.png" />
     <Content Include="Resources\PZeroAnims\Idle\brokencore.png" />
     <EmbeddedResource Include="Resources\PZeroAnims\Idle\P-Zero_idle_001.png" />
     <EmbeddedResource Include="Resources\PZeroAnims\Idle\P-Zero_idle_002.png" />
@@ -632,6 +693,11 @@
     <EmbeddedResource Include="Resources\staticclips.png" />
     <EmbeddedResource Include="Resources\TheMonolith.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Resources\VengeanceClone\Move\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\rooms\shrineofleadlordroom.room" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

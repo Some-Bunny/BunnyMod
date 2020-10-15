@@ -21,7 +21,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "Broken Lockpicker";
-            string resourceName = "ExampleMod/Resources/lockpickbot";
+            string resourceName = "BunnyMod/Resources/lockpickbot";
             GameObject obj = new GameObject(itemName);
             BrokenLockpicker lockpicker = obj.AddComponent<BrokenLockpicker>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);

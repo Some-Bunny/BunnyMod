@@ -20,7 +20,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "Glock Of The Dead";
-            string resourceName = "ExampleMod/Resources/glockofthedead";
+            string resourceName = "BunnyMod/Resources/glockofthedead";
             GameObject obj = new GameObject(itemName);
             var item = obj.AddComponent<GlockOfTheDead>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);

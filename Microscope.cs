@@ -21,7 +21,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "Micro Scope";
-            string resourceName = "ExampleMod/Resources/microscope";
+            string resourceName = "BunnyMod/Resources/microscope";
             GameObject obj = new GameObject(itemName);
             var item = obj.AddComponent<Microscope>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);

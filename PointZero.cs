@@ -23,7 +23,7 @@ namespace BunnyMod
         public static void Init()
         {
             string name = "Point Zero";
-            string resourcePath = "ExampleMod/Resources/PZeroAnims/Idle/P-Zero_idle_001";
+            string resourcePath = "BunnyMod/Resources/PZeroAnims/Idle/P-Zero_idle_001";
             GameObject gameObject = new GameObject();
             PointZero pointZero = gameObject.AddComponent<PointZero>();
             ItemBuilder.AddSpriteToObject(name, resourcePath, gameObject, true);
@@ -163,6 +163,7 @@ namespace BunnyMod
                 pointZeroBehavior.specRigidbody.Reinitialize();
                 pointZeroBehavior.specRigidbody.CollideWithTileMap = false;
                 pointZeroBehavior.aiActor.CanTargetEnemies = true;
+                pointZeroBehavior.aiActor.SetIsFlying(true, "Flying Enemy", true, true);
                 BehaviorSpeculator behaviorSpeculator = pointZeroBehavior.behaviorSpeculator;
                 behaviorSpeculator.AttackBehaviors.Add(new PointZero.PointZeroAttackBehavior());
                 behaviorSpeculator.MovementBehaviors.Add(new PointZero.ApproachEnemiesBehavior());
@@ -191,22 +192,22 @@ namespace BunnyMod
         // Token: 0x04000018 RID: 24
         private static string[] spritePaths = new string[]
         {
-            "ExampleMod/Resources/PZeroAnims/Idle/P-Zero_idle_001",
-            "ExampleMod/Resources/PZeroAnims/Idle/P-Zero_idle_002",
-            "ExampleMod/Resources/PZeroAnims/Idle/P-Zero_idle_003",
-            "ExampleMod/Resources/PZeroAnims/Idle/P-Zero_idle_004",
-            "ExampleMod/Resources/PZeroAnims/Idle/P-Zero_idle_005",
-            "ExampleMod/Resources/PZeroAnims/Idle/P-Zero_idle_006",
-            "ExampleMod/Resources/PZeroAnims/Idle/P-Zero_idle_007",
-            "ExampleMod/Resources/PZeroAnims/Idle/P-Zero_idle_008",
-            "ExampleMod/Resources/PZeroAnims/Attack/P-Zero_attack_001",
-            "ExampleMod/Resources/PZeroAnims/Attack/P-Zero_attack_002",
-            "ExampleMod/Resources/PZeroAnims/Attack/P-Zero_attack_003",
-            "ExampleMod/Resources/PZeroAnims/Attack/P-Zero_attack_004",
-            "ExampleMod/Resources/PZeroAnims/Attack/P-Zero_attack_005",
-            "ExampleMod/Resources/PZeroAnims/Attack/P-Zero_attack_006",
-            "ExampleMod/Resources/PZeroAnims/Attack/P-Zero_attack_007",
-            "ExampleMod/Resources/PZeroAnims/Attack/P-Zero_attack_008",
+            "BunnyMod/Resources/PZeroAnims/Idle/P-Zero_idle_001",
+            "BunnyMod/Resources/PZeroAnims/Idle/P-Zero_idle_002",
+            "BunnyMod/Resources/PZeroAnims/Idle/P-Zero_idle_003",
+            "BunnyMod/Resources/PZeroAnims/Idle/P-Zero_idle_004",
+            "BunnyMod/Resources/PZeroAnims/Idle/P-Zero_idle_005",
+            "BunnyMod/Resources/PZeroAnims/Idle/P-Zero_idle_006",
+            "BunnyMod/Resources/PZeroAnims/Idle/P-Zero_idle_007",
+            "BunnyMod/Resources/PZeroAnims/Idle/P-Zero_idle_008",
+            "BunnyMod/Resources/PZeroAnims/Attack/P-Zero_attack_001",
+            "BunnyMod/Resources/PZeroAnims/Attack/P-Zero_attack_002",
+            "BunnyMod/Resources/PZeroAnims/Attack/P-Zero_attack_003",
+            "BunnyMod/Resources/PZeroAnims/Attack/P-Zero_attack_004",
+            "BunnyMod/Resources/PZeroAnims/Attack/P-Zero_attack_005",
+            "BunnyMod/Resources/PZeroAnims/Attack/P-Zero_attack_006",
+            "BunnyMod/Resources/PZeroAnims/Attack/P-Zero_attack_007",
+            "BunnyMod/Resources/PZeroAnims/Attack/P-Zero_attack_008",
         };
 
         // Token: 0x04000019 RID: 25

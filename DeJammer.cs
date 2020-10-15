@@ -22,7 +22,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "De-Jammer";
-            string resourceName = "ExampleMod/Resources/dejammer";
+            string resourceName = "BunnyMod/Resources/dejammer";
             GameObject obj = new GameObject(itemName);
             Dejammer lockpicker = obj.AddComponent<Dejammer>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);

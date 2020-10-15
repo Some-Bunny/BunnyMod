@@ -14,7 +14,7 @@ namespace ItemAPI
     public static class Tools
     {
         public static bool verbose = false;
-        private static string defaultLog = Path.Combine(ETGMod.ResourcesDirectory, "exampleMod.txt");
+        private static string defaultLog = Path.Combine(ETGMod.ResourcesDirectory, "BunnyMod.txt");
         public static string modID = "EX";
 
         public static AssetBundle sharedAuto1 = ResourceManager.LoadAssetBundle("shared_auto_001");

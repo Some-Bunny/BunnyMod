@@ -22,7 +22,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "Soul In A Jar";
-            string resourceName = "ExampleMod/Resources/soulinajar";
+            string resourceName = "BunnyMod/Resources/soulinajar";
             GameObject obj = new GameObject(itemName);
             SoulInAJar lockpicker = obj.AddComponent<SoulInAJar>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);

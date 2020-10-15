@@ -227,7 +227,7 @@ namespace GungeonAPI
 		}
 
 		// Token: 0x04000002 RID: 2
-		public static float GlobalRoomWeight = 100f;
+		public static float GlobalRoomWeight = 1f;
 
 		// Token: 0x04000003 RID: 3
 		private static bool initialized = false;

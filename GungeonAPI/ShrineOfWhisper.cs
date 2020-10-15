@@ -13,12 +13,12 @@ namespace GungeonAPI
 		// Token: 0x06000059 RID: 89 RVA: 0x0000480C File Offset: 0x00002A0C
 		public static void Add()
 		{
-			ShrineFactoryBny ShrineFactoryBny = new ShrineFactoryBny
+			ShrineFactory ShrineFactory = new ShrineFactory
 			{
 				name = "Shrine Of The Whisper",
 				modID = "BunnyMod",
-				spritePath = "ExampleMod/Resources/ShrineOfWhisper/ancientwhisper_idle_001.png",
-				shadowSpritePath = "ExampleMod/Resources/ShrineOfWhisper/ancientwhispershadow_001",
+				spritePath = "BunnyMod/Resources/ShrineOfWhisper/ancientwhisper_idle_001.png",
+				shadowSpritePath = "BunnyMod/Resources/ShrineOfWhisper/ancientwhispershadow_001",
 				acceptText = "I challenge the Shrine Of The Whisper. (Lag Warning)",
 				declineText = "I don't challenge the Shrine Of The Whisper.",
 				OnAccept = new Action<PlayerController, GameObject>(WhisperShrine.Accept),
@@ -30,11 +30,11 @@ namespace GungeonAPI
 				isBreachShrine = true,
 				interactableComponent = typeof(WhisperShrineInteractible)
 			};
-			GameObject gameObject = ShrineFactoryBny.Build();
-			gameObject.AddAnimation("idle", "ExampleMod/Resources/ShrineOfWhisper/", 2, NPCBuilder.AnimationType.Idle, DirectionalAnimation.DirectionType.None, DirectionalAnimation.FlipType.None);
-			gameObject.AddAnimation("talk", "ExampleMod/Resources/ShrineOfWhisper/", 6, NPCBuilder.AnimationType.Talk, DirectionalAnimation.DirectionType.None, DirectionalAnimation.FlipType.None);
-			gameObject.AddAnimation("talk_start", "ExampleMod/Resources/ShrineOfWhisper/", 6, NPCBuilder.AnimationType.Other, DirectionalAnimation.DirectionType.None, DirectionalAnimation.FlipType.None);
-			gameObject.AddAnimation("do_effect", "ExampleMod/Resources/ShrineOfWhisper/", 5, NPCBuilder.AnimationType.Other, DirectionalAnimation.DirectionType.None, DirectionalAnimation.FlipType.None);
+			GameObject gameObject = ShrineFactory.Build();
+			gameObject.AddAnimation("idle", "BunnyMod/Resources/ShrineOfWhisper/", 2, NPCBuilder.AnimationType.Idle, DirectionalAnimation.DirectionType.None, DirectionalAnimation.FlipType.None);
+			gameObject.AddAnimation("talk", "BunnyMod/Resources/ShrineOfWhisper/", 6, NPCBuilder.AnimationType.Talk, DirectionalAnimation.DirectionType.None, DirectionalAnimation.FlipType.None);
+			gameObject.AddAnimation("talk_start", "BunnyMod/Resources/ShrineOfWhisper/", 6, NPCBuilder.AnimationType.Other, DirectionalAnimation.DirectionType.None, DirectionalAnimation.FlipType.None);
+			gameObject.AddAnimation("do_effect", "BunnyMod/Resources/ShrineOfWhisper/", 5, NPCBuilder.AnimationType.Other, DirectionalAnimation.DirectionType.None, DirectionalAnimation.FlipType.None);
 			WhisperShrineInteractible component = gameObject.GetComponent<WhisperShrineInteractible>();
 			component.conversation = new List<string>
 			{

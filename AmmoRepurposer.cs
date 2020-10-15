@@ -29,7 +29,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "Ammo Repurposer";
-            string resourceName = "ExampleMod/Resources/ammorepurposer";
+            string resourceName = "BunnyMod/Resources/ammorepurposer";
             GameObject obj = new GameObject(itemName);
             AmmoRepurposer ammoRepurposer = obj.AddComponent<AmmoRepurposer>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);

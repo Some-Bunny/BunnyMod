@@ -20,7 +20,7 @@ namespace BunnyMod
         {
             string itemName = "Guillotine Rounds";
 
-            string resourceName = "ExampleMod/Resources/guillotinebullets";
+            string resourceName = "BunnyMod/Resources/guillotinebullets";
 
             GameObject obj = new GameObject(itemName);
 

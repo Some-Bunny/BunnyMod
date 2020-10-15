@@ -21,7 +21,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "Personal Guard";
-            string resourceName = "ExampleMod/Resources/personalguard";
+            string resourceName = "BunnyMod/Resources/personalguard";
             GameObject obj = new GameObject(itemName);
             var item = obj.AddComponent<PersonalGuard>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);

@@ -13,7 +13,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "Daze";
-            string resourceName = "ExampleMod/Resources/Artifacts/daze";
+            string resourceName = "BunnyMod/Resources/Artifacts/daze";
             GameObject obj = new GameObject(itemName);
             ArtifactOfDaze greandeParasite = obj.AddComponent<ArtifactOfDaze>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);

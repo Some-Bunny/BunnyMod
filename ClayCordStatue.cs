@@ -25,11 +25,11 @@ namespace BunnyMod
 			bool flag = ClayCordStatue.prefab != null || CompanionBuilder.companionDictionary.ContainsKey(ClayCordStatue.guidclay);
 			if (!flag)
 			{
-				ClayCordStatue.prefab = CompanionBuilder.BuildPrefab("claystatue", ClayCordStatue.guidclay, "ExampleMod/Resources/claycordstatue_idle_001.png", new IntVector2(1, 0), new IntVector2(9, 9));
+				ClayCordStatue.prefab = CompanionBuilder.BuildPrefab("claystatue", ClayCordStatue.guidclay, "BunnyMod/Resources/claycordstatue_idle_001.png", new IntVector2(1, 0), new IntVector2(9, 9));
 				CompanionController companionController = ClayCordStatue.prefab.AddComponent<CompanionController>();
 				companionController.aiActor.MovementSpeed = 0f;
-				ClayCordStatue.prefab.AddAnimation("idle_right", "ExampleMod/Resources/claycordstatue_idle_001.png", 1, CompanionBuilder.AnimationType.Idle, DirectionalAnimation.DirectionType.TwoWayHorizontal, DirectionalAnimation.FlipType.None);
-				ClayCordStatue.prefab.AddAnimation("idle_left", "ExampleMod/Resources/claycordstatue_idle_001.png", 1, CompanionBuilder.AnimationType.Idle, DirectionalAnimation.DirectionType.TwoWayHorizontal, DirectionalAnimation.FlipType.None);
+				ClayCordStatue.prefab.AddAnimation("idle_right", "BunnyMod/Resources/claycordstatue_idle_001.png", 1, CompanionBuilder.AnimationType.Idle, DirectionalAnimation.DirectionType.TwoWayHorizontal, DirectionalAnimation.FlipType.None);
+				ClayCordStatue.prefab.AddAnimation("idle_left", "BunnyMod/Resources/claycordstatue_idle_001.png", 1, CompanionBuilder.AnimationType.Idle, DirectionalAnimation.DirectionType.TwoWayHorizontal, DirectionalAnimation.FlipType.None);
 				companionController.CanInterceptBullets = true;
 				companionController.aiActor.healthHaver.PreventAllDamage = false;
 				companionController.aiActor.specRigidbody.CollideWithOthers = true;

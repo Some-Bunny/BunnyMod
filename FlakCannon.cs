@@ -98,6 +98,8 @@ namespace BunnyMod
 			projectile.OnHitEnemy = (Action<Projectile, SpeculativeRigidbody, bool>)Delegate.Combine(projectile.OnHitEnemy, new Action<Projectile, SpeculativeRigidbody, bool>(this.FLAK2KILL));
 			base.PostProcessProjectile(projectile);
 		}
+		//for the love of god quarantine this gun
+
 		private void FlakTime(Projectile projectile)
 		{
 			PlayerController playerController1 = this.gun.CurrentOwner as PlayerController;

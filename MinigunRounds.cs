@@ -20,7 +20,7 @@ namespace BunnyMod
         {
             string itemName = "Minigun Clip";
 
-            string resourceName = "ExampleMod/Resources/minigunclip";
+            string resourceName = "BunnyMod/Resources/minigunclip";
 
             GameObject obj = new GameObject(itemName);
 

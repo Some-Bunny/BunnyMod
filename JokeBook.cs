@@ -20,7 +20,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "Joke Book";
-            string resourceName = "ExampleMod/Resources/jokebook";
+            string resourceName = "BunnyMod/Resources/jokebook";
             GameObject obj = new GameObject(itemName);
             var item = obj.AddComponent<JokeBook>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);

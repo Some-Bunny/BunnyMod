@@ -21,7 +21,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "Ancient Enigma";
-            string resourceName = "ExampleMod/Resources/ancientenigma";
+            string resourceName = "BunnyMod/Resources/ancientenigma";
             GameObject obj = new GameObject(itemName);
             AncientEnigma ancientEngima = obj.AddComponent<AncientEnigma>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);

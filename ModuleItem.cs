@@ -20,7 +20,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "Modular Weapon Chip";
-            string resourceName = "ExampleMod/Resources/weaponmodular.png";
+            string resourceName = "BunnyMod/Resources/weaponmodular.png";
             GameObject obj = new GameObject(itemName);
             ModuleChip counterChamber = obj.AddComponent<ModuleChip>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);
@@ -32,6 +32,15 @@ namespace BunnyMod
         }
         protected override void Update()
         {
+            //PlayerController player = base.Owner as PlayerController;
+            //{
+            //    Material mat = new Material(EnemyDatabase.GetOrLoadByName("GunNut").sprite.renderer.material);
+              //  mat.mainTexture = player.sprite.renderer.material.mainTexture;
+                //mat.SetColor("_EmissiveColor", new Color32(67, 225, 240, 255));
+                //mat.SetFloat("_EmissiveColorPower", 1.55f);
+                //mat.SetFloat("_EmissivePower", 100);
+                //player.sprite.renderer.material = mat;
+            //}
             Gun currentGun = base.Owner.CurrentGun;
             PickupObject.ItemQuality quality = currentGun.quality;
             this.CurrentGuns = 1;
@@ -189,7 +198,7 @@ namespace BunnyMod
                 }
             }
         }
-        private void T3Module()
+        public void T3Module()
         {
             PlayerController user = base.Owner;
             int num3 = UnityEngine.Random.Range(0, 5);

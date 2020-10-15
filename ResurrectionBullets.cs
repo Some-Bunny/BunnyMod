@@ -24,7 +24,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "Resurrection Bullets";
-            string resourceName = "ExampleMod/Resources/resurrectionbullets";
+            string resourceName = "BunnyMod/Resources/resurrectionbullets";
             GameObject obj = new GameObject(itemName);
             var item = obj.AddComponent<ResurrectionBullets>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);

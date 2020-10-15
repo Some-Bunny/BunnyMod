@@ -24,7 +24,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "Lunar Glass Syringe";
-            string resourceName = "ExampleMod/Resources/lunarglasssyringe";
+            string resourceName = "BunnyMod/Resources/lunarglasssyringe";
             GameObject obj = new GameObject(itemName);
             LunarGlassSyringe glassSyringe = obj.AddComponent<LunarGlassSyringe>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);

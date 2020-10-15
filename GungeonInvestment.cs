@@ -21,7 +21,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "The G.I.P";
-            string resourceName = "ExampleMod/Resources/gungeonmonetaryprogram.png";
+            string resourceName = "BunnyMod/Resources/gungeonmonetaryprogram.png";
             GameObject obj = new GameObject(itemName);
             GungeonInvestment greandeParasite = obj.AddComponent<GungeonInvestment>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);

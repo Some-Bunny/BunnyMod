@@ -21,7 +21,7 @@ namespace BunnyMod
 		public static void Init()
 		{
 			string name = "Enigma";
-			string resourcePath = "ExampleMod/Resources/Artifacts/enigma.png";
+			string resourcePath = "BunnyMod/Resources/Artifacts/enigma.png";
 			GameObject gameObject = new GameObject();
 			ArtifactOfEnigma boomGuon = gameObject.AddComponent<ArtifactOfEnigma>();
 			ItemBuilder.AddSpriteToObject(name, resourcePath, gameObject);

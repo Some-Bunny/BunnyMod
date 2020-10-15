@@ -107,9 +107,10 @@ C:\Users\ultra\source\repos\Mod\bin\Debug\ExampleMod.dll
 C:\Users\ultra\source\repos\Mod\bin\Debug\ExampleMod.pdb
 C:\Users\ultra\source\repos\Mod\obj\Debug\ExampleMod.dll
 C:\Users\ultra\source\repos\Mod\obj\Debug\ExampleMod.pdb
-C:\Users\Maxym\source\repos\BunnyMod\bin\Debug\ExampleMod.dll
-C:\Users\Maxym\source\repos\BunnyMod\bin\Debug\ExampleMod.pdb
 C:\Users\Maxym\source\repos\BunnyMod\obj\Debug\Mod.csproj.CoreCompileInputs.cache
 C:\Users\Maxym\source\repos\BunnyMod\obj\Debug\Mod.csproj.CopyComplete
-C:\Users\Maxym\source\repos\BunnyMod\obj\Debug\ExampleMod.dll
-C:\Users\Maxym\source\repos\BunnyMod\obj\Debug\ExampleMod.pdb
+C:\Users\Maxym\source\repos\BunnyMod\obj\Debug\Mod.csprojAssemblyReference.cache
+C:\Users\Maxym\source\repos\BunnyMod\bin\Debug\BunnyMod.dll
+C:\Users\Maxym\source\repos\BunnyMod\bin\Debug\BunnyMod.pdb
+C:\Users\Maxym\source\repos\BunnyMod\obj\Debug\BunnyMod.dll
+C:\Users\Maxym\source\repos\BunnyMod\obj\Debug\BunnyMod.pdb

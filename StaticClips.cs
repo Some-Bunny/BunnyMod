@@ -21,7 +21,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "Static Clips";
-            string resourceName = "ExampleMod/Resources/staticclips";
+            string resourceName = "BunnyMod/Resources/staticclips";
             GameObject obj = new GameObject(itemName);
             StaticCharger staticCharger = obj.AddComponent<StaticCharger>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);

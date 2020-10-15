@@ -24,7 +24,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "Gunslayer Key";
-            string resourceName = "ExampleMod/Resources/slayerkey";
+            string resourceName = "BunnyMod/Resources/slayerkey";
             GameObject obj = new GameObject(itemName);
             SlayerKey slayerKey = obj.AddComponent<SlayerKey>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);

@@ -21,7 +21,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "Damage Module";
-            string resourceName = "ExampleMod/Resources/WeaponModules/weaponmodulardamage.png";
+            string resourceName = "BunnyMod/Resources/WeaponModules/weaponmodulardamage.png";
             GameObject obj = new GameObject(itemName);
             ModuleDamage Module = obj.AddComponent<ModuleDamage>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);
@@ -49,7 +49,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "Clip Size Module";
-            string resourceName = "ExampleMod/Resources/WeaponModules/weaponmodularclipsize.png";
+            string resourceName = "BunnyMod/Resources/WeaponModules/weaponmodularclipsize.png";
             GameObject obj = new GameObject(itemName);
             ModuleClipSize Module = obj.AddComponent<ModuleClipSize>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);
@@ -77,15 +77,15 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "Fire Rate Module";
-            string resourceName = "ExampleMod/Resources/WeaponModules/weaponmodularfirerate.png";
+            string resourceName = "BunnyMod/Resources/WeaponModules/weaponmodularfirerate.png";
             GameObject obj = new GameObject(itemName);
             ModuleFireRate Module = obj.AddComponent<ModuleFireRate>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);
             string shortDesc = "Fire Rate Up.";
-            string longDesc = "Increases fire rate by 40%";
+            string longDesc = "Increases fire rate by 30%";
             Module.SetupItem(shortDesc, longDesc, "bny");
             Module.quality = PickupObject.ItemQuality.EXCLUDED;
-            ItemBuilder.AddPassiveStatModifier(Module, PlayerStats.StatType.RateOfFire, .40f, StatModifier.ModifyMethod.ADDITIVE);
+            ItemBuilder.AddPassiveStatModifier(Module, PlayerStats.StatType.RateOfFire, .30f, StatModifier.ModifyMethod.ADDITIVE);
         }
         public override void Pickup(PlayerController player)
         {
@@ -105,7 +105,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "Reload Module";
-            string resourceName = "ExampleMod/Resources/WeaponModules/weaponmodularreload.png";
+            string resourceName = "BunnyMod/Resources/WeaponModules/weaponmodularreload.png";
             GameObject obj = new GameObject(itemName);
             ModuleReload Module = obj.AddComponent<ModuleReload>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);
@@ -133,7 +133,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "Splitter Module";
-            string resourceName = "ExampleMod/Resources/WeaponModules/t2weaponmodularyv.png";
+            string resourceName = "BunnyMod/Resources/WeaponModules/t2weaponmodularyv.png";
             GameObject obj = new GameObject(itemName);
             T2ModuleYV Module = obj.AddComponent<T2ModuleYV>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);
@@ -163,7 +163,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "Piercer Module";
-            string resourceName = "ExampleMod/Resources/WeaponModules/t2weaponmodularpierce.png";
+            string resourceName = "BunnyMod/Resources/WeaponModules/t2weaponmodularpierce.png";
             GameObject obj = new GameObject(itemName);
             T2ModulePierce Module = obj.AddComponent<T2ModulePierce>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);
@@ -191,7 +191,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "Bouncer Module";
-            string resourceName = "ExampleMod/Resources/WeaponModules/t2weaponmodularbounce.png";
+            string resourceName = "BunnyMod/Resources/WeaponModules/t2weaponmodularbounce.png";
             GameObject obj = new GameObject(itemName);
             T2ModuleBounce Module = obj.AddComponent<T2ModuleBounce>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);
@@ -219,7 +219,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "Ejector Module";
-            string resourceName = "ExampleMod/Resources/WeaponModules/t2weaponmodularejector.png";
+            string resourceName = "BunnyMod/Resources/WeaponModules/t2weaponmodularejector.png";
             GameObject obj = new GameObject(itemName);
             T2ModuleEjector Module = obj.AddComponent<T2ModuleEjector>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);
@@ -260,7 +260,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "Cloak Module";
-            string resourceName = "ExampleMod/Resources/WeaponModules/t2weaponmodularcloak.png";
+            string resourceName = "BunnyMod/Resources/WeaponModules/t2weaponmodularcloak.png";
             GameObject obj = new GameObject(itemName);
             T2ModuleCloak Module = obj.AddComponent<T2ModuleCloak>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);
@@ -348,7 +348,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "Homing Module";
-            string resourceName = "ExampleMod/Resources/WeaponModules/t2weaponmodularhoming.png";
+            string resourceName = "BunnyMod/Resources/WeaponModules/t2weaponmodularhoming.png";
             GameObject obj = new GameObject(itemName);
             T2ModuleHoming Module = obj.AddComponent<T2ModuleHoming>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);
@@ -425,7 +425,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "Colossus Module";
-            string resourceName = "ExampleMod/Resources/WeaponModules/t3weaponmodularmassiveslowdps.png";
+            string resourceName = "BunnyMod/Resources/WeaponModules/t3weaponmodularmassiveslowdps.png";
             GameObject obj = new GameObject(itemName);
             T3ModuleColossus Module = obj.AddComponent<T3ModuleColossus>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);
@@ -434,8 +434,8 @@ namespace BunnyMod
             Module.SetupItem(shortDesc, longDesc, "bny");
             Module.quality = PickupObject.ItemQuality.EXCLUDED;
             ItemBuilder.AddPassiveStatModifier(Module, PlayerStats.StatType.Damage, .25f, StatModifier.ModifyMethod.ADDITIVE);
-            ItemBuilder.AddPassiveStatModifier(Module, PlayerStats.StatType.PlayerBulletScale, 4f, StatModifier.ModifyMethod.ADDITIVE);
-            ItemBuilder.AddPassiveStatModifier(Module, PlayerStats.StatType.ProjectileSpeed, .5f, StatModifier.ModifyMethod.MULTIPLICATIVE);
+            ItemBuilder.AddPassiveStatModifier(Module, PlayerStats.StatType.PlayerBulletScale, 1f, StatModifier.ModifyMethod.ADDITIVE);
+            ItemBuilder.AddPassiveStatModifier(Module, PlayerStats.StatType.ProjectileSpeed, .75f, StatModifier.ModifyMethod.MULTIPLICATIVE);
         }
         public override void Pickup(PlayerController player)
         {
@@ -455,7 +455,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "Rocket Module";
-            string resourceName = "ExampleMod/Resources/WeaponModules/t3weaponmodularrocket.png";
+            string resourceName = "BunnyMod/Resources/WeaponModules/t3weaponmodularrocket.png";
             GameObject obj = new GameObject(itemName);
             T3ModuleRocket Module = obj.AddComponent<T3ModuleRocket>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);
@@ -464,8 +464,8 @@ namespace BunnyMod
             Module.SetupItem(shortDesc, longDesc, "bny");
             Module.quality = PickupObject.ItemQuality.EXCLUDED;
             ItemBuilder.AddPassiveStatModifier(Module, PlayerStats.StatType.KnockbackMultiplier, 3f, StatModifier.ModifyMethod.ADDITIVE);
-            ItemBuilder.AddPassiveStatModifier(Module, PlayerStats.StatType.ProjectileSpeed, 2f, StatModifier.ModifyMethod.ADDITIVE);
-            ItemBuilder.AddPassiveStatModifier(Module, PlayerStats.StatType.RateOfFire, .2f, StatModifier.ModifyMethod.ADDITIVE);
+            ItemBuilder.AddPassiveStatModifier(Module, PlayerStats.StatType.ProjectileSpeed, 3f, StatModifier.ModifyMethod.ADDITIVE);
+            ItemBuilder.AddPassiveStatModifier(Module, PlayerStats.StatType.RateOfFire, .25f, StatModifier.ModifyMethod.ADDITIVE);
         }
         public override void Pickup(PlayerController player)
         {
@@ -485,7 +485,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "Inaccurate Module";
-            string resourceName = "ExampleMod/Resources/WeaponModules/t3weaponmodularinaccuratebutdps.png";
+            string resourceName = "BunnyMod/Resources/WeaponModules/t3weaponmodularinaccuratebutdps.png";
             GameObject obj = new GameObject(itemName);
             T3ModuleInaccurate Module = obj.AddComponent<T3ModuleInaccurate>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);
@@ -515,7 +515,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "Overloader Module";
-            string resourceName = "ExampleMod/Resources/WeaponModules/t3weaponmodularoverloader.png";
+            string resourceName = "BunnyMod/Resources/WeaponModules/t3weaponmodularoverloader.png";
             GameObject obj = new GameObject(itemName);
             T3ModuleOverload Module = obj.AddComponent<T3ModuleOverload>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);
@@ -569,7 +569,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "Reactive Module";
-            string resourceName = "ExampleMod/Resources/WeaponModules/t3weaponmodularBOOM.png";
+            string resourceName = "BunnyMod/Resources/WeaponModules/t3weaponmodularBOOM.png";
             GameObject obj = new GameObject(itemName);
             T3ModuleReactive Module = obj.AddComponent<T3ModuleReactive>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);
@@ -643,7 +643,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "Corrupt Sensor Module";
-            string resourceName = "ExampleMod/Resources/WeaponModules/corruptmodulesensorfailure.png";
+            string resourceName = "BunnyMod/Resources/WeaponModules/corruptmodulesensorfailure.png";
             GameObject obj = new GameObject(itemName);
             CorruptModuleSensor Module = obj.AddComponent<CorruptModuleSensor>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);
@@ -728,7 +728,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "Corrupt Accuracy Module";
-            string resourceName = "ExampleMod/Resources/WeaponModules/corruptmoduleaccuracyfailure.png";
+            string resourceName = "BunnyMod/Resources/WeaponModules/corruptmoduleaccuracyfailure.png";
             GameObject obj = new GameObject(itemName);
             CorruptModuleAccuracy Module = obj.AddComponent<CorruptModuleAccuracy>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);
@@ -808,7 +808,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "Corrupt Cooling Module";
-            string resourceName = "ExampleMod/Resources/WeaponModules/corruptmodulecoolingfailure.png";
+            string resourceName = "BunnyMod/Resources/WeaponModules/corruptmodulecoolingfailure.png";
             GameObject obj = new GameObject(itemName);
             CorruptModuleCoolant Module = obj.AddComponent<CorruptModuleCoolant>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);
@@ -890,7 +890,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "Corrupt Fitting Module";
-            string resourceName = "ExampleMod/Resources/WeaponModules/corruptmoduleloosefit.png";
+            string resourceName = "BunnyMod/Resources/WeaponModules/corruptmoduleloosefit.png";
             GameObject obj = new GameObject(itemName);
             CorruptModuleLoose Module = obj.AddComponent<CorruptModuleLoose>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);
@@ -973,7 +973,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "Corrupt Damage Module";
-            string resourceName = "ExampleMod/Resources/WeaponModules/corruptmoduledamage.png";
+            string resourceName = "BunnyMod/Resources/WeaponModules/corruptmoduledamage.png";
             GameObject obj = new GameObject(itemName);
             CorruptModuleDamage Module = obj.AddComponent<CorruptModuleDamage>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);

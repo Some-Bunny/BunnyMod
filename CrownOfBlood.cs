@@ -23,7 +23,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "Cystful Crown";
-            string resourceName = "ExampleMod/Resources/crownofblood";
+            string resourceName = "BunnyMod/Resources/crownofblood";
             GameObject obj = new GameObject(itemName);
             CrownOfBlood crownOfBlood = obj.AddComponent<CrownOfBlood>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);

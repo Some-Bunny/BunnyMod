@@ -19,6 +19,11 @@ namespace BunnyMod
 
 				Hook hook = new Hook(typeof(Foyer).GetMethod("Awake", BindingFlags.Instance | BindingFlags.NonPublic), typeof(BunnyModule).GetMethod("LateStart1"));
 				Hook openchesthook = new Hook(typeof(Chest).GetMethod("Open", BindingFlags.Instance | BindingFlags.NonPublic), typeof(BunnysFoot).GetMethod("LootPlus"));
+				Hook a = new Hook(typeof(PlayerController).GetProperty("LocalShaderName", BindingFlags.Public | BindingFlags.Instance).GetGetMethod(),typeof(BunnyModule).GetMethod("LocalShaderNameGetHook"));
+				//Hook ascrifice = new Hook(typeof(Chest).GetMethod("Open", BindingFlags.Instance | BindingFlags.NonPublic), typeof(ArtifactOfSacrifice).GetMethod("Lootless"));
+				Hook ascrifice1 = new Hook(typeof(Chest).GetMethod("OnBroken", BindingFlags.Instance | BindingFlags.NonPublic), typeof(ArtifactOfSacrifice).GetMethod("DenyDrops"));
+				Hook ascrifice2 = new Hook(typeof(Chest).GetMethod("DetermineContents", BindingFlags.Instance | BindingFlags.NonPublic), typeof(ArtifactOfSacrifice).GetMethod("DenyDropsMimic"));
+
 
 			}
 			catch (Exception e)

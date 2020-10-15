@@ -22,7 +22,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "R.T.G";
-            string resourceName = "ExampleMod/Resources/rtg.png";
+            string resourceName = "BunnyMod/Resources/rtg.png";
             GameObject obj = new GameObject(itemName);
             var item = obj.AddComponent<RTG>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);

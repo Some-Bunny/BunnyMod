@@ -9,19 +9,19 @@ using AnimationType = ItemAPI.CompanionBuilder.AnimationType;
 using Gungeon;
 using FullInspector;
 
-namespace FrostAndGunfireItems
+namespace BunnyMod
 {
-    public class Gilbert : AIActor
+    public class VengeanceVlone : AIActor
 	{
         public static GameObject prefab;
-        public static readonly string guid = "gilbert";
+        public static readonly string guid = "VengeanceClone";
         public static Dictionary<string, GameObject> enemyPrefabDictionary = new Dictionary<string, GameObject>();
 
 
         public static void Init()
         {
 
-            Gilbert.BuildPrefab();
+			VengeanceVlone.BuildPrefab();
         }
 
 		public static void BuildPrefab()
@@ -30,20 +30,20 @@ namespace FrostAndGunfireItems
 				return;
 
 			//Create the prefab with a starting sprite and hitbox offset/size
-			prefab = CompanionBuilder.BuildPrefab("Gilbert", guid, "FrostAndGunfireItems/Resources/gilbert/Idle/gilbert_idle_001", new IntVector2(1, 0), new IntVector2(9, 9));
+			prefab = CompanionBuilder.BuildPrefab("VengeanceClone", guid, "BunnyMod/Resources/VengeanceClone/Idle/vengclone_idle_001.png", new IntVector2(1, 0), new IntVector2(9, 9));
 
 			//Add a companion component to the prefab (could be a custom class)
 			AIActor companion = prefab.GetComponent<AIActor>();
-			companion.aiActor.MovementSpeed = 9f;
+			companion.aiActor.MovementSpeed = 8f;
 			companion.aiActor.healthHaver.PreventAllDamage = false;
 			companion.aiActor.CollisionDamage = 100f;
-			companion.aiActor.HasShadow = false;
+			companion.aiActor.HasShadow = true;
 			companion.aiActor.CanTargetPlayers = true;
 			companion.aiActor.specRigidbody.CollideWithOthers = true;
 			companion.aiActor.specRigidbody.CollideWithTileMap = true;
-			companion.aiActor.healthHaver.ForceSetCurrentHealth(35f);
-			companion.aiActor.healthHaver.SetHealthMaximum(35f, null, false);
-			companion.CollisionKnockbackStrength = 10;
+			companion.aiActor.healthHaver.ForceSetCurrentHealth(100f);
+			companion.aiActor.healthHaver.SetHealthMaximum(100f, null, false);
+			companion.CollisionKnockbackStrength = 8;
 			companion.aiActor.specRigidbody.PixelColliders.Clear();
 			companion.aiActor.specRigidbody.PixelColliders.Add(new PixelCollider
 			{
@@ -83,7 +83,7 @@ namespace FrostAndGunfireItems
 			});
 
 			//Add all of the needed animations (most of the animations need to have specific names to be recognized, like idle_right or attack_left)
-			prefab.AddAnimation("idle", "FrostAndGunfireItems/Resources/gilbert/Idle", fps: 5, AnimationType.Idle, DirectionType.TwoWayHorizontal);
+			prefab.AddAnimation("idle", "BunnyMod/Resources/VengeanceClone/Idle", fps: 3, AnimationType.Idle, DirectionType.TwoWayHorizontal);
 	
 
 			//Add the behavior here, this too can be a custom class that extends AttackBehaviorBase or something like that
@@ -111,13 +111,12 @@ namespace FrostAndGunfireItems
 					MaxActiveRange = 0
 				}
 			};
+			bs.AttackBehaviors = new List<AttackBehaviorBase>() {
+				new AttackMoveBehavior() 
+				{
 
+				}
+			};
 		}
-
-
-	
-
-
-
 	}
 }

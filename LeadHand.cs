@@ -13,7 +13,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "The Lead Hand";
-            string resourceName = "ExampleMod/Resources/theleadhand";
+            string resourceName = "BunnyMod/Resources/theleadhand";
             GameObject obj = new GameObject(itemName);
             LeadHand leadhand = obj.AddComponent<LeadHand>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);

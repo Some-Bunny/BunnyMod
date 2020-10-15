@@ -21,7 +21,7 @@ namespace BunnyMod
         public static void Register()
         {
             string itemName = "Counterproductive Chamber";
-            string resourceName = "ExampleMod/Resources/counterproductivechamber";
+            string resourceName = "BunnyMod/Resources/counterproductivechamber";
             GameObject obj = new GameObject(itemName);
             CounterChamber counterChamber = obj.AddComponent<CounterChamber>();
 

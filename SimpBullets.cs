@@ -21,7 +21,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "Simp Bullets";
-            string resourceName = "ExampleMod/Resources/simpbullets";
+            string resourceName = "BunnyMod/Resources/simpbullets";
             GameObject obj = new GameObject(itemName);
             var item = obj.AddComponent<SimpBullets>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);

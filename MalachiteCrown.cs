@@ -21,7 +21,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "Malachite Thorns";
-            string resourceName = "ExampleMod/Resources/malachitecrown";
+            string resourceName = "BunnyMod/Resources/malachitecrown";
             GameObject obj = new GameObject(itemName);
             MalachiteCrown crownOfBlood = obj.AddComponent<MalachiteCrown>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);
@@ -155,7 +155,7 @@ namespace BunnyMod
                 component4.baseData.range = 7f;
                 component4.OnDestruction += this.HellaPosion;
             }
-            bool youre = component4 != null;
+            bool youre = component5 != null;
             bool moom = youre;
             if (moom)
             {

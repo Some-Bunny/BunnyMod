@@ -21,7 +21,7 @@ namespace BunnyMod
         {
             string itemName = "Bulluon Stone";
 
-            string resourceName = "ExampleMod/Resources/BulluonStone";
+            string resourceName = "BunnyMod/Resources/BulluonStone";
             GameObject obj = new GameObject(itemName);
             var item = obj.AddComponent<BulluonStone>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);

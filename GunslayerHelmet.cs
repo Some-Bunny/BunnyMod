@@ -22,7 +22,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "Gunslayers Helmet";
-            string resourceName = "ExampleMod/Resources/gunslayershelmet";
+            string resourceName = "BunnyMod/Resources/gunslayershelmet";
             GameObject obj = new GameObject(itemName);
             GunslayerHelmet gunslayerHelmet = obj.AddComponent<GunslayerHelmet>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);

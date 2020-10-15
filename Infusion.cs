@@ -22,14 +22,14 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "Infusion";
-            string resourceName = "ExampleMod/Resources/infusion.png";
+            string resourceName = "BunnyMod/Resources/infusion.png";
             GameObject obj = new GameObject(itemName);
             Infusion lizardBlood = obj.AddComponent<Infusion>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);
             string shortDesc = "Health Leech";
             string longDesc = "A vial of assorted blood types.\n\nMix enough into yourself and you may find yourself healthier.\n\nYes, I studied Biology in school, how can you tell?";
             lizardBlood.SetupItem(shortDesc, longDesc, "bny");
-            lizardBlood.quality = PickupObject.ItemQuality.B;
+            lizardBlood.quality = PickupObject.ItemQuality.A;
             lizardBlood.AddToSubShop(ItemBuilder.ShopType.Goopton, 1f);
         }
 		private void KillCount(PlayerController player)

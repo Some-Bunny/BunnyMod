@@ -12,7 +12,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "Fodder";
-            string resourceName = "ExampleMod/Resources/Artifacts/fodder";
+            string resourceName = "BunnyMod/Resources/Artifacts/fodder";
             GameObject obj = new GameObject(itemName);
             ArtifactOfFodder greandeParasite = obj.AddComponent<ArtifactOfFodder>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);

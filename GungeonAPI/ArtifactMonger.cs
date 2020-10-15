@@ -13,12 +13,12 @@ namespace GungeonAPI
 		// Token: 0x06000059 RID: 89 RVA: 0x0000480C File Offset: 0x00002A0C
 		public static void Add()
 		{
-			ShrineFactoryBny ShrineFactoryBny = new ShrineFactoryBny
+			ShrineFactory ShrineFactory = new ShrineFactory
 			{
 				name = "Artifact Monger",
 				modID = "BunnyMod",
-				spritePath = "ExampleMod/Resources/Artifacts/ArtifactNPC/Idle/artifactmonger_idle_001.png",
-				shadowSpritePath = "ExampleMod/Resources/Artifacts/ArtifactNPC/artifactmongerplaceshadow_001.png",
+				spritePath = "BunnyMod/Resources/Artifacts/ArtifactNPC/Idle/artifactmonger_idle_001.png",
+				shadowSpritePath = "BunnyMod/Resources/Artifacts/ArtifactNPC/artifactmongerplaceshadow_001.png",
 				acceptText = "...Sure?",
 				declineText = "No thanks.",
 				OnAccept = new Action<PlayerController, GameObject>(ArtifactMonger.Accept),
@@ -30,11 +30,11 @@ namespace GungeonAPI
 				isBreachShrine = true,
 				interactableComponent = typeof(ArtifactMongerInteractible)
 			};
-			GameObject gameObject = ShrineFactoryBny.Build();
-			gameObject.AddAnimation("idle", "ExampleMod/Resources/Artifacts/ArtifactNPC/Idle/", 2, NPCBuilder.AnimationType.Idle, DirectionalAnimation.DirectionType.None, DirectionalAnimation.FlipType.None);
-			gameObject.AddAnimation("talk", "ExampleMod/Resources/Artifacts/ArtifactNPC/Talk/", 6, NPCBuilder.AnimationType.Talk, DirectionalAnimation.DirectionType.None, DirectionalAnimation.FlipType.None);
-			gameObject.AddAnimation("talk_start", "ExampleMod/Resources/Artifacts/ArtifactNPC/TalkStart/", 6, NPCBuilder.AnimationType.Other, DirectionalAnimation.DirectionType.None, DirectionalAnimation.FlipType.None);
-			gameObject.AddAnimation("do_effect", "ExampleMod/Resources/Artifacts/ArtifactNPC/DoEffect/", 5, NPCBuilder.AnimationType.Other, DirectionalAnimation.DirectionType.None, DirectionalAnimation.FlipType.None);
+			GameObject gameObject = ShrineFactory.Build();
+			gameObject.AddAnimation("idle", "BunnyMod/Resources/Artifacts/ArtifactNPC/Idle/", 2, NPCBuilder.AnimationType.Idle, DirectionalAnimation.DirectionType.None, DirectionalAnimation.FlipType.None);
+			gameObject.AddAnimation("talk", "BunnyMod/Resources/Artifacts/ArtifactNPC/Talk/", 6, NPCBuilder.AnimationType.Talk, DirectionalAnimation.DirectionType.None, DirectionalAnimation.FlipType.None);
+			gameObject.AddAnimation("talk_start", "BunnyMod/Resources/Artifacts/ArtifactNPC/TalkStart/", 6, NPCBuilder.AnimationType.Other, DirectionalAnimation.DirectionType.None, DirectionalAnimation.FlipType.None);
+			gameObject.AddAnimation("do_effect", "BunnyMod/Resources/Artifacts/ArtifactNPC/DoEffect/", 5, NPCBuilder.AnimationType.Other, DirectionalAnimation.DirectionType.None, DirectionalAnimation.FlipType.None);
 			ArtifactMongerInteractible component = gameObject.GetComponent<ArtifactMongerInteractible>();
 			component.conversation = new List<string>
 			{
@@ -64,7 +64,7 @@ namespace GungeonAPI
 		}
 		public static void HandleLoadout(PlayerController player)
 		{
-			ArtifactMonger.Char = UnityEngine.Random.Range(1, 11);
+			ArtifactMonger.Char = UnityEngine.Random.Range(1, 12);
 			switch (ArtifactMonger.Char)
 			{
 				case 1:
@@ -96,6 +96,9 @@ namespace GungeonAPI
 					break;
 				case 10:
 					LootEngine.TryGivePrefabToPlayer(ETGMod.Databases.Items["Enigma"].gameObject, player, true);
+					break;
+				case 11:
+					LootEngine.TryGivePrefabToPlayer(ETGMod.Databases.Items["Sacrifice"].gameObject, player, true);
 					break;
 			}
 			ArtifactMonger.storedPlayer = player;

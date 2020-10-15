@@ -21,7 +21,7 @@ namespace BunnyMod
 		public static void Init()
 		{
 			string name = "Dynamite Guon Stone";
-			string resourcePath = "ExampleMod/Resources/DynamiteGuon/dynamiteguonstone";
+			string resourcePath = "BunnyMod/Resources/DynamiteGuon/dynamiteguonstone";
 			GameObject gameObject = new GameObject();
 			DynamiteGuon boomGuon = gameObject.AddComponent<DynamiteGuon>();
 			ItemBuilder.AddSpriteToObject(name, resourcePath, gameObject);
@@ -40,7 +40,7 @@ namespace BunnyMod
 			bool flag = DynamiteGuon.orbitalPrefab != null;
 			if (!flag)
 			{
-				GameObject gameObject = SpriteBuilder.SpriteFromResource("ExampleMod/Resources/DynamiteGuon/dynamiteguonstonefloaty", null, true);
+				GameObject gameObject = SpriteBuilder.SpriteFromResource("BunnyMod/Resources/DynamiteGuon/dynamiteguonstonefloaty", null, true);
 				gameObject.name = "Dynamite Guon Stone";
 				SpeculativeRigidbody speculativeRigidbody = gameObject.GetComponent<tk2dSprite>().SetUpSpeculativeRigidbody(IntVector2.Zero, new IntVector2(10, 10));
 				speculativeRigidbody.CollideWithTileMap = false;

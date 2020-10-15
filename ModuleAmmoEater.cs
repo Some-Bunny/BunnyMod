@@ -22,7 +22,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "Modular Printer";
-            string resourceName = "ExampleMod/Resources/weaponmodularammoeater.png";
+            string resourceName = "BunnyMod/Resources/weaponmodularammoeater.png";
             GameObject obj = new GameObject(itemName);
             ModuleAmmoEater lockpicker = obj.AddComponent<ModuleAmmoEater>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);
@@ -78,8 +78,8 @@ namespace BunnyMod
 		// Token: 0x04000087 RID: 135
 		private static readonly string[] spritePaths = new string[]
 		{
-			"ExampleMod/Resources/weaponmodularammoeater.png",
-			"ExampleMod/Resources/weaponmodularammoeaterfull.png"
+			"BunnyMod/Resources/weaponmodularammoeater.png",
+			"BunnyMod/Resources/weaponmodularammoeaterfull.png"
 		};
 	}
 }

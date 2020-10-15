@@ -20,7 +20,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "The Clay Cord";
-            string resourceName = "ExampleMod/Resources/claycord";
+            string resourceName = "BunnyMod/Resources/claycord";
             GameObject obj = new GameObject(itemName);
             Claycord clacord = obj.AddComponent<Claycord>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);

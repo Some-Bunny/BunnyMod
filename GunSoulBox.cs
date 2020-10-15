@@ -23,7 +23,7 @@ namespace BunnyMod
         public static void Init()
         {
             string name = "Gun Soul Phylactery";
-            string resourcePath = "ExampleMod/Resources/gunsoulphylactery.png";
+            string resourcePath = "BunnyMod/Resources/gunsoulphylactery.png";
             GameObject gameObject = new GameObject();
             GunSoulBox GunSoulBox = gameObject.AddComponent<GunSoulBox>();
             ItemBuilder.AddSpriteToObject(name, resourcePath, gameObject, true);

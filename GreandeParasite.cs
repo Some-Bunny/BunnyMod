@@ -13,7 +13,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "Pinhead Parasite";
-            string resourceName = "ExampleMod/Resources/pinheadparasite";
+            string resourceName = "BunnyMod/Resources/pinheadparasite";
             GameObject obj = new GameObject(itemName);
             GreandeParasite greandeParasite = obj.AddComponent<GreandeParasite>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);

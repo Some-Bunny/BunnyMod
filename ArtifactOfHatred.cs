@@ -21,7 +21,7 @@ namespace BunnyMod
 		public static void Init()
 		{
 			string name = "Hatred";
-			string resourcePath = "ExampleMod/Resources/Artifacts/hatred.png";
+			string resourcePath = "BunnyMod/Resources/Artifacts/hatred.png";
 			GameObject gameObject = new GameObject();
 			ArtifactOfHatred boomGuon = gameObject.AddComponent<ArtifactOfHatred>();
 			ItemBuilder.AddSpriteToObject(name, resourcePath, gameObject);
@@ -39,7 +39,7 @@ namespace BunnyMod
 			bool flag = ArtifactOfHatred.orbitalPrefab != null;
 			if (!flag)
 			{
-				GameObject gameObject = SpriteBuilder.SpriteFromResource("ExampleMod/Resources/Artifacts/hatredfloaty.png", null, true);
+				GameObject gameObject = SpriteBuilder.SpriteFromResource("BunnyMod/Resources/Artifacts/hatredfloaty.png", null, true);
 				gameObject.name = "aasdadddasdassda";
 				SpeculativeRigidbody speculativeRigidbody = gameObject.GetComponent<tk2dSprite>().SetUpSpeculativeRigidbody(IntVector2.Zero, new IntVector2(10, 10));
 				speculativeRigidbody.CollideWithTileMap = false;

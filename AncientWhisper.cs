@@ -23,7 +23,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "Ancient Whisper";
-            string resourceName = "ExampleMod/Resources/ancientwhisper";
+            string resourceName = "BunnyMod/Resources/ancientwhisper";
             GameObject obj = new GameObject(itemName);
             AncientWhisper whisper = obj.AddComponent<AncientWhisper>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);

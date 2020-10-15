@@ -19,7 +19,7 @@ namespace BunnyMod
         public static void Register()
         {
             string itemName = "Effigy Of ChaosGod";
-            string resourceName = "ExampleMod/Resources/effigyofchaosgod";
+            string resourceName = "BunnyMod/Resources/effigyofchaosgod";
             GameObject obj = new GameObject(itemName);
             ChaosGodsWrath chaosGodsWrath = obj.AddComponent<ChaosGodsWrath>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);

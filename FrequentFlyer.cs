@@ -22,7 +22,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "Frequent Flyer";
-            string resourceName = "ExampleMod/Resources/frequentflyer";
+            string resourceName = "BunnyMod/Resources/frequentflyer";
             GameObject obj = new GameObject(itemName);
             var item = obj.AddComponent<FrequentFlyer>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);

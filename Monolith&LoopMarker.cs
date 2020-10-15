@@ -24,7 +24,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "Monolith";
-            string resourceName = "ExampleMod/Resources/TheMonolith";
+            string resourceName = "BunnyMod/Resources/TheMonolith";
             GameObject obj = new GameObject(itemName);
             var item = obj.AddComponent<TheMonolith>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);
@@ -59,7 +59,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "Sigil of Infinity";
-            string resourceName = "ExampleMod/Resources/loopmarker";
+            string resourceName = "BunnyMod/Resources/loopmarker";
             GameObject obj = new GameObject(itemName);
             var item = obj.AddComponent<LoopMarker>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);

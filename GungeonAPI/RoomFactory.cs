@@ -343,12 +343,12 @@ namespace GungeonAPI
 		// Token: 0x06000049 RID: 73 RVA: 0x00004CD0 File Offset: 0x00002ED0
 		public static int GetStyleValue(string dungeonName, string shrineIDFUCK)
 		{
-			bool flag = ShrineFactoryBny.registeredShrines != null && ShrineFactoryBny.registeredShrines.ContainsKey(shrineIDFUCK);
+			bool flag = ShrineFactory.registeredShrines != null && ShrineFactory.registeredShrines.ContainsKey(shrineIDFUCK);
 			bool flag2 = flag;
 			if (flag2)
 			{
-				GameObject gameObject = ShrineFactoryBny.registeredShrines[shrineIDFUCK];
-				ShrineFactoryBny.CustomShrineController customShrineController = (gameObject != null) ? gameObject.GetComponent<ShrineFactoryBny.CustomShrineController>() : null;
+				GameObject gameObject = ShrineFactory.registeredShrines[shrineIDFUCK];
+				ShrineFactory.CustomShrineController customShrineController = (gameObject != null) ? gameObject.GetComponent<ShrineFactory.CustomShrineController>() : null;
 				bool flag3 = customShrineController != null && customShrineController.roomStyles != null && customShrineController.roomStyles.ContainsKey(dungeonName);
 				bool flag4 = flag3;
 				if (flag4)
@@ -654,6 +654,8 @@ namespace GungeonAPI
 		// Token: 0x02000130 RID: 304
 		public struct RoomData
 		{
+			public static float GlobalRoomWeight = 1.5f;
+
 			// Token: 0x0400024F RID: 591
 			public string category;
 

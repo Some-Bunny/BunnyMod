@@ -21,7 +21,7 @@ namespace BunnyMod
         public static void Init()
         {
             string itemName = "Empowering Core";
-            string resourceName = "ExampleMod/Resources/empoweringcore.png";
+            string resourceName = "BunnyMod/Resources/empoweringcore.png";
             GameObject obj = new GameObject(itemName);
             var item = obj.AddComponent<EmpoweringCore>();
             ItemBuilder.AddSpriteToObject(itemName, resourceName, obj);
